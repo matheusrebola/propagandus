@@ -1,0 +1,102 @@
+version: '3.8'
+
+services:
+  mysql-horario:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: horario
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+
+  mysql-local:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: local
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+
+  mysql-pessoa:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: pessoa
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3308:3306"
+
+  mysql-propaganda:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: propaganda
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3309:3306"
+
+  mysql-reacao:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: reacao
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3310:3306"
+
+  mongo-order:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+
+  mongo-sender:
+    image: mongo:latest
+    ports:
+      - "27018:27017"
+
+  horario:
+    build:
+      context: ./horario
+    depends_on:
+      - mysql-horario
+
+  local:
+    build:
+      context: ./local
+    depends_on:
+      - mysql-local
+
+  pessoa:
+    build:
+      context: ./pessoa
+    depends_on:
+      - mysql-pessoa
+
+  propaganda:
+    build:
+      context: ./propaganda
+    depends_on:
+      - mysql-propaganda
+
+  reacao:
+    build:
+      context: ./reacao
+    depends_on:
+      - mysql-reacao
+
+  orchestrator-order:
+    build:
+      context: ./orchestrator-order
+
+  orchestrator-sender:
+    build:
+      context: ./orchestrator-sender
+
+  order:
+    build:
+      context: ./order
+    depends_on:
+      - mongo-order
+
+  sender:
+    build:
+      context: ./sender
+    depends_on:
+      - mongo-sender
