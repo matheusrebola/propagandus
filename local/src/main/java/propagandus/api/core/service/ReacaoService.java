@@ -36,23 +36,23 @@ public class ReacaoService {
   }
 
   public List<Reacao> findByTipoPessoa(Pessoa pessoa){
-    return reacaoRepository.FindByPessoa(pessoa);
+    return reacaoRepository.findByPessoa(pessoa);
   }
 
   public List<Reacao> findByTipoReacao(EReacao tipReacao){
-    return reacaoRepository.FindByTipoReacao(tipReacao);
+    return reacaoRepository.findByTipoReacao(tipReacao);
   }
 
   public List<Reacao> findByHorario(Horario horario){
-    return reacaoRepository.FindByHorario(horario);
+    return reacaoRepository.findByHorario(horario);
   }
 
   public List<Reacao> FindByNivelAtencao(EAtencao atencao){
-    return reacaoRepository.FindByNivelAtencao(atencao);
+    return reacaoRepository.findByNivelAtencao(atencao);
   }
 
-  public List<Reacao> findByDataHora(LocalDateTime dataHora){
-    return reacaoRepository.FindByDataHora(dataHora);
+  public List<Reacao> findByDataReacao(LocalDateTime dataHora){
+    return reacaoRepository.findByDataReacao(dataHora);
   }
 
 }
