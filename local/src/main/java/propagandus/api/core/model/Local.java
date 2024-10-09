@@ -16,8 +16,8 @@ public record Local(
    String logradouro,
    String numero, String cidade,
    String estado,
-   @OneToMany(mappedBy = "local") List<Reacao> reacoes,
-   @OneToMany(mappedBy = "local") List<Painel> paineis
+   @OneToMany(mappedBy = "localReacao") List<Reacao> reacoes,
+   @OneToMany(mappedBy = "localPainel") List<Painel> paineis
 ) {
 } 
 

@@ -13,7 +13,7 @@ public record Painel(
   @Id @GeneratedValue(strategy = GenerationType.UUID) UUID id,
   String painelId, // Identificador único do painel
   @ManyToOne
-  Local local
+  Local localPainel
 ) {
 
 }

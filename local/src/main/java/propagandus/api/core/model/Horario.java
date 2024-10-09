@@ -2,7 +2,7 @@ package propagandus.api.core.model;
 
 import java.util.List;
 
-import org.hibernate.validator.constraints.UUID;
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
