@@ -22,5 +22,5 @@ public class ReacaoMapper {
     ReacaoDto dto = modelMapper.map(reacao, ReacaoDto.class);
     return dto;
   }
-
+  
 }
