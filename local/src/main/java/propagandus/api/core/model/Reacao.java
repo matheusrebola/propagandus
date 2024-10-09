@@ -19,13 +19,14 @@ import propagandus.api.core.model.enums.EReacao;
 public record Reacao(
   @Id @GeneratedValue(strategy = GenerationType.UUID) UUID id,
   @Enumerated(EnumType.STRING) EReacao tipoReacao,
+  LocalDateTime dataReacao,
+  long tempoFixacao,
+  @Enumerated(EnumType.STRING) EAtencao nivelAtencao,
   @ManyToOne @JoinColumn(name = "pessoa_id") Pessoa pessoa,
   @ManyToOne @JoinColumn(name = "horario_id") Horario horario,
-  @Enumerated(EnumType.STRING) EAtencao nivelAtencao,
-  LocalDateTime dataReacao,
+  @ManyToOne @JoinColumn(name = "propaganda_id") Propaganda propaganda,
   @ManyToOne @JoinColumn(name = "local_id") Local localReacao,
-  @ManyToOne @JoinColumn(name = "painel_id") Painel painel,
-  long tempoFixacao
+  @ManyToOne @JoinColumn(name = "painel_id") Painel painel
 ) {
 
 }
