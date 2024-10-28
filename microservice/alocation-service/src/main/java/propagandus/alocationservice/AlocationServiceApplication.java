@@ -1,13 +1,13 @@
-package propagandus.order;
+package propagandus.alocationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OrderApplication {
+public class AlocationServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OrderApplication.class, args);
+		SpringApplication.run(AlocationServiceApplication.class, args);
 	}
 
 }

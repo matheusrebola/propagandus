@@ -1,10 +1,10 @@
-package propagandus.order;
+package propagandus.alocationservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OrderApplicationTests {
+class AlocationServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
