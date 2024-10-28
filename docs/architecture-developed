@@ -1,0 +1,54 @@
+Principais Melhorias
+
+    Separação de Camadas de Dados e Processamento de Dados:
+        Adicione uma camada de processamento de eventos para lidar com os dados em tempo real e para eventuais alertas ou notificações baseados em critérios de dados (como picos de interesse ou reação).
+        Adicione um serviço de armazenamento temporário com cache para evitar sobrecarga no banco de dados ao lidar com reações em tempo real.
+        Modularize os microserviços para que cada um tenha uma responsabilidade única, mas compartilhe um ponto comum de processamento e persistência para reduzir redundâncias.
+
+    Gerenciamento de Mensageria e Orquestração:
+        Amplie o uso de mensageria para que o Orchestrator Service possa trabalhar com filas dedicadas para cada Saga, facilitando o monitoramento e tratamento de erros de maneira independente em cada serviço.
+        Use um sistema de filas em nuvem, como Amazon SQS ou Google Pub/Sub, para mensageria entre os serviços locais e a nuvem, garantindo maior resiliência e confiabilidade.
+        Ajuste a orquestração da Saga para que cada operação de microserviço seja acompanhada de uma confirmação de sucesso ou erro, e defina uma política de rollback para tratar falhas durante as execuções em cadeia.
+
+    Camada de Backup e Monitoramento:
+        Adicione uma camada de backup automática com políticas de retenção para reduzir o consumo de armazenamento.
+        Adicione um serviço de monitoramento que consolida logs de todos os microserviços para análises posteriores e para detectar anomalias em tempo real.
+
+    Infraestrutura e Banco de Dados Compartilhado:
+        Centralize o armazenamento de dados de reações, localização e publicidade em um Data Lake na nuvem para manter histórico e facilitar a análise unificada de longo prazo.
+        Utilize bancos de dados híbridos (como PostgreSQL com extensão JSONB) no lugar de NoSQL onde dados estruturados e não estruturados coexistem, especialmente para Local e Advertising, evitando a complexidade da migração NoSQL-SQL.
+
+Arquitetura Melhorada
+Camada de Microserviços Locais (na Máquina do Painel)
+
+    Location Service: Fornece os dados estáticos do local e painel, transmitindo as informações periodicamente ao serviço central de normalização.
+    Advertising Service: Fornece e atualiza as informações da propaganda sendo exibida no painel.
+    Reaction Service: Recebe dados JSON da IA para identificar reação, atenção e interesse; armazena temporariamente no MongoDB.
+    Data Normalization Service: Filtra e agrega as reações válidas (aquelas com interação do usuário) em MongoDB para evitar persistência desnecessária.
+
+Camada de Processamento Local e Backup
+
+    Data Persistence Service: Conecta-se ao Data Normalization Service para migrar periodicamente dados para o banco SQL local.
+    Sender Service: Transfere dados para a nuvem, usando mensageria e se comunicando com o Allocation Service.
+    Backup Service: Automatiza o backup dos dados SQL locais e transfere para o Data Lake na nuvem, garantindo uma retenção segura.
+
+Camada de Microserviços em Nuvem
+
+    Allocation Service: Recebe dados do Sender Service, registra em um banco NoSQL e inicia a mensageria com o Persistence Service.
+    Persistence Service: Recebe, valida, armazena e persiste dados em um banco SQL para acesso otimizado.
+    Orchestrator Service: Orquestra o fluxo de dados usando uma Saga, executando etapas de localização, reação e publicidade em sequência.
+    Backup Service: Recebe dados do Persistence Service, transfere para o Data Lake e apaga registros temporários após o backup.
+
+Camada de Análise e Relatórios
+
+    Reaction Analysis Service: Agrega e interpreta dados de reações com análises em gráficos, permitindo insights em tempo real.
+    Location & Advertising Analysis Services: Executam análises de popularidade de locais e de publicidade, gerando métricas e visualizações.
+    Event Monitoring Service: Agrega logs dos microserviços e realiza verificações de saúde e análise de padrões.
+
+Descrição da Arquitetura Melhorada
+
+A arquitetura proposta implementa um modelo de microserviços distribuídos em várias camadas e conectados por mensageria, ideal para um cenário que envolve coleta e processamento de dados em tempo real. No ambiente local (máquinas de painel), os serviços de Location, Advertising, e Reaction monitoram a interação dos usuários e filtram dados por meio do Data Normalization Service. Apenas dados válidos e relevantes são transmitidos para a camada de persistência local, onde o Data Persistence Service armazena dados em um banco SQL.
+
+A camada de nuvem é a responsável pela orquestração dos dados recebidos e pela análise centralizada. O Allocation Service inicia a mensageria e direciona as operações para o Persistence Service, que verifica a qualidade dos dados antes de persistir as informações. Um sistema de backup contínuo é mantido pelo Backup Service na nuvem, que se encarrega de armazenar os dados no Data Lake, enquanto o Orchestrator Service lida com a orquestração e integração final das informações.
+
+Essa arquitetura permite um fluxo contínuo e resiliente, onde a mensageria serve de elo confiável entre os ambientes local e de nuvem, e cada microserviço mantém uma responsabilidade bem definida.
