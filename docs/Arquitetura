@@ -1,0 +1,58 @@
+Certamente! Aqui está a descrição reorganizada, incluindo as sugestões de melhorias e explicando o fluxo de forma integrada:
+
+---
+
+### Arquitetura e Descrição do Projeto
+
+Os microserviços são responsáveis por capturar, processar e analisar dados de reações de usuários a anúncios exibidos em painéis digitais instalados em locais públicos. A solução envolve microserviços locais, serviços de distribuição e armazenamento de dados em nuvem, além de sistemas de monitoramento e recuperação de dados, tudo organizado para garantir integridade e escalabilidade. Abaixo, está o fluxo de dados e as principais funções de cada serviço na arquitetura.
+
+#### 1. Coleta de Dados Locais e Normalização
+
+Os microserviços locais (implementados em TypeScript) coletam dados contextuais e de reação:
+- **Location Service**: Armazena e transmite os dados estáticos de localização e informações do painel, configurados para múltiplas localidades e para painéis específicos.
+- **Advertising Service**: Informa qual propaganda está sendo exibida naquele momento, associando o conteúdo com a localização e o horário.
+- **Reaction Service**: Recebe, via JSON, dados da análise de IA sobre atenção, emoção e interesse dos usuários, filtrando apenas os instantes com reações e armazenando-os em um banco de dados NoSQL (MongoDB).
+
+Cada microserviço normaliza os dados coletados e ativa um fluxo Saga Coreografado para comunicar outros serviços locais sempre que uma reação ocorre. Somente os dados de instantes com reações são persistidos, economizando armazenamento e processamento.
+
+#### 2. Garantia de Integridade dos Dados
+
+Após a coleta, os dados são processados pelo **Data Integrity Service**, que:
+- Executa uma verificação de integridade para validar a consistência e completude dos dados que serão transferidos para um banco SQL.
+- Inicia uma Saga Coreografada com o **Data Persistence Service**, garantindo a persistência dos dados íntegros em uma estrutura SQL.
+- Armazena o ID da requisição e seu estado em um banco NoSQL, monitorando possíveis erros e permitindo um rápido reprocessamento, se necessário.
+- Em caso de inconsistências ou perda de dados, aciona o **Data Inquest Local Service**, que registra dados problemáticos em um banco SQL dedicado, gerando relatórios em .csv para análise e correção.
+
+Essa estrutura permite uma rápida recuperação e evita a perda de informações críticas. Todos os erros e dados inconsistentes ficam registrados, e relatórios completos são gerados para revisão e ajustes manuais, se necessário.
+
+#### 3. Envio para a Nuvem e Backup de Dados
+
+Após a validação, o **Sender Service** inicia uma Saga Orquestrada para enviar os dados para a nuvem, armazenando o histórico de eventos até a conclusão da transferência. Esse serviço chama o **Data Distribution Service**, que:
+- Distribui os dados entre o **Alocation Service** e o **Backup Persistence Service**.
+- Garante que ambos os serviços recebam dados sem falhas ou inconsistências e, em caso de problemas, encaminha os dados problemáticos ao **Data Inquest Service** na nuvem, para reprocessamento e relatório.
+
+Enquanto o **Backup Persistence Service** estrutura e armazena os dados permanentemente em um banco SQL, o **Alocation Service** organiza os dados recebidos em um banco NoSQL, que será transferido para SQL pelo **Persistence Service** em uma segunda etapa.
+
+#### 4. Persistência e Estruturação dos Dados em Nuvem
+
+No **Persistence Service**, uma nova Saga Orquestrada coordena a distribuição final dos dados:
+- Este serviço distribui os dados entre os microserviços `Location`, `Reaction` e `Advertising` na nuvem, persistindo-os em um banco de dados SQL para criar um Data Lake.
+- Após a conclusão da Saga, uma mensagem confirma o término da transferência para o **Persistence Service**.
+
+#### 5. Monitoramento e Reprocessamento Automático
+
+Para melhorar a eficiência e a confiabilidade, a arquitetura conta com uma estrutura de monitoramento:
+- **Controle de Rollbacks e Reprocessamento**: Em caso de falhas, o sistema reprocessa automaticamente as operações pendentes para reduzir o trabalho manual.
+- **Data Lake em Camadas**: Armazena dados temporários e históricos em camadas, facilitando o processamento frequente e permitindo consultas eficientes.
+- **Cache Temporário (Redis)**: Minimiza a latência, armazenando dados temporários em um banco Redis para otimizar a velocidade de recuperação e reduzir o impacto de eventuais rollbacks.
+
+### Tecnologias Utilizadas
+
+- **Bancos de Dados**: MongoDB (dados temporários e de reação), MySQL (dados de alta rotatividade), PostgreSQL (dados persistentes e históricos).
+- **Mensageria**: RabbitMQ (local) e Kafka (nuvem).
+- **Linguagens**: TypeScript (serviços locais) e Java 21 (serviços em nuvem).
+- **Bibliotecas de IA**: Python para reconhecimento de atenção, emoção e interesse dos usuários.
+
+---
+
+Essa arquitetura avançada garante que os dados coletados em tempo real sejam processados com alta integridade e escalabilidade, oferecendo insights precisos e valiosos sobre a reação dos usuários a anúncios digitais em locais públicos.

@@ -1,0 +1,58 @@
+Certainly! Here’s the translated description:
+
+---
+
+### Project Architecture and Description
+
+This microservices-based project captures, processes, and analyzes user reactions to advertisements displayed on digital panels in public locations. The solution includes local microservices, cloud-based data distribution and storage services, as well as monitoring and data recovery systems, all structured to ensure data integrity and scalability. Below is the data flow and the main functions of each service within the architecture.
+
+#### 1. Local Data Collection and Normalization
+
+The local microservices (implemented in TypeScript) collect contextual and reaction data:
+- **Location Service**: Stores and transmits static data of location and panel information, configured for multiple locations and specific panels.
+- **Advertising Service**: Informs which advertisement is displayed at a given moment, linking content with location and time.
+- **Reaction Service**: Receives JSON data from the AI analyzing user attention, emotion, and interest, filtering only moments with reactions, and storing them in a NoSQL database (MongoDB).
+
+Each microservice normalizes its collected data and activates a Choreographed Saga workflow to notify other local services whenever a reaction occurs. Only moments with user reactions are stored, saving storage and processing resources.
+
+#### 2. Data Integrity Assurance
+
+After collection, data is processed by the **Data Integrity Service**, which:
+- Conducts an integrity check to validate the consistency and completeness of data before transferring it to an SQL database.
+- Initiates a Choreographed Saga with the **Data Persistence Service**, ensuring that only validated data is saved in the SQL structure.
+- Stores each request ID and its state in a NoSQL database, monitoring potential errors for quick reprocessing as needed.
+- In case of inconsistencies or data loss, triggers the **Data Inquest Local Service** to record problematic data in a dedicated SQL database, generating .csv reports for analysis and correction.
+
+This setup allows for rapid recovery and prevents the loss of critical information. All errors and inconsistencies are logged, and complete reports are generated for review and manual adjustments as necessary.
+
+#### 3. Data Transmission to the Cloud and Backup
+
+Once validated, the **Sender Service** initiates an Orchestrated Saga to send data to the cloud, logging the event history until transfer completion. This service calls the **Data Distribution Service**, which:
+- Distributes data between the **Alocation Service** and **Backup Persistence Service**.
+- Ensures both services receive data without any faults, and, in case of issues, routes problematic data to the **Data Inquest Service** in the cloud for reprocessing and reporting.
+
+While **Backup Persistence Service** structures and permanently stores data in an SQL database, **Alocation Service** organizes received data in a NoSQL database, later transferred to SQL by the **Persistence Service** in a second phase.
+
+#### 4. Cloud-Based Data Structuring and Persistence
+
+In the **Persistence Service**, a new Orchestrated Saga coordinates the final data distribution:
+- This service distributes data between the cloud-based `Location`, `Reaction`, and `Advertising` services, persisting them in an SQL database to create a Data Lake.
+- Upon Saga completion, a message confirms the end of the transfer to the **Persistence Service**.
+
+#### 5. Monitoring and Automated Reprocessing
+
+To optimize efficiency and reliability, the architecture includes a monitoring framework:
+- **Rollback Control and Reprocessing**: The system automatically reprocesses pending operations in case of failures, reducing manual workload.
+- **Layered Data Lake**: Stores both temporary and historical data in layers, facilitating frequent processing and efficient querying.
+- **Temporary Cache (Redis)**: Minimizes latency by caching temporary data in Redis, optimizing retrieval speed and reducing the impact of rollbacks.
+
+### Technologies Used
+
+- **Databases**: MongoDB (temporary and reaction data), MySQL (high-turnover data), PostgreSQL (persistent and historical data).
+- **Messaging**: RabbitMQ (local) and Kafka (cloud).
+- **Languages**: TypeScript (local services) and Java 21 (cloud services).
+- **AI Libraries**: Python for recognition of user attention, emotion, and interest.
+
+---
+
+This advanced architecture ensures that real-time collected data is processed with high integrity and scalability, offering precise and valuable insights into user reactions to digital advertisements in public locations.
