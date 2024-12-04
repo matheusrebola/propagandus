@@ -44,12 +44,24 @@ services:
       - mongo_sender:/data/db/sender-service
     networks:
       - propagandus
+  
+  redis-persistence:
+    image: redis:latest
+    container_name: data-persistence-queue
+    restart: always
+    ports:
+      - "63791:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - propagandus
 
 volumes:
   mysql_data:
   mongo_register:
   mongo_sender:
   kafka_data:
+  redis_data:
 
 networks:
   propagandus:
