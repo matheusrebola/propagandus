@@ -25,4 +25,3 @@ Use o **cron** para executar o script diariamente de madrugada (exemplo: 3:00 AM
    - **`>> /caminho/para/o/script/update_repo.log`**: Salva o output em um log para monitoramento.
 
 3. Salve e saia do editor.
-```
