@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import propagandus.analiticsservice.core.models.PeriodRegister;
 
 @Repository
-public interface PeriodTypeRepository extends JpaRepository<PeriodRegister, Long> {
+public interface PeriodRegisterRepository extends JpaRepository<PeriodRegister, Long> {
 
 }
