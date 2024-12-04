@@ -14,6 +14,7 @@ services:
       - "53300:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+
   mongodb-register:
     image: mongo:latest
     container_name: service-register
@@ -28,6 +29,7 @@ services:
       - mongo_register:/data/db/service-register
     networks:
       - propagandus
+
   mongodb-sender:
     image: mongo:latest
     container_name: sender-service
@@ -43,10 +45,62 @@ services:
     networks:
       - propagandus
 
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    container_name: zookeeper-container
+    restart: always
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "52181:2181"
+    networks:
+      - orchestrator-saga
+
+  kafka:
+    container_name: kafka
+    image: bitnami/kafka:latest
+    restart: always
+    ports:
+      - "59092:9092"
+    networks:
+      - orchestrator-saga
+    environment:
+      KAFKA_CFG_LISTENERS: "INTERNAL://:29092,EXTERNAL://0.0.0.0:9092"
+      KAFKA_CFG_ADVERTISED_LISTENERS: "INTERNAL://kafka:29092,EXTERNAL://localhost:9092"
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: "INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT"
+      KAFKA_CFG_INTER_BROKER_LISTENER_NAME: "INTERNAL"
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper-container:52181"
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+    volumes:
+      - ./data/kafka/data:/var/lib/kafka/data
+    depends_on:
+      - zookeeper
+      
+  redpanda-console:
+    container_name: redpanda
+    image: docker.redpanda.com/vectorized/console:latest
+    restart: on-failure
+    entrypoint: /bin/sh
+    command: -c "echo \"$$CONSOLE_CONFIG_FILE\" > /tmp/config.yml; /app/console"
+    ports:
+      - "58081:8080"
+    networks:
+      - orchestrator-saga
+    environment:
+      CONFIG_FILEPATH: /tmp/config.yml
+      CONSOLE_CONFIG_FILE: |
+        kafka:
+          brokers: ["kafka:29092"]
+    depends_on:
+      - kafka
+
 volumes:
   mysql_data:
   mongo_register:
   mongo_sender:
+  kafka_data:
 
 networks:
   propagandus:
