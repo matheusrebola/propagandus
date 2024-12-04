@@ -11,7 +11,7 @@ services:
       MYSQL_USER: propagandus
       MYSQL_PASSWORD: propagandus2@
     ports:
-      - "53300:3306"
+      - "53310:3306"
     volumes:
       - mysql_data:/var/lib/mysql
 
