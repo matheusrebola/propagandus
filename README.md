@@ -1,7 +1,3 @@
-Aqui está um exemplo de `README.md` detalhado para o seu projeto, que pode ser dividido em seções para facilitar a leitura e compreensão do funcionamento geral da aplicação. Você pode adaptá-lo conforme necessário:
-
----
-
 # Propagandus: Inteligência Artificial para Reconhecimento de Pessoas e Reações a Propagandas
 
 ## Descrição
