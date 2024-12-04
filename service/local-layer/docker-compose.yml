@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  mysql-persistence:
+    image: mysql:latest
+    container_name: data-persistence-service
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: data-persistence-service2@
+      MYSQL_DATABASE: data-persistence-service
+      MYSQL_USER: propagandus
+      MYSQL_PASSWORD: propagandus2@
+    ports:
+      - "53300:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+  mongodb-register:
+    image: mongo:latest
+    container_name: service-register
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: service-register
+      MONGO_INITDB_ROOT_PASSWORD: service-register
+      MONGO_INITDB_DATABASE: service-register-db
+    ports:
+      - "57010:27017"
+    volumes:
+      - mongo_register:/data/db/service-register
+    networks:
+      - propagandus
+  mongodb-sender:
+    image: mongo:latest
+    container_name: sender-service
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: sender-service
+      MONGO_INITDB_ROOT_PASSWORD: sender-service
+      MONGO_INITDB_DATABASE: sender-service-db
+    ports:
+      - "57011:27017"
+    volumes:
+      - mongo_sender:/data/db/sender-service
+    networks:
+      - propagandus
+
+volumes:
+  mysql_data:
+  mongo_register:
+  mongo_sender:
+
+networks:
+  propagandus:
+    driver: bridge

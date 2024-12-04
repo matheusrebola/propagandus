@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  mysql-analitics:
+    image: mysql:latest
+    container_name: data-analitics
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: data-analitics2@
+      MYSQL_DATABASE: data-analitics
+      MYSQL_USER: propagandus
+      MYSQL_PASSWORD: propagandus2@
+    ports:
+      - "53300:3306"
+    volumes:
+      - mysql_analitics:/var/lib/mysql/analitics
+  mysql-backup:
+    image: mysql:latest
+    container_name: data-backup
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: data-backup2@
+      MYSQL_DATABASE: data-backup
+      MYSQL_USER: propagandus
+      MYSQL_PASSWORD: propagandus2@
+    ports:
+      - "53301:3306"
+    volumes:
+      - mysql_backup:/var/lib/mysql/backup
+  mongodb-distribution:
+    image: mongo:latest
+    container_name: data-distribution
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: data-distribution
+      MONGO_INITDB_ROOT_PASSWORD: data-distribution
+      MONGO_INITDB_DATABASE: data-distribution-db
+    ports:
+      - "57010:27017"
+    volumes:
+      - mongo_data:/data/db/data-distribution
+    networks:
+      - propagandus
+
+volumes:
+  mysql_analitics:
+  mysql_backup:
+  mongo_data:
+
+networks:
+  propagandus:
+    driver: bridge
