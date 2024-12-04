@@ -61,7 +61,7 @@ O sistema é composto pelos seguintes **microserviços**:
 ## Tecnologias Utilizadas
 [![SkillIcons](https://skillicons.dev/icons?i=typescript,nestjs,java,spring,kafka,mongodb,redis,docker,aws,raspberrypi,kubernetes)](https://skillicons.dev)
 
-### **Frontend e Computação Local**
+### **Backend Local**
 - **TypeScript**: Linguagem principal utilizada no desenvolvimento de microserviços locais.
 - **NestJS**: Framework para construção de APIs e microserviços robustos e escaláveis em TypeScript.
 - **Redis**: Sistema de armazenamento em cache para gerenciar filas e garantir a integridade dos dados temporários.
