@@ -52,7 +52,40 @@ services:
     ports:
       - "63791:6379"
     volumes:
-      - redis_data:/data
+      - redis_persistence_data:/data
+    networks:
+      - propagandus
+
+  redis-people-register:
+    image: redis:latest
+    container_name: people-register
+    restart: always
+    ports:
+      - "63792:6379"
+    volumes:
+      - redis_people_register_data:/data
+    networks:
+      - propagandus
+
+  redis-attention-register:
+    image: redis:latest
+    container_name: attention-register
+    restart: always
+    ports:
+      - "63793:6379"
+    volumes:
+      - redis_attention_register_data:/data
+    networks:
+      - propagandus
+
+  redis-reaction-register:
+    image: redis:latest
+    container_name: reaction-register
+    restart: always
+    ports:
+      - "63794:6379"
+    volumes:
+      - redis_reaction_register_data:/data
     networks:
       - propagandus
 
@@ -60,8 +93,10 @@ volumes:
   mysql_data:
   mongo_register:
   mongo_sender:
-  kafka_data:
-  redis_data:
+  redis_persistence_data:
+  redis_people_register_data:
+  redis_attention_register_data:
+  redis_reaction_register_data:
 
 networks:
   propagandus:
