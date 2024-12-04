@@ -58,18 +58,32 @@ O sistema é composto pelos seguintes **microserviços**:
    - **Integração**:
      - Envia dados para o `Data-Persistence-Service` para associar propagandas com os dados de atenção e reação das pessoas.
 
----
-
 ## Tecnologias Utilizadas
+[![SkillIcons](https://skillicons.dev/icons?i=typescript,nestjs,java,spring,kafka,mongodb,redis,docker,aws,raspberrypi,kubernetes)](https://skillicons.dev)
 
-- **TypeScript**: A linguagem principal utilizada para o desenvolvimento de todos os microserviços.
-- **NestJS**: Framework para construção de microserviços robustos e escaláveis.
-- **Redis**: Sistema de armazenamento em cache para garantir a integridade e a persistência de dados temporários.
-- **MongoDB**: Banco de dados NoSQL utilizado para armazenar os dados coletados dos microserviços.
-- **MySQL**: Banco de dados relacional utilizado para persistência final dos dados.
-- **Raspberry Pi**: Hardware utilizado para rodar os microserviços em um cluster local.
+### **Frontend e Computação Local**
+- **TypeScript**: Linguagem principal utilizada no desenvolvimento de microserviços locais.
+- **NestJS**: Framework para construção de APIs e microserviços robustos e escaláveis em TypeScript.
+- **Redis**: Sistema de armazenamento em cache para gerenciar filas e garantir a integridade dos dados temporários.
+- **MongoDB**: Banco de dados NoSQL utilizado para armazenar os dados de atenção, reações e pessoas detectadas.
+- **MySQL**: Banco de dados relacional usado para a persistência final dos dados no ambiente local.
+- **Raspberry Pi**: Hardware utilizado para criar um cluster local de microserviços.
+
+### **Backend Remoto**
+- **Java**: Linguagem principal para os microserviços remotos, focados em processamento, distribuição e análise de dados.
+- **Spring Boot**: Framework robusto utilizado para construção dos microserviços no ambiente remoto, oferecendo integração com bancos de dados e facilidade de escalabilidade.
+- **Spring Data**: Ferramenta que simplifica a manipulação de dados com MongoDB e MySQL nos microserviços remotos.
+- **Spring Cloud**: Implementado para orquestrar os microserviços e gerenciar padrões como **Saga Coreografada** e **mensageria**.
+- **Kafka**: Middleware utilizado para comunicação assíncrona e processamento distribuído entre os microserviços remotos.
+
+### **Infraestrutura e Mensageria**
+- **Docker e Docker Compose**: Para orquestrar os microserviços e bancos de dados de maneira simplificada, tanto localmente quanto remotamente.
+- **Kubernetes**: Para ambientes mais complexos e escaláveis, como deploy remoto em clusters.
+- **Mensageria com Redis e Kafka**: Redis é utilizado localmente para filas e consistência de dados, enquanto Kafka gerencia eventos e mensagens entre microserviços no ambiente remoto.
 
 ---
+
+Essa organização diferencia bem as tecnologias utilizadas entre os microserviços locais e remotos, refletindo a arquitetura híbrida do seu sistema. Se quiser mais algum ajuste ou detalhamento, só avisar!
 
 ## Como Funciona
 
