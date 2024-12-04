@@ -2,6 +2,7 @@ package propagandus.backupservice.core.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public record Advertising(
@@ -9,7 +10,8 @@ public record Advertising(
   String name,
   String version,
   String company,
-  String product
+  String product,
+  @OneToMany(mappedBy = "reaction") Reaction reaction
 ) {
 
 }
