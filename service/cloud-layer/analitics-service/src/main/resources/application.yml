@@ -1,11 +1,11 @@
 server:
-  port: 40000
+  port: ${SERVER_PORT:40000}
 
 spring:
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:53300}/${DB_NAME:data-analitics}
-    username: propagandus
-    password: propagandus2@
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:data_analytics}
+    username: ${DB_USER:propagandus}
+    password: ${DB_PASSWORD:propagandus2@}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -13,3 +13,8 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+logging:
+  level:
+    root: INFO
+    org.springframework: DEBUG
