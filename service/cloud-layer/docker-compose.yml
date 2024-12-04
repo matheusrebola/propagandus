@@ -42,14 +42,26 @@ services:
       - mongo_data:/data/db
     networks:
       - propagandus
-  redis:
+
+  redis-analitics:
     image: redis:latest
-    container_name: data-distribution
+    container_name: data-analitics-redis
     restart: always
     ports:
       - "63790:6379"
     volumes:
-      - redis_data:/data
+      - redis_analitics_data:/data
+    networks:
+      - propagandus
+
+  redis-distribution:
+    image: redis:latest
+    container_name: data-distribution-redis
+    restart: always
+    ports:
+      - "63791:6379"
+    volumes:
+      - redis_distribution_data:/data
     networks:
       - propagandus
 
@@ -57,7 +69,8 @@ volumes:
   mysql_analitics_data:
   mysql_backup_data:
   mongo_data:
-  redis_data:
+  redis_analitics_data:
+  redis_distribution_data:
 
 networks:
   propagandus:
