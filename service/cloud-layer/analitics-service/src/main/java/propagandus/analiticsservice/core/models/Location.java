@@ -13,6 +13,7 @@ public record Location(
   String city,
   String state,
   String country,
-  @OneToMany Painel painel
+  @OneToMany(mappedBy ="location") Reaction reaction,
+  @OneToMany(mappedBy ="painel") Painel painel
   ) {
 }
