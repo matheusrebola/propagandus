@@ -3,7 +3,10 @@ package propagandus.backupservice.core.models;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import propagandus.backupservice.core.models.enumerators.EDayWeek;
 import propagandus.backupservice.core.models.enumerators.EMonth;
@@ -11,13 +14,13 @@ import propagandus.backupservice.core.models.enumerators.EPeriodOfTheDay;
 
 @Entity
 public record PeriodRegister(
-  @Id Long id,
+  @Id @GeneratedValue(strategy = GenerationType.AUTO) Long id,
   Byte day,
-  @Enumerated EDayWeek dayWeek,
+  @Enumerated(EnumType.STRING) EDayWeek dayWeek,
   Byte hour,
   Byte minute,
-  @Enumerated EPeriodOfTheDay periodOfTheDay,
-  @Enumerated EMonth month,
+  @Enumerated(EnumType.STRING) EPeriodOfTheDay periodOfTheDay,
+  @Enumerated(EnumType.STRING) EMonth month,
   String year,
   LocalDateTime registerTime
   ) {
