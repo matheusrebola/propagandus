@@ -27,8 +27,8 @@ public class AdvertisingService {
   public List<Advertising> findByCityWithReactions(String city){return advertisingRepository.findByCityWithReactions(city);}
   public List<Object[]> findAdvertisingDetailsWithReactions(String name){return advertisingRepository.findAdvertisingDetailsWithReactions(name);}
   public List<Advertising> findByStateWithReactions( String state){return advertisingRepository.findByStateWithReactions(state);}
-  //public List<Object[]> countReactionsByAdvertising(){return advertisingRepository.countReactionsByAdvertising;}
-  //public List<Object[]> findAdvertisingWithMostReactionsInCity(String city){return advertisingRepository.findAdvertisingWithMostReactionsInCity;}
+  public List<Object[]> countReactionsByAdvertising(){return advertisingRepository.countReactionsByAdvertising();}
+  public List<Object[]> findAdvertisingWithMostReactionsInCity(String city){return advertisingRepository.findAdvertisingWithMostReactionsInCity(city);}
   public List<Object[]> findAdvertisingWithMostReactionsByType(EReactionType reactionType){return advertisingRepository.findAdvertisingWithMostReactionsByType(reactionType);}
   public List<Object[]> countReactionsByProduct(){return advertisingRepository.countReactionsByProduct();}
   public List<Advertising> findAdvertisingWithReactionsInPeriod(EMonth month, String year){return advertisingRepository.findAdvertisingWithReactionsInPeriod(month, year);}
