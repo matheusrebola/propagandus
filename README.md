@@ -123,7 +123,7 @@ A arquitetura do sistema segue o padrão **Saga Coreografada** para garantir a c
    cd propagandus
    ```
 
-2. Crie e inicie os containers Docker para todos os serviços:
+2. Inicie os containers Docker para todos os serviços com o script:
 
    ```bash
    python3 setup_microservices.py
