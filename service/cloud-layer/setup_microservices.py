@@ -49,8 +49,8 @@ def main():
     """
     # Lista dos microserviços Java
     java_services = [
-       # "analitics-service",
-        #"backup-service",
+        "analitics-service",
+        "backup-service",
         "data-distribution-service",
         "data-reciver-service"
     ]
