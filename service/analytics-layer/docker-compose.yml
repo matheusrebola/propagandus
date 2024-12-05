@@ -1,76 +1,97 @@
 version: "3.9"
 
 services:
-  mariadb-analitics:
-    image: mariadb:latest
-    container_name: data-analitics
-    restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: data-analitics
-      MARIADB_DATABASE: data-analitics
-      MARIADB_USER: propagandus
-      MARIADB_PASSWORD: propagandus
-    ports:
-      - "53300:3306"
-    volumes:
-      - mariadb_analitics_data:/var/lib/mysql
-
-  mariadb-backup:
-    image: mariadb:latest
-    container_name: data-backup
-    restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: data-backup
-      MARIADB_DATABASE: data-backup
-      MARIADB_USER: propagandus
-      MARIADB_PASSWORD: propagandus
-    ports:
-      - "53301:3306"
-    volumes:
-      - mariadb_backup_data:/var/lib/mysql
-
-  mongodb-reciver:
+  mongodb-advertising:
     image: mongo:latest
-    container_name: data-reciver
+    container_name: data-advertising
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: data-reciver
-      MONGO_INITDB_ROOT_PASSWORD: data-reciver
+      MONGO_INITDB_ROOT_USERNAME: advertising
+      MONGO_INITDB_ROOT_PASSWORD: advertising
     ports:
-      - "57020:27017"
+      - "57050:27017"
     volumes:
-      - mongo_data:/data/db
+      - mongo_advertising_data:/data/db
+    networks:
+      - propagandus
+  
+  mongodb-attention:
+    image: mongo:latest
+    container_name: data-attention
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: attention
+      MONGO_INITDB_ROOT_PASSWORD: attention
+    ports:
+      - "57051:27017"
+    volumes:
+      - mongo_attention_data:/data/db
+    networks:
+      - propagandus
+    
+  mongodb-location:
+    image: mongo:latest
+    container_name: data-location
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: location
+      MONGO_INITDB_ROOT_PASSWORD: location
+    ports:
+      - "57052:27017"
+    volumes:
+      - mongo_location_data:/data/db
     networks:
       - propagandus
 
-  redis-analitics:
-    image: redis:latest
-    container_name: data-analitics-redis
+  mongodb-order:
+    image: mongo:latest
+    container_name: data-order
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: order
+      MONGO_INITDB_ROOT_PASSWORD: order
     ports:
-      - "63780:6379"
+      - "57053:27017"
     volumes:
-      - redis_analitics_data:/data
+      - mongo_order_data:/data/db
+    networks:
+      - propagandus
+  
+  mongodb-painel:
+    image: mongo:latest
+    container_name: data-painel
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: painel
+      MONGO_INITDB_ROOT_PASSWORD: painel
+    ports:
+      - "57054:27017"
+    volumes:
+      - mongo_painel_data:/data/db
     networks:
       - propagandus
 
-  redis-distribution:
-    image: redis:latest
-    container_name: data-distribution-redis
+  mongodb-period-register:
+    image: mongo:latest
+    container_name: data-period-register
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: period-register
+      MONGO_INITDB_ROOT_PASSWORD: period-register
     ports:
-      - "63781:6379"
+      - "57055:27017"
     volumes:
-      - redis_distribution_data:/data
+      - mongo_period_register_data:/data/db
     networks:
       - propagandus
 
 volumes:
-  mariadb_analitics_data:
-  mariadb_backup_data:
-  mongo_data:
-  redis_analitics_data:
-  redis_distribution_data:
+  mongo_advertising_data:
+  mongo_attention_data:
+  mongo_location_data:
+  mongo_order_data:
+  mongo_painel_data:
+  mongo_period_register_data:
 
 networks:
   propagandus:
