@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import propagandus.analiticsservice.core.models.PackageType;
+import propagandus.analiticsservice.core.models.enumerators.EPackageType;
 import propagandus.analiticsservice.core.repositorys.PackageTypeRepository;
 
 @Service
@@ -16,4 +17,5 @@ public class PackageTypeService {
   public List<PackageType> findAll(){return packageTypeRepository.findAll();}
   public PackageType findById(Long id){return packageTypeRepository.findById(id).orElse(null);}
   public PackageType save(PackageType packageType){return packageTypeRepository.save(packageType);}
+  public List<EPackageType> findByPackageType(EPackageType packageType){return packageTypeRepository.findByPackageType(packageType);}
 }
