@@ -1,5 +1,12 @@
 package propagandus.analiticsservice.core.dtos;
 
-public record PainelCreateDto() {
+import propagandus.analiticsservice.core.models.enumerators.EStatus;
+
+public record PainelCreateDto(
+  Long locationId,
+  String identification,
+  EStatus status,
+  String model
+) {
 
 }

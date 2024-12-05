@@ -1,5 +1,12 @@
 package propagandus.analiticsservice.core.dtos;
 
-public record ReactionDto() {
+import propagandus.analiticsservice.core.models.enumerators.EReactionType;
+
+public record ReactionDto(
+  Long reactionId,
+  Long advertisingId,
+  Long locationId,
+  EReactionType reactionType
+) {
 
 }
