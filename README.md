@@ -111,20 +111,22 @@ A arquitetura do sistema segue o padrão **Saga Coreografada** para garantir a c
 
 1. **Docker** e **Docker Compose** instalados.
 2. **Node.js** e **npm** instalados.
+3. **Java17** e **Maven** instalados.
+
 
 ### Passos
 
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seuusuario/propagandus.git
+   git clone https://github.com/matheusrebola/propagandus.git
    cd propagandus
    ```
 
 2. Crie e inicie os containers Docker para todos os serviços:
 
    ```bash
-   docker-compose up -d
+   python3 setup_microservices.py
    ```
 
 3. Certifique-se de que os microserviços estão funcionando corretamente, acessando os logs:
@@ -152,7 +154,3 @@ Contribuições para este projeto são bem-vindas! Se você deseja contribuir, s
 Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ---
-
-Você pode criar um arquivo `README.md` com o conteúdo acima para descrever seu projeto e facilitar o entendimento de outros desenvolvedores sobre como ele funciona e como contribuir.
-
-Se precisar de mais detalhes ou ajustes específicos, sinta-se à vontade para me chamar!
