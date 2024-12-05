@@ -59,7 +59,7 @@ O sistema é composto pelos seguintes **microserviços**:
      - Envia dados para o `Data-Persistence-Service` para associar propagandas com os dados de atenção e reação das pessoas.
 
 ## Tecnologias Utilizadas
-[![SkillIcons](https://skillicons.dev/icons?i=typescript,nestjs,java,spring,kafka,mongodb,redis,docker,mysql,raspberrypi,kubernetes,mariadb)](https://skillicons.dev)
+[![SkillIcons](https://skillicons.dev/icons?i=typescript,nestjs,java,spring,kafka,mongodb,python,redis,docker,mysql,raspberrypi,kubernetes)](https://skillicons.dev)
 
 ### **Backend Local**
 - **TypeScript**: Linguagem principal utilizada no desenvolvimento de microserviços locais.
