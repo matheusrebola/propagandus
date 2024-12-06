@@ -53,7 +53,8 @@ def main():
         "location-service",
         "order-service",
         "painel-service",
-        "period-register-service"
+        "period-register-service",
+        "reaction-service"
     ]
 
     print("==== INICIANDO A CONFIGURAÇÃO DO AMBIENTE ====")
