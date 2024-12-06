@@ -11,6 +11,7 @@ import propagandus.attentionservice.core.models.enumerators.EDayWeek;
 import propagandus.attentionservice.core.models.enumerators.EMonth;
 import propagandus.attentionservice.core.models.enumerators.EPeriodOfTheDay;
 
+
 public interface AttentionView {
   //Obter painéis com maior número de atenção registrada em um período específico
   @Query("SELECT a.painel, SUM(a.lookCount) AS totalLooks FROM attention a JOIN a.painel p WHERE p.location.city = :city AND a.painel.status = 'ACTIVE' GROUP BY a.painel ORDER BY totalLooks DESC")
