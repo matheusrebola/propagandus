@@ -1,23 +1,21 @@
-version: "3.9"
-
 services:
-  mariadb-analitics:
+  mariadb-analytics:
     image: mariadb:latest
-    container_name: data-analitics
+    container_name: cloud-data-analytics
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: data-analitics
-      MARIADB_DATABASE: data-analitics
+      MARIADB_ROOT_PASSWORD: data-analytics
+      MARIADB_DATABASE: data-analytics
       MARIADB_USER: propagandus
       MARIADB_PASSWORD: propagandus
     ports:
       - "53300:3306"
     volumes:
-      - mariadb_analitics_data:/var/lib/mysql
+      - mariadb_analytics_data:/var/lib/mysql
 
   mariadb-backup:
     image: mariadb:latest
-    container_name: data-backup
+    container_name: cloud-data-backup
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: data-backup
@@ -31,7 +29,7 @@ services:
 
   mongodb-reciver:
     image: mongo:latest
-    container_name: data-reciver
+    container_name: cloud-data-reciver
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: data-reciver
@@ -43,20 +41,20 @@ services:
     networks:
       - propagandus
 
-  redis-analitics:
+  redis-analytics:
     image: redis:latest
-    container_name: data-analitics-redis
+    container_name: cloud-data-analytics-redis
     restart: always
     ports:
       - "63780:6379"
     volumes:
-      - redis_analitics_data:/data
+      - redis_analytics_data:/data
     networks:
       - propagandus
 
   redis-distribution:
     image: redis:latest
-    container_name: data-distribution-redis
+    container_name: cloud-data-distribution-redis
     restart: always
     ports:
       - "63781:6379"
@@ -66,10 +64,10 @@ services:
       - propagandus
 
 volumes:
-  mariadb_analitics_data:
+  mariadb_analytics_data:
   mariadb_backup_data:
   mongo_data:
-  redis_analitics_data:
+  redis_analytics_data:
   redis_distribution_data:
 
 networks:
