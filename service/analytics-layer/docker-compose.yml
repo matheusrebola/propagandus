@@ -85,6 +85,76 @@ services:
     networks:
       - propagandus
 
+  mariadb-advertising:
+    image: mariadb:latest
+    container_name: data-advertising
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: data-advertising
+      MARIADB_DATABASE: data-advertising
+      MARIADB_USER: propagandus
+      MARIADB_PASSWORD: propagandus
+    ports:
+      - "53350:3306"
+    volumes:
+      - mariadb_advertising_data::/var/lib/mysql
+
+mariadb-attention:
+    image: mariadb:latest
+    container_name: data-attention
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: data-attention
+      MARIADB_DATABASE: data-attention
+      MARIADB_USER: propagandus
+      MARIADB_PASSWORD: propagandus
+    ports:
+      - "53351:3306"
+    volumes:
+      - mariadb_attention_data:/var/lib/mysql
+
+mariadb-location:
+    image: mariadb:latest
+    container_name: data-location
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: data-location
+      MARIADB_DATABASE: data-location
+      MARIADB_USER: propagandus
+      MARIADB_PASSWORD: propagandus
+    ports:
+      - "53352:3306"
+    volumes:
+      - mariadb_location_data:/var/lib/mysql
+
+mariadb-painel:
+    image: mariadb:latest
+    container_name: data-painel
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: data-painel
+      MARIADB_DATABASE: data-painel
+      MARIADB_USER: propagandus
+      MARIADB_PASSWORD: propagandus
+    ports:
+      - "53353:3306"
+    volumes:
+      - mariadb_painel_data:/var/lib/mysql
+
+mariadb-period-register:
+    image: mariadb:latest
+    container_name: data-period-register
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: data-period-register
+      MARIADB_DATABASE: data-period-register
+      MARIADB_USER: propagandus
+      MARIADB_PASSWORD: propagandus
+    ports:
+      - "53354:3306"
+    volumes:
+      - mariadb_period_register_data:/var/lib/mysql
+
 volumes:
   mongo_advertising_data:
   mongo_attention_data:
@@ -92,6 +162,11 @@ volumes:
   mongo_order_data:
   mongo_painel_data:
   mongo_period_register_data:
+  mariadb_advertising_data:
+  mariadb_attention_data:
+  mariadb_location_data:
+  mariadb_painel_data:
+  mariadb_period_register_data:
 
 networks:
   propagandus:
