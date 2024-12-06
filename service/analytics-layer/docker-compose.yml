@@ -1,9 +1,10 @@
 version: "3.9"
 
 services:
+  # MongoDB Services
   mongodb-advertising:
     image: mongo:latest
-    container_name: data-advertising
+    container_name: mongodb-advertising
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: advertising
@@ -18,7 +19,7 @@ services:
   
   mongodb-attention:
     image: mongo:latest
-    container_name: data-attention
+    container_name: mongodb-attention
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: attention
@@ -30,10 +31,10 @@ services:
       - mongo_attention_data:/data/db
     networks:
       - propagandus
-    
+
   mongodb-location:
     image: mongo:latest
-    container_name: data-location
+    container_name: mongodb-location
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: location
@@ -48,7 +49,7 @@ services:
 
   mongodb-order:
     image: mongo:latest
-    container_name: data-order
+    container_name: mongodb-order
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: order
@@ -60,10 +61,10 @@ services:
       - mongo_order_data:/data/db
     networks:
       - propagandus
-  
+
   mongodb-painel:
     image: mongo:latest
-    container_name: data-painel
+    container_name: mongodb-painel
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: painel
@@ -78,7 +79,7 @@ services:
 
   mongodb-period-register:
     image: mongo:latest
-    container_name: data-period-register
+    container_name: mongodb-period-register
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: period-register
@@ -93,7 +94,7 @@ services:
 
   mongodb-reaction:
     image: mongo:latest
-    container_name: data-reaction
+    container_name: mongodb-reaction
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: reaction
@@ -106,9 +107,10 @@ services:
     networks:
       - propagandus
 
+  # MariaDB Services
   mariadb-advertising:
     image: mariadb:latest
-    container_name: data-advertising
+    container_name: mariadb-advertising
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: data-advertising
@@ -118,11 +120,13 @@ services:
     ports:
       - "53350:3306"
     volumes:
-      - mariadb_advertising_data::/var/lib/mysql
+      - mariadb_advertising_data:/var/lib/mysql
+    networks:
+      - propagandus
 
-mariadb-attention:
+  mariadb-attention:
     image: mariadb:latest
-    container_name: data-attention
+    container_name: mariadb-attention
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: data-attention
@@ -133,10 +137,12 @@ mariadb-attention:
       - "53351:3306"
     volumes:
       - mariadb_attention_data:/var/lib/mysql
+    networks:
+      - propagandus
 
-mariadb-location:
+  mariadb-location:
     image: mariadb:latest
-    container_name: data-location
+    container_name: mariadb-location
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: data-location
@@ -147,10 +153,12 @@ mariadb-location:
       - "53352:3306"
     volumes:
       - mariadb_location_data:/var/lib/mysql
+    networks:
+      - propagandus
 
-mariadb-painel:
+  mariadb-painel:
     image: mariadb:latest
-    container_name: data-painel
+    container_name: mariadb-painel
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: data-painel
@@ -161,10 +169,12 @@ mariadb-painel:
       - "53353:3306"
     volumes:
       - mariadb_painel_data:/var/lib/mysql
+    networks:
+      - propagandus
 
-mariadb-period-register:
+  mariadb-period-register:
     image: mariadb:latest
-    container_name: data-period-register
+    container_name: mariadb-period-register
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: data-period-register
@@ -175,10 +185,12 @@ mariadb-period-register:
       - "53354:3306"
     volumes:
       - mariadb_period_register_data:/var/lib/mysql
+    networks:
+      - propagandus
 
-mariadb-reaction:
+  mariadb-reaction:
     image: mariadb:latest
-    container_name: data-reaction
+    container_name: mariadb-reaction
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: data-reaction
@@ -188,7 +200,9 @@ mariadb-reaction:
     ports:
       - "53355:3306"
     volumes:
-      - mariadb_period_register_data:/var/lib/mysql
+      - mariadb_reaction_data:/var/lib/mysql
+    networks:
+      - propagandus
 
 volumes:
   mongo_advertising_data:
