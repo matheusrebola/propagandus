@@ -8,6 +8,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: advertising
       MONGO_INITDB_ROOT_PASSWORD: advertising
+      MONGO_INITDB_DATABASE: advertising-db
     ports:
       - "57050:27017"
     volumes:
@@ -22,6 +23,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: attention
       MONGO_INITDB_ROOT_PASSWORD: attention
+      MONGO_INITDB_DATABASE: attention-db
     ports:
       - "57051:27017"
     volumes:
@@ -36,6 +38,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: location
       MONGO_INITDB_ROOT_PASSWORD: location
+      MONGO_INITDB_DATABASE: location-db
     ports:
       - "57052:27017"
     volumes:
@@ -50,6 +53,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: order
       MONGO_INITDB_ROOT_PASSWORD: order
+      MONGO_INITDB_DATABASE: order-db
     ports:
       - "57053:27017"
     volumes:
@@ -64,6 +68,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: painel
       MONGO_INITDB_ROOT_PASSWORD: painel
+      MONGO_INITDB_DATABASE: painel-db
     ports:
       - "57054:27017"
     volumes:
@@ -78,10 +83,26 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: period-register
       MONGO_INITDB_ROOT_PASSWORD: period-register
+      MONGO_INITDB_DATABASE: period-db
     ports:
       - "57055:27017"
     volumes:
       - mongo_period_register_data:/data/db
+    networks:
+      - propagandus
+
+  mongodb-reaction:
+    image: mongo:latest
+    container_name: data-reaction
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: reaction
+      MONGO_INITDB_ROOT_PASSWORD: reaction
+      MONGO_INITDB_DATABASE: reaction-db
+    ports:
+      - "57056:27017"
+    volumes:
+      - mongo_reaction_data:/data/db
     networks:
       - propagandus
 
@@ -155,6 +176,20 @@ mariadb-period-register:
     volumes:
       - mariadb_period_register_data:/var/lib/mysql
 
+mariadb-reaction:
+    image: mariadb:latest
+    container_name: data-reaction
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: data-reaction
+      MARIADB_DATABASE: data-reaction
+      MARIADB_USER: propagandus
+      MARIADB_PASSWORD: propagandus
+    ports:
+      - "53355:3306"
+    volumes:
+      - mariadb_period_register_data:/var/lib/mysql
+
 volumes:
   mongo_advertising_data:
   mongo_attention_data:
@@ -162,11 +197,13 @@ volumes:
   mongo_order_data:
   mongo_painel_data:
   mongo_period_register_data:
+  mongo_reaction_data:
   mariadb_advertising_data:
   mariadb_attention_data:
   mariadb_location_data:
   mariadb_painel_data:
   mariadb_period_register_data:
+  mariadb_reaction_data:
 
 networks:
   propagandus:
