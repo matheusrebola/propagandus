@@ -1,10 +1,10 @@
-package propagandus.analiticsservice.core.dtos;
+package propagandus.periodregisterservice.core.dtos;
 
 import java.time.LocalDateTime;
 
-import propagandus.analiticsservice.core.models.enumerators.EDayWeek;
-import propagandus.analiticsservice.core.models.enumerators.EMonth;
-import propagandus.analiticsservice.core.models.enumerators.EPeriodOfTheDay;
+import propagandus.periodregisterservice.core.models.enumerators.EDayWeek;
+import propagandus.periodregisterservice.core.models.enumerators.EMonth;
+import propagandus.periodregisterservice.core.models.enumerators.EPeriodOfTheDay;
 
 public record PeriodRegisterCreateDto(
   Byte day,

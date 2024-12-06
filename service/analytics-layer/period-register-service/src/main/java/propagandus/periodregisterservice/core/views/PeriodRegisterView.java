@@ -1,4 +1,4 @@
-package propagandus.analiticsservice.core.views;
+package propagandus.periodregisterservice.core.views;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.P
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import propagandus.analiticsservice.core.models.PeriodRegister;
-import propagandus.analiticsservice.core.models.enumerators.EMonth;
+import propagandus.periodregisterservice.core.models.PeriodRegister;
+import propagandus.periodregisterservice.core.models.enumerators.EMonth;
 
 public interface PeriodRegisterView {
   //Contar o número de reações por período do dia

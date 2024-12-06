@@ -1,6 +1,6 @@
-package propagandus.analiticsservice.core.dtos;
+package propagandus.attentionservice.core.dtos;
 
-import propagandus.analiticsservice.core.models.enumerators.EAttentionLevel;
+import propagandus.attentionservice.core.models.enumerators.EAttentionLevel;
 
 public record AttentionDto(
   Long attentionId,

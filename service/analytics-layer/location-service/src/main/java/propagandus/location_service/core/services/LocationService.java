@@ -1,12 +1,12 @@
-package propagandus.analiticsservice.core.services;
+package propagandus.location_service.core.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.analiticsservice.core.models.Location;
-import propagandus.analiticsservice.core.repositorys.LocationRepository;
+import propagandus.location_service.core.models.Location;
+import propagandus.location_service.core.repositorys.LocationRepository;
 
 @Service
 @RequiredArgsConstructor

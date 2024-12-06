@@ -1,4 +1,4 @@
-package propagandus.analiticsservice.core.mappers;
+package propagandus.painel_service.core.mappers;
 
 public class PainelMapper {
 

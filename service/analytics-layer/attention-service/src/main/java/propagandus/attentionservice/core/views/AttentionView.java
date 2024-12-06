@@ -1,4 +1,4 @@
-package propagandus.analiticsservice.core.views;
+package propagandus.attentionservice.core.views;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import propagandus.analiticsservice.core.models.Painel;
-import propagandus.analiticsservice.core.models.enumerators.EDayWeek;
-import propagandus.analiticsservice.core.models.enumerators.EMonth;
-import propagandus.analiticsservice.core.models.enumerators.EPeriodOfTheDay;
+import propagandus.attentionservice.core.models.Painel;
+import propagandus.attentionservice.core.models.enumerators.EDayWeek;
+import propagandus.attentionservice.core.models.enumerators.EMonth;
+import propagandus.attentionservice.core.models.enumerators.EPeriodOfTheDay;
 
 public interface AttentionView {
   //Obter painéis com maior número de atenção registrada em um período específico

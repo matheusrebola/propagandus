@@ -1,4 +1,4 @@
-package propagandus.analiticsservice.core.repositorys;
+package propagandus.periodregisterservice.core.repositorys;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import propagandus.analiticsservice.core.models.PeriodRegister;
-import propagandus.analiticsservice.core.models.enumerators.EDayWeek;
-import propagandus.analiticsservice.core.models.enumerators.EMonth;
-import propagandus.analiticsservice.core.models.enumerators.EPeriodOfTheDay;
+import propagandus.periodregisterservice.core.models.PeriodRegister;
+import propagandus.periodregisterservice.core.models.enumerators.EDayWeek;
+import propagandus.periodregisterservice.core.models.enumerators.EMonth;
+import propagandus.periodregisterservice.core.models.enumerators.EPeriodOfTheDay;
 
 @Repository
 public interface PeriodRegisterRepository extends JpaRepository<PeriodRegister, Long> {

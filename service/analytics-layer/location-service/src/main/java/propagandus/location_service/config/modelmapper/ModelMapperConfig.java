@@ -1,4 +1,4 @@
-package propagandus.analiticsservice.config.modelmapper;
+package propagandus.location_service.config.modelmapper;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

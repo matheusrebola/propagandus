@@ -1,4 +1,4 @@
-package propagandus.analiticsservice.core.mappers;
+package propagandus.location_service.core.mappers;
 
 public class LocationMapper {
 

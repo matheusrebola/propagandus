@@ -1,4 +1,4 @@
-package propagandus.analiticsservice.core.controllers;
+package propagandus.painel_service.core.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

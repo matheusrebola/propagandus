@@ -1,4 +1,4 @@
-package propagandus.analiticsservice.core.mappers;
+package propagandus.periodregisterservice.core.mappers;
 
 public class PeriodRegisterMapper {
 

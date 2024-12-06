@@ -1,13 +1,13 @@
-package propagandus.analiticsservice.core.services;
+package propagandus.reactionservice.core.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.analiticsservice.core.models.Reaction;
-import propagandus.analiticsservice.core.models.enumerators.EReactionType;
-import propagandus.analiticsservice.core.repositorys.ReactionRepository;
+import propagandus.reactionservice.core.models.Reaction;
+import propagandus.reactionservice.core.models.enumerators.EReactionType;
+import propagandus.reactionservice.core.repositorys.ReactionRepository;
 
 @Service
 @RequiredArgsConstructor

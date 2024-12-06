@@ -1,12 +1,12 @@
-package propagandus.analiticsservice.core.views;
+package propagandus.painel_service.core.views;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import propagandus.analiticsservice.core.models.Painel;
-import propagandus.analiticsservice.core.models.enumerators.EStatus;
+import propagandus.painel_service.core.models.Painel;
+import propagandus.painel_service.core.models.enumerators.EStatus;
 
 public interface PainelView {
   //Buscar todos os painéis ativos em uma cidade específica

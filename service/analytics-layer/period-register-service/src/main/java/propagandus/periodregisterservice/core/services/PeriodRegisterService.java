@@ -1,4 +1,4 @@
-package propagandus.analiticsservice.core.services;
+package propagandus.periodregisterservice.core.services;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.analiticsservice.core.models.PeriodRegister;
-import propagandus.analiticsservice.core.models.enumerators.EDayWeek;
-import propagandus.analiticsservice.core.models.enumerators.EMonth;
-import propagandus.analiticsservice.core.models.enumerators.EPeriodOfTheDay;
-import propagandus.analiticsservice.core.repositorys.PeriodRegisterRepository;
+import propagandus.periodregisterservice.core.models.PeriodRegister;
+import propagandus.periodregisterservice.core.models.enumerators.EDayWeek;
+import propagandus.periodregisterservice.core.models.enumerators.EMonth;
+import propagandus.periodregisterservice.core.models.enumerators.EPeriodOfTheDay;
+import propagandus.periodregisterservice.core.repositorys.PeriodRegisterRepository;
 
 @Service
 @RequiredArgsConstructor

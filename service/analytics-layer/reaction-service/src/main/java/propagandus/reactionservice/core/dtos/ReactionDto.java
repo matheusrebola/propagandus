@@ -1,6 +1,6 @@
-package propagandus.analiticsservice.core.dtos;
+package propagandus.reactionservice.core.dtos;
 
-import propagandus.analiticsservice.core.models.enumerators.EReactionType;
+import propagandus.reactionservice.core.models.enumerators.EReactionType;
 
 public record ReactionDto(
   Long reactionId,

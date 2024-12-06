@@ -1,13 +1,13 @@
-package propagandus.analiticsservice.core.services;
+package propagandus.painel_service.core.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.analiticsservice.core.models.Painel;
-import propagandus.analiticsservice.core.models.enumerators.EStatus;
-import propagandus.analiticsservice.core.repositorys.PainelRepository;
+import propagandus.painel_service.core.models.Painel;
+import propagandus.painel_service.core.models.enumerators.EStatus;
+import propagandus.painel_service.core.repositorys.PainelRepository;
 
 @Service
 @RequiredArgsConstructor

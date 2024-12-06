@@ -1,4 +1,4 @@
-package propagandus.analiticsservice.core.models.enumerators;
+package propagandus.attentionservice.core.models.enumerators;
 
 public enum EPeriodOfTheDay {
   // Morning, Afternoon, Evening, Night, Midnight, Midday

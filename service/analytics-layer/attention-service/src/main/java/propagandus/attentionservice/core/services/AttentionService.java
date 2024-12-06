@@ -1,13 +1,13 @@
-package propagandus.analiticsservice.core.services;
+package propagandus.attentionservice.core.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.analiticsservice.core.models.Attention;
-import propagandus.analiticsservice.core.models.enumerators.EAttentionLevel;
-import propagandus.analiticsservice.core.repositorys.AttentionRepository;
+import propagandus.attentionservice.core.models.Attention;
+import propagandus.attentionservice.core.models.enumerators.EAttentionLevel;
+import propagandus.attentionservice.core.repositorys.AttentionRepository;
 
 @Service
 @RequiredArgsConstructor

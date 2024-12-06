@@ -1,4 +1,4 @@
-package propagandus.analiticsservice.core.dtos;
+package propagandus.location_service.core.dtos;
 
 public record LocationDto(
   Long locationId,

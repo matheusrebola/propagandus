@@ -1,12 +1,12 @@
-package propagandus.analiticsservice.core.mappers;
+package propagandus.attentionservice.core.mappers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.analiticsservice.core.dtos.AttentionCreateDto;
-import propagandus.analiticsservice.core.dtos.AttentionDto;
-import propagandus.analiticsservice.core.models.Attention;
+import propagandus.attentionservice.core.dtos.AttentionCreateDto;
+import propagandus.attentionservice.core.dtos.AttentionDto;
+import propagandus.attentionservice.core.models.Attention;
 
 @Component
 @RequiredArgsConstructor

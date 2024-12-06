@@ -1,6 +1,6 @@
-package propagandus.analiticsservice.core.dtos;
+package propagandus.painel_service.core.dtos;
 
-import propagandus.analiticsservice.core.models.enumerators.EStatus;
+import propagandus.painel_service.core.models.enumerators.EStatus;
 
 public record PainelDto(
   Long painelId,

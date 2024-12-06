@@ -1,14 +1,14 @@
-package propagandus.analiticsservice.core.views;
+package propagandus.reactionservice.core.views;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import propagandus.analiticsservice.core.models.Reaction;
-import propagandus.analiticsservice.core.models.enumerators.EDayWeek;
-import propagandus.analiticsservice.core.models.enumerators.EPeriodOfTheDay;
-import propagandus.analiticsservice.core.models.enumerators.EReactionType;
+import propagandus.reactionservice.core.models.Reaction;
+import propagandus.reactionservice.core.models.enumerators.EDayWeek;
+import propagandus.reactionservice.core.models.enumerators.EPeriodOfTheDay;
+import propagandus.reactionservice.core.models.enumerators.EReactionType;
 
 public interface ReactionView {
   //Encontrar reações por cidade e tipo de reação

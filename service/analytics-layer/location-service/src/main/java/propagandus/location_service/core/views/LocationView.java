@@ -1,11 +1,11 @@
-package propagandus.analiticsservice.core.views;
+package propagandus.location_service.core.views;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import propagandus.analiticsservice.core.models.Location;
+import propagandus.location_service.core.models.Location;
 
 public interface LocationView {
   //Listar locais com o maior número de reações

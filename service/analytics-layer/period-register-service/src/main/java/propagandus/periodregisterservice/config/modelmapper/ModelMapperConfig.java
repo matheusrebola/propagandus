@@ -1,4 +1,4 @@
-package propagandus.analiticsservice.config.modelmapper;
+package propagandus.periodregisterservice.config.modelmapper;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
