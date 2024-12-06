@@ -49,10 +49,11 @@ def main():
     """
     # Lista dos microserviços Java
     java_services = [
-        "analitics-service",
-        "backup-service",
-        "data-distribution-service",
-        "data-reciver-service"
+        "advertising-service",
+        "location-service",
+        "order-service",
+        "painel-service",
+        "period-register-service"
     ]
 
     print("==== INICIANDO A CONFIGURAÇÃO DO AMBIENTE ====")
