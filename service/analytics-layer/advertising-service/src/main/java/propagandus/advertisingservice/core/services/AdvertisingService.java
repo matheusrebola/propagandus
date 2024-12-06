@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import propagandus.advertisingservice.core.models.Advertising;
-import propagandus.advertisingservice.core.models.enumerators.EMonth;
 import propagandus.advertisingservice.core.models.enumerators.EReactionType;
 import propagandus.advertisingservice.core.repositorys.AdvertisingRepository;
 
@@ -31,7 +30,7 @@ public class AdvertisingService {
   public List<Object[]> findAdvertisingWithMostReactionsInCity(String city){return advertisingRepository.findAdvertisingWithMostReactionsInCity(city);}
   public List<Object[]> findAdvertisingWithMostReactionsByType(EReactionType reactionType){return advertisingRepository.findAdvertisingWithMostReactionsByType(reactionType);}
   public List<Object[]> countReactionsByProduct(){return advertisingRepository.countReactionsByProduct();}
-  public List<Advertising> findAdvertisingWithReactionsInPeriod(EMonth month, String year){return advertisingRepository.findAdvertisingWithReactionsInPeriod(month, year);}
+  //public List<Advertising> findAdvertisingWithReactionsInPeriod(EMonth month, String year){return advertisingRepository.findAdvertisingWithReactionsInPeriod(month, year);}
   public List<Advertising> findAdvertisingByPainel(Long painelId){return advertisingRepository.findAdvertisingByPainel(painelId);}
   public List<Object[]> countReactionsByAdvertisingAndCity(){return advertisingRepository.countReactionsByAdvertisingAndCity();}
   public List<Advertising> findAdvertisingByProductWithReactionsAboveThreshold(String product, Long threshold){return advertisingRepository.findAdvertisingByProductWithReactionsAboveThreshold(product, threshold);}
