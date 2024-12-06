@@ -12,6 +12,6 @@ spring:
       ddl-auto: update
     generate-ddl: true
     show-sql: true
-   data:
+  data:
     mongodb:
-      uri: mongodb://attention:attention@mongodb-attention:57051/attention-db
+      uri: mongodb://attention:attention@mongodb-attention:27017/attention-db
