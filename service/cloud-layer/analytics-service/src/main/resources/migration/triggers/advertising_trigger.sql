@@ -1,27 +1,27 @@
 DELIMITER $$
 
-CREATE TRIGGER location_after_insert
-AFTER INSERT ON Location
+CREATE TRIGGER advertising_after_insert
+AFTER INSERT ON advertising_table
 FOR EACH ROW
 BEGIN
-    INSERT INTO change_log (table_name, action, primary_key_value)
-    VALUES ('Location', 'INSERT', NEW.id);
+    INSERT INTO change_log (table_name, action)
+    VALUES ('advertising_table', 'INSERT', NEW.id);
 END$$
 
-CREATE TRIGGER location_after_update
-AFTER UPDATE ON Location
+CREATE TRIGGER advertising_after_update
+AFTER UPDATE ON advertising_table
 FOR EACH ROW
 BEGIN
-    INSERT INTO change_log (table_name, action, primary_key_value)
-    VALUES ('Location', 'UPDATE', NEW.id);
+    INSERT INTO change_log (table_name, action)
+    VALUES ('advertising_table', 'UPDATE', NEW.id);
 END$$
 
-CREATE TRIGGER location_after_delete
-AFTER DELETE ON Location
+CREATE TRIGGER avertising_after_delete
+AFTER DELETE ON advertising_table
 FOR EACH ROW
 BEGIN
     INSERT INTO change_log (table_name, action, primary_key_value)
-    VALUES ('Location', 'DELETE', OLD.id);
+    VALUES ('advertising', 'DELETE', OLD.id);
 END$$
 
 DELIMITER ;
