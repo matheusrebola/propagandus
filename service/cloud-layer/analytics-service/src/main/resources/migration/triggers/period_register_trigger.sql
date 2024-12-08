@@ -1,27 +1,27 @@
 DELIMITER $$
 
-CREATE TRIGGER location_after_insert
-AFTER INSERT ON Location
+CREATE TRIGGER date_time_after_insert
+AFTER INSERT ON date_time_table_table
 FOR EACH ROW
 BEGIN
     INSERT INTO change_log (table_name, action, primary_key_value)
-    VALUES ('Location', 'INSERT', NEW.id);
+    VALUES ('date_time_table', 'INSERT', OLD.id);
 END$$
 
-CREATE TRIGGER location_after_update
-AFTER UPDATE ON Location
+CREATE TRIGGER date_time_after_update
+AFTER UPDATE ON date_time_table
 FOR EACH ROW
 BEGIN
     INSERT INTO change_log (table_name, action, primary_key_value)
-    VALUES ('Location', 'UPDATE', NEW.id);
+    VALUES ('date_time_table', 'UPDATE', OLD.id);
 END$$
 
-CREATE TRIGGER location_after_delete
-AFTER DELETE ON Location
+CREATE TRIGGER date_time_after_delete
+AFTER DELETE ON date_time_table
 FOR EACH ROW
 BEGIN
     INSERT INTO change_log (table_name, action, primary_key_value)
-    VALUES ('Location', 'DELETE', OLD.id);
+    VALUES ('date_time_table', 'DELETE', OLD.id);
 END$$
 
 DELIMITER ;
