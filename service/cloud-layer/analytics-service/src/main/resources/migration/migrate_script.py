@@ -2,33 +2,68 @@ import pymysql
 
 # Configurações do Banco de Origem
 source_db = {
-    'host': 'localhost',
-    'user': 'seu_usuario_origem',
-    'password': 'sua_senha_origem',
-    'database': 'seu_banco_origem'
+    'host': 'localhost:53300',
+    'user': 'propagandus',
+    'password': 'propagandus',
+    'database': 'data-analytics'
 }
 
 # Configurações dos Bancos de Destino
 destinations = {
-    'microservice1': {
+    'advertising-service': {
         'db_config': {
-            'host': 'host_microservice1',
-            'user': 'user1',
-            'password': 'password1',
-            'database': 'db_microservice1'
+            'host': 'localhost:53350',
+            'user': 'propagandus',
+            'password': 'propagandus',
+            'database': 'data-advertising'
         },
-        'tables': ['Location', 'Painel', 'Reaction']
+        'tables': ['advertising_table', 'reaction_table']
     },
-    'microservice2': {
+    'attention-service': {
         'db_config': {
-            'host': 'host_microservice2',
-            'user': 'user2',
-            'password': 'password2',
-            'database': 'db_microservice2'
+            'host': 'localhost:53351',
+            'user': 'propagandus',
+            'password': 'propagandus',
+            'database': 'data-attention'
         },
-        'tables': ['Advertising', 'Attention']
+        'tables': ['attention_table', 'date_time_table', 'painel_table']
     },
-    # Adicione mais microserviços conforme necessário
+    'location-service': {
+        'db_config': {
+            'host': 'localhost:53352',
+            'user': 'propagandus',
+            'password': 'propagandus',
+            'database': 'data-location'
+        },
+        'tables': ['location_table', 'painel_table', 'reaction_table']
+    },
+    'painel-service': {
+        'db_config': {
+            'host': 'localhost:53353',
+            'user': 'propagandus',
+            'password': 'propagandus',
+            'database': 'data-painel'
+        },
+        'tables': ['painel_table', 'location_table']
+    },
+    'period-register-service': {
+        'db_config': {
+            'host': 'localhost:53354',
+            'user': 'propagandus',
+            'password': 'propagandus',
+            'database': 'data-period-register'
+        },
+        'tables': ['date_time_table', 'attention_table', 'reaction_table', ]
+    },
+    'reaction-service': {
+        'db_config': {
+            'host': 'localhost:53355',
+            'user': 'propagandus',
+            'password': 'propagandus',
+            'database': 'data-reaction'
+        },
+        'tables': ['reaction_table', 'date_time_table', 'advertising_table', 'location_table']
+    }
 }
 
 def process_log_entry(source_conn, destination_conns, log_entry):
