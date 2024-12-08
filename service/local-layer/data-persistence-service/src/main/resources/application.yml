@@ -1,0 +1,25 @@
+server:
+  port: 60001
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:53310/data-persistence-service
+    username: propagandus
+    password: propagandus
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+  redis:
+    host: localhost
+    port: 63791
+    password: null
+    timeout: 2000
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0

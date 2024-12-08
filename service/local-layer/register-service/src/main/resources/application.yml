@@ -1,0 +1,14 @@
+server:
+  port: 60002
+
+spring:
+  redis:
+    host: localhost
+    port: 63792
+    password: null
+    timeout: 2000
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
