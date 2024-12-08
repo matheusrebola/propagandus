@@ -7,26 +7,24 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: data-persistence-service2@
-      MYSQL_DATABASE: data-persistence-service
+      MYSQL_DATABASE: data_persistence
       MYSQL_USER: propagandus
       MYSQL_PASSWORD: propagandus2@
     ports:
       - "53310:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - propagandus
 
-  mongodb-sender:
-    image: mongo:latest
-    container_name: sender-service
+  redis-sender:
+    image: redis:latest
+    container_name: data-sender
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: sender-service
-      MONGO_INITDB_ROOT_PASSWORD: sender-service
-      MONGO_INITDB_DATABASE: sender-service-db
     ports:
-      - "57011:27017"
+      - "63790:6379"
     volumes:
-      - mongo_sender:/data/db/sender-service
+      - redis_sender_data:/data
     networks:
       - propagandus
   
@@ -41,47 +39,22 @@ services:
     networks:
       - propagandus
 
-  redis-people-register:
+  redis-register:
     image: redis:latest
-    container_name: people-register
+    container_name: data-register
     restart: always
     ports:
       - "63792:6379"
     volumes:
-      - redis_people_register_data:/data
-    networks:
-      - propagandus
-
-  redis-attention-register:
-    image: redis:latest
-    container_name: attention-register
-    restart: always
-    ports:
-      - "63793:6379"
-    volumes:
-      - redis_attention_register_data:/data
-    networks:
-      - propagandus
-
-  redis-reaction-register:
-    image: redis:latest
-    container_name: reaction-register
-    restart: always
-    ports:
-      - "63794:6379"
-    volumes:
-      - redis_reaction_register_data:/data
+      - redis_register_data:/data
     networks:
       - propagandus
 
 volumes:
   mysql_data:
-  mongo_register:
-  mongo_sender:
+  redis_sender_data:
   redis_persistence_data:
-  redis_people_register_data:
-  redis_attention_register_data:
-  redis_reaction_register_data:
+  redis_register_data:
 
 networks:
   propagandus:
