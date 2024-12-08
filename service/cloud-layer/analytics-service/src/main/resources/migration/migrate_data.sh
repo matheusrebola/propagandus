@@ -4,7 +4,7 @@
 PYTHON_PATH="/usr/bin/python3"
 
 # Caminho do script Python
-SCRIPT_PATH="/caminho/para/seu/script/migrate_script.py"
+SCRIPT_PATH="propagandus/service/cloud-layer/analytics-service/src/main/resources/migration/migrate_script.py"
 
 # Verifica se o Python está instalado
 if ! command -v $PYTHON_PATH &> /dev/null
