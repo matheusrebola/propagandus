@@ -15,21 +15,6 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
-  mongodb-register:
-    image: mongo:latest
-    container_name: service-register
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: service-register
-      MONGO_INITDB_ROOT_PASSWORD: service-register
-      MONGO_INITDB_DATABASE: service-register-db
-    ports:
-      - "57010:27017"
-    volumes:
-      - mongo_register:/data/db/service-register
-    networks:
-      - propagandus
-
   mongodb-sender:
     image: mongo:latest
     container_name: sender-service
