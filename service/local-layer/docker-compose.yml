@@ -1,19 +1,19 @@
 version: '3.8'
 
 services:
-  mysql-persistence:
-    image: mysql:latest
+  mariadb-persistence:
+    image: mariadb:latest
     container_name: data-persistence-service
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: data-persistence-service2@
-      MYSQL_DATABASE: data_persistence
-      MYSQL_USER: propagandus
-      MYSQL_PASSWORD: propagandus2@
+      MARIADB_ROOT_PASSWORD: data-persistence-service2@
+      MARIADB_DATABASE: data-persistence-service
+      MARIADB_USER: propagandus
+      MARIADB_PASSWORD: propagandus
     ports:
       - "53310:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - mariadb_persistence_data:/var/lib/mysql
     networks:
       - propagandus
 
@@ -51,7 +51,7 @@ services:
       - propagandus
 
 volumes:
-  mysql_data:
+  mariadb_persistence_data:
   redis_sender_data:
   redis_persistence_data:
   redis_register_data:
