@@ -1,7 +1,0 @@
-server:
-  port: 41003
-
-spring:
-  data:
-    mongodb:
-      uri: mongodb://order:order@mongodb-order:27017/order-db
