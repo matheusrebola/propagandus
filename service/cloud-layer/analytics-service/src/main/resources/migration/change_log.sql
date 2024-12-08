@@ -1,0 +1,7 @@
+CREATE TABLE change_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    table_name VARCHAR(255) NOT NULL,
+    action VARCHAR(50) NOT NULL, -- 'INSERT', 'UPDATE', 'DELETE'
+    primary_key_value VARCHAR(255) NOT NULL,
+    changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
