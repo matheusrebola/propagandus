@@ -2,13 +2,6 @@ server:
   port: 60003
 
 spring:
-  redis:
-    host: localhost
-    port: 63790
-    password: null
-    timeout: 2000
-    lettuce:
-      pool:
-        max-active: 8
-        max-idle: 8
-        min-idle: 0
+  data:
+    mongodb:
+      uri: mongodb://sender:sender@mongodb-sender:61000/sender-db

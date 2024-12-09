@@ -6,55 +6,67 @@ services:
     container_name: data-persistence-service
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: data-persistence-service2@
+      MARIADB_ROOT_PASSWORD: data-persistence-service
       MARIADB_DATABASE: data-persistence-service
       MARIADB_USER: propagandus
       MARIADB_PASSWORD: propagandus
     ports:
-      - "53310:3306"
+      - "63310:3306"
     volumes:
       - mariadb_persistence_data:/var/lib/mysql
     networks:
       - propagandus
 
-  redis-sender:
-    image: redis:latest
+  mongodb-sender:
+    image: mongo:latest
     container_name: data-sender
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: sender
+      MONGO_INITDB_ROOT_PASSWORD: sender
+      MONGO_INITDB_DATABASE: sender-db
     ports:
-      - "63790:6379"
+      - "61000:27017"
     volumes:
-      - redis_sender_data:/data
+      - mongo_sender_data:/data
     networks:
       - propagandus
   
-  redis-persistence:
-    image: redis:latest
-    container_name: data-persistence-queue
+  mongodb-persistence:
+    image: mongo:latest
+    container_name: data-persistence
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: persistence
+      MONGO_INITDB_ROOT_PASSWORD: persistence
+      MONGO_INITDB_DATABASE: persistence-db
     ports:
-      - "63791:6379"
+      - "61001:27017"
     volumes:
-      - redis_persistence_data:/data
+      - mongo_persistence_data:/data
     networks:
       - propagandus
 
-  redis-register:
-    image: redis:latest
+  mongodb-register:
+    image: mongo:latest
     container_name: data-register
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: register
+      MONGO_INITDB_ROOT_PASSWORD: register
+      MONGO_INITDB_DATABASE: register-db
     ports:
-      - "63792:6379"
+      - "61002:27017"
     volumes:
-      - redis_register_data:/data
+      - mongo_register_data:/data
     networks:
       - propagandus
 
 volumes:
   mariadb_persistence_data:
-  redis_sender_data:
-  redis_persistence_data:
-  redis_register_data:
+  mongo_sender_data:
+  mongo_persistence_data:
+  mongo_register_data:
 
 networks:
   propagandus:
