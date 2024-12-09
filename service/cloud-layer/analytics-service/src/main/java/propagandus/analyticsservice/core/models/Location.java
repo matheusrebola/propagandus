@@ -23,6 +23,6 @@ public record Location(
   @Column(length = 4, nullable = false) @NotNull String state,
   @Column(length = 20, nullable = false) @NotNull String country,
   @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true) List<Reaction> reactions,
-  @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true) List<Painel> paineis
+  @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true) List<Painel> painels
   ) {
 }

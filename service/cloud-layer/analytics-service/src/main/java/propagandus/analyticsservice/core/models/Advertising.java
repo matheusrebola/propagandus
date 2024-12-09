@@ -23,7 +23,7 @@ public record Advertising(
   @Column(length = 20, nullable = false) @NotNull String company,
   @Column(length = 20, nullable = false) @NotNull String product,
   @OneToMany(mappedBy = "advertising", cascade = CascadeType.ALL, orphanRemoval = true) List<Reaction> reactions,
-  @OneToMany(mappedBy = "advertising", cascade = CascadeType.ALL, orphanRemoval = true) List<PeriodRegister> periodRegisters,
+  @OneToMany(mappedBy = "advertising", cascade = CascadeType.ALL, orphanRemoval = true) List<PeriodRegister> advertisingTime,
   @ManyToOne @JoinColumn(name = "painel_id", nullable = false) Painel painel
 ) {
 }
