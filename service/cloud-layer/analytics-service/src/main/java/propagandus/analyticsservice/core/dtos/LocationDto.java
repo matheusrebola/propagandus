@@ -1,15 +1,17 @@
 package propagandus.analyticsservice.core.dtos;
 
+import jakarta.validation.constraints.NotNull;
+
 public record LocationDto(
-  Long locationId,
-  String zipCode,
-  String publicPlace,
-  String number,
-  String city,
-  String state,
-  String counry,
-  Long reactionId,
-  Long painelId
+  @NotNull Long locationId,
+  @NotNull String zipCode,
+  @NotNull String publicPlace,
+  @NotNull String number,
+  @NotNull String city,
+  @NotNull String state,
+  @NotNull String counry,
+  @NotNull Long reactionId,
+  @NotNull Long painelId
 ) {
 
 }

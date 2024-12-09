@@ -1,16 +1,17 @@
 package propagandus.analyticsservice.core.dtos;
 
+import jakarta.validation.constraints.NotNull;
 import propagandus.analyticsservice.core.models.enumerators.EStatus;
 
 public record PainelCreateDto(
-  String identification,
-  EStatus status,
-  String model,
-  Long locationId,
-  Long advertisingId,
-  Long attentionId,
-  Long reactionId,
-  Long packageTypeId
+  @NotNull String identification,
+  @NotNull EStatus status,
+  @NotNull String model,
+  @NotNull Long locationId,
+  @NotNull Long advertisingId,
+  @NotNull Long attentionId,
+  @NotNull Long reactionId,
+  @NotNull Long packageTypeId
 ) {
 
 }
