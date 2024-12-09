@@ -14,4 +14,4 @@ spring:
     show-sql: true
   data:
     mongodb:
-      uri: mongodb://period-register:period-register@mongodb-period-register:57054/period-db
+      uri: mongodb://period-register:period-register@mongodb-period-register:47054/period-db

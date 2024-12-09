@@ -14,4 +14,4 @@ spring:
     show-sql: true
   data:
     mongodb:
-      uri: mongodb://attention:attention@mongodb-attention:57051/attention-db
+      uri: mongodb://attention:attention@mongodb-attention:47051/attention-db
