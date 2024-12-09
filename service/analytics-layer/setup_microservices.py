@@ -50,8 +50,8 @@ def main():
     # Lista dos microserviços Java
     java_services = [
         "advertising-service",
+        "attention-service",
         "location-service",
-        "order-service",
         "painel-service",
         "period-register-service",
         "reaction-service"
