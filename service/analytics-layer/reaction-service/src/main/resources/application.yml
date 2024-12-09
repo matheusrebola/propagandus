@@ -14,4 +14,4 @@ spring:
     show-sql: true
   data:
     mongodb:
-      uri: mongodb://reaction:reaction@mongodb-reaction:57056/reaction-db
+      uri: mongodb://reaction:reaction@mongodb-reaction:57055/reaction-db

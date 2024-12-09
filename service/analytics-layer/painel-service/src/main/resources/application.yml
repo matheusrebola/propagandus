@@ -14,4 +14,4 @@ spring:
     show-sql: true
   data:
     mongodb:
-      uri: mongodb://painel:painel@mongodb-painel:27017/painel-db
+      uri: mongodb://painel:painel@mongodb-painel:57053/painel-db
