@@ -5,64 +5,19 @@ source_db = {
     'host': 'localhost:53300',
     'user': 'propagandus',
     'password': 'propagandus',
-    'database': 'data-analytics'
+    'database': 'data-lake'
 }
 
 # Configurações dos Bancos de Destino
 destinations = {
-    'advertising-service': {
+    'analytics-service': {
         'db_config': {
-            'host': 'localhost:53350',
+            'host': 'localhost:43350',
             'user': 'propagandus',
             'password': 'propagandus',
-            'database': 'data-advertising'
+            'database': 'data-analytics'
         },
-        'tables': ['advertising_table', 'reaction_table']
-    },
-    'attention-service': {
-        'db_config': {
-            'host': 'localhost:53351',
-            'user': 'propagandus',
-            'password': 'propagandus',
-            'database': 'data-attention'
-        },
-        'tables': ['attention_table', 'date_time_table', 'painel_table']
-    },
-    'location-service': {
-        'db_config': {
-            'host': 'localhost:53352',
-            'user': 'propagandus',
-            'password': 'propagandus',
-            'database': 'data-location'
-        },
-        'tables': ['location_table', 'painel_table', 'reaction_table']
-    },
-    'painel-service': {
-        'db_config': {
-            'host': 'localhost:53353',
-            'user': 'propagandus',
-            'password': 'propagandus',
-            'database': 'data-painel'
-        },
-        'tables': ['painel_table', 'location_table']
-    },
-    'period-register-service': {
-        'db_config': {
-            'host': 'localhost:53354',
-            'user': 'propagandus',
-            'password': 'propagandus',
-            'database': 'data-period-register'
-        },
-        'tables': ['date_time_table', 'attention_table', 'reaction_table', ]
-    },
-    'reaction-service': {
-        'db_config': {
-            'host': 'localhost:53355',
-            'user': 'propagandus',
-            'password': 'propagandus',
-            'database': 'data-reaction'
-        },
-        'tables': ['reaction_table', 'date_time_table', 'advertising_table', 'location_table']
+        'tables': ['attention_table','painel_table','reaction_table', 'date_time_table', 'advertising_table', 'location_table']
     }
 }
 
