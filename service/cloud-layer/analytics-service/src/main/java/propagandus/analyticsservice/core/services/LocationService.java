@@ -16,7 +16,5 @@ public class LocationService {
   public List<Location> findAll(){return locationRepository.findAll();}
   public Location findById(Long id){return locationRepository.findById(id).orElse(null);}
   public Location save(Location location){return locationRepository.save(location);}
-  public List<String> findByZipCode (String zipCode){return locationRepository.findByZipCode(zipCode);}
-  public List<String> findByPublicPlace (String publicPlace){return locationRepository.findByPublicPlace(publicPlace);}
-  public List<String> findByPublicPlaceAndNumber(String publicPlace, String number){return locationRepository.findByPublicPlaceAndNumber(publicPlace, number);}
+  public boolean exists(Long id){return locationRepository.existsById(id);}
 }
