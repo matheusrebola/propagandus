@@ -47,21 +47,6 @@ services:
     networks:
       - propagandus
 
-  mongodb-order:
-    image: mongo:latest
-    container_name: mongodb-order
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: order
-      MONGO_INITDB_ROOT_PASSWORD: order
-      MONGO_INITDB_DATABASE: order-db
-    ports:
-      - "57053:27017"
-    volumes:
-      - mongo_order_data:/data/db
-    networks:
-      - propagandus
-
   mongodb-painel:
     image: mongo:latest
     container_name: mongodb-painel
@@ -71,7 +56,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: painel
       MONGO_INITDB_DATABASE: painel-db
     ports:
-      - "57054:27017"
+      - "57053:27017"
     volumes:
       - mongo_painel_data:/data/db
     networks:
@@ -86,7 +71,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: period-register
       MONGO_INITDB_DATABASE: period-db
     ports:
-      - "57055:27017"
+      - "57054:27017"
     volumes:
       - mongo_period_register_data:/data/db
     networks:
@@ -101,7 +86,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: reaction
       MONGO_INITDB_DATABASE: reaction-db
     ports:
-      - "57056:27017"
+      - "57055:27017"
     volumes:
       - mongo_reaction_data:/data/db
     networks:
