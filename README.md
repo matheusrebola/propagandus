@@ -8,17 +8,12 @@ Este projeto é composto por uma arquitetura de microserviços, que se comunica 
 
 ---
 ## Tecnologias Utilizadas
-[![SkillIcons](https://skillicons.dev/icons?i=typescript,nestjs,java,spring,kafka,mongodb,python,redis,docker,mysql,raspberrypi,kubernetes)](https://skillicons.dev)
+[![SkillIcons](https://skillicons.dev/icons?i=java,spring,kafka,mongodb,python,linux,docker,mysql,raspberrypi,kubernetes)](https://skillicons.dev)
 
-### **Backend Local**
-- **TypeScript**: Linguagem principal utilizada no desenvolvimento de microserviços locais.
-- **NestJS**: Framework para construção de APIs e microserviços robustos e escaláveis em TypeScript.
-- **Redis**: Sistema de armazenamento em cache para gerenciar filas e garantir a integridade dos dados temporários.
+### **Backend**
 - **MongoDB**: Banco de dados NoSQL utilizado para armazenar os dados de atenção, reações e pessoas detectadas.
 - **MySQL**: Banco de dados relacional usado para a persistência final dos dados no ambiente local.
 - **Raspberry Pi**: Hardware utilizado para criar um cluster local de microserviços.
-
-### **Backend Remoto**
 - **Java**: Linguagem principal para os microserviços remotos, focados em processamento, distribuição e análise de dados.
 - **Spring Boot**: Framework robusto utilizado para construção dos microserviços no ambiente remoto, oferecendo integração com bancos de dados e facilidade de escalabilidade.
 - **Spring Data**: Ferramenta que simplifica a manipulação de dados com MongoDB e MySQL nos microserviços remotos.
@@ -28,7 +23,7 @@ Este projeto é composto por uma arquitetura de microserviços, que se comunica 
 ### **Infraestrutura e Mensageria**
 - **Docker e Docker Compose**: Para orquestrar os microserviços e bancos de dados de maneira simplificada, tanto localmente quanto remotamente.
 - **Kubernetes**: Para ambientes mais complexos e escaláveis, como deploy remoto em clusters.
-- **Mensageria com Redis e Kafka**: Redis é utilizado localmente para filas e consistência de dados, enquanto Kafka gerencia eventos e mensagens entre microserviços no ambiente remoto.
+- **Mensageria com Kafka**: É utilizado localmente para filas e consistência de dados, enquanto Kafka gerencia eventos e mensagens entre microserviços no ambiente remoto.
 
 ---
 
