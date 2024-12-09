@@ -5,7 +5,9 @@ public record AdvertisingCreateDto(
   String version,
   String company,
   String product,
-  Long reactionId
+  Long reactionId,
+  Long periodRegisterId,
+  Long painelId
   ) {
 
 }

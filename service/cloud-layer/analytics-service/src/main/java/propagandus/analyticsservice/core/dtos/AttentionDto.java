@@ -4,11 +4,12 @@ import propagandus.analyticsservice.core.models.enumerators.EAttentionLevel;
 
 public record AttentionDto(
   Long attentionId,
-  Long painelId,
   EAttentionLevel attention,
   Byte attentionLevel,
   Short lookCount,
-  Short peopleCount
+  Short peopleCount,
+  Long attentionTime,
+  Long painelId
 ) {
 
 }

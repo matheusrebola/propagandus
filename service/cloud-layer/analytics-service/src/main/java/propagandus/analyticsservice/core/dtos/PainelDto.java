@@ -4,10 +4,14 @@ import propagandus.analyticsservice.core.models.enumerators.EStatus;
 
 public record PainelDto(
   Long painelId,
-  Long locationId,
   String identification,
   EStatus status,
-  String model
+  String model,
+  Long locationId,
+  Long advertisingId,
+  Long attentionId,
+  Long reactionId,
+  Long packageTypeId
 ) {
 
 }

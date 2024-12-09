@@ -15,7 +15,10 @@ public record PeriodRegisterDto(
   EPeriodOfTheDay periodOfTheDay,
   EMonth month,
   String year,
-  LocalDateTime registerTime
+  LocalDateTime registerTime,
+  Long attentionId,
+  Long reactionId,
+  Long advertisingId
 ) {
 
 }
