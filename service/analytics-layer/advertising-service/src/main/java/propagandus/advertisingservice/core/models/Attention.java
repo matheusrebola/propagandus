@@ -1,29 +1,29 @@
 package propagandus.advertisingservice.core.models;
 
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+import propagandus.advertisingservice.core.models.enumerators.EAttentionLevel;
 
 @Entity(name = "attention")
 @Table(name = "attention_table")
 public record Attention(
-  @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "location_id") Long id,
-  @Column(length = 10, nullable = false, name = "zip_code") @NotNull String zipCode,
-  @Column(length = 45, nullable = false, name = "public_place") @NotNull String publicPlace,
-  @Column(length = 5, nullable = false) @NotNull String number,
-  @Column(length = 45, nullable = false) @NotNull String city,
-  @Column(length = 4, nullable = false) @NotNull String state,
-  @Column(length = 20, nullable = false) @NotNull String country,
-  @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true) List<Reaction> reactions,
-  @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true) List<Painel> painels
+  @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "attention_id") Long id,
+  @Enumerated(EnumType.STRING) @NotNull EAttentionLevel attention,
+  @Column(name = "attention_level") @NotNull Byte attentionLevel,
+  @Column(name = "look_count") @NotNull Short lookCount,
+  @Column(name = "people_count") @NotNull Short peopleCount,
+  @OneToOne @JoinColumn(name = "attention_time_id", referencedColumnName = "period_register_id", nullable = false) PeriodRegister attentionTime,
+  @ManyToOne @JoinColumn(name="painel_id", nullable=false) Painel painel
 ) {
 
 }
