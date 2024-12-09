@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:53355/data-reaction
+    url: jdbc:mariadb://localhost:43355/data-reaction
     username: propagandus
     password: propagandus
   jpa:
