@@ -8,7 +8,7 @@ Este projeto é composto por uma arquitetura de microserviços, que se comunica 
 
 ---
 ## Tecnologias Utilizadas
-<div align="center">[![SkillIcons](https://skillicons.dev/icons?i=java,spring,kafka,mongodb,python,linux,docker,mysql,raspberrypi,kubernetes)](https://skillicons.dev)</div>
+<div align="center"> [![SkillIcons](https://skillicons.dev/icons?i=java,spring,kafka,mongodb,python,linux,docker,mysql,raspberrypi,kubernetes)](https://skillicons.dev) </div>
 
 ### **Backend**
 - **MongoDB**: Banco de dados NoSQL utilizado para armazenar os dados de atenção, reações e pessoas detectadas.
