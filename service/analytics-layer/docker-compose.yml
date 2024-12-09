@@ -93,99 +93,19 @@ services:
       - propagandus
 
   # MariaDB Services
-  mariadb-advertising:
+  mariadb-analytics:
     image: mariadb:latest
-    container_name: mariadb-advertising
+    container_name: mariadb-analytics
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: data-advertising
-      MARIADB_DATABASE: data-advertising
+      MARIADB_ROOT_PASSWORD: data-analytics
+      MARIADB_DATABASE: data-analytics
       MARIADB_USER: propagandus
       MARIADB_PASSWORD: propagandus
     ports:
       - "43350:3306"
     volumes:
-      - mariadb_advertising_data:/var/lib/mysql
-    networks:
-      - propagandus
-
-  mariadb-attention:
-    image: mariadb:latest
-    container_name: mariadb-attention
-    restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: data-attention
-      MARIADB_DATABASE: data-attention
-      MARIADB_USER: propagandus
-      MARIADB_PASSWORD: propagandus
-    ports:
-      - "43351:3306"
-    volumes:
-      - mariadb_attention_data:/var/lib/mysql
-    networks:
-      - propagandus
-
-  mariadb-location:
-    image: mariadb:latest
-    container_name: mariadb-location
-    restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: data-location
-      MARIADB_DATABASE: data-location
-      MARIADB_USER: propagandus
-      MARIADB_PASSWORD: propagandus
-    ports:
-      - "43352:3306"
-    volumes:
-      - mariadb_location_data:/var/lib/mysql
-    networks:
-      - propagandus
-
-  mariadb-painel:
-    image: mariadb:latest
-    container_name: mariadb-painel
-    restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: data-painel
-      MARIADB_DATABASE: data-painel
-      MARIADB_USER: propagandus
-      MARIADB_PASSWORD: propagandus
-    ports:
-      - "43353:3306"
-    volumes:
-      - mariadb_painel_data:/var/lib/mysql
-    networks:
-      - propagandus
-
-  mariadb-period-register:
-    image: mariadb:latest
-    container_name: mariadb-period-register
-    restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: data-period-register
-      MARIADB_DATABASE: data-period-register
-      MARIADB_USER: propagandus
-      MARIADB_PASSWORD: propagandus
-    ports:
-      - "43354:3306"
-    volumes:
-      - mariadb_period_register_data:/var/lib/mysql
-    networks:
-      - propagandus
-
-  mariadb-reaction:
-    image: mariadb:latest
-    container_name: mariadb-reaction
-    restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: data-reaction
-      MARIADB_DATABASE: data-reaction
-      MARIADB_USER: propagandus
-      MARIADB_PASSWORD: propagandus
-    ports:
-      - "43355:3306"
-    volumes:
-      - mariadb_reaction_data:/var/lib/mysql
+      - mariadb_analytics_data:/var/lib/mysql
     networks:
       - propagandus
 
@@ -197,12 +117,7 @@ volumes:
   mongo_painel_data:
   mongo_period_register_data:
   mongo_reaction_data:
-  mariadb_advertising_data:
-  mariadb_attention_data:
-  mariadb_location_data:
-  mariadb_painel_data:
-  mariadb_period_register_data:
-  mariadb_reaction_data:
+  mariadb_analytics_data:
 
 networks:
   propagandus:
