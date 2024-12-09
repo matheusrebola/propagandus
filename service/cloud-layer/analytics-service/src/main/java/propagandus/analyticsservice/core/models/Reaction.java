@@ -19,6 +19,7 @@ public record Reaction(
   //@OneToOne(CascadeType.AUTO) @JoinColumn(name = "period_time_id", referencedColumnName = "id") PeriodRegister reactionTime,
   @ManyToOne @JoinColumn(name = "advertising_id", nullable = false) Advertising advertising,
   @ManyToOne @JoinColumn(name = "location_id", nullable = false) Location location,
+  @ManyToOne @JoinColumn(name = "painel_id", nullable = false) Painel painel,
   @Enumerated(EnumType.STRING) @Column(length = 10) EReactionType reactionType
   ) {
 }
