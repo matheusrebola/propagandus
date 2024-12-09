@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:43350/data-advertising
+    url: jdbc:mariadb://localhost:43350/data-analytics
     username: propagandus
     password: propagandus
   jpa:
