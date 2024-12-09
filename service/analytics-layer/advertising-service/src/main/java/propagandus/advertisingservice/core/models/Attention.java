@@ -12,9 +12,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
-@Entity(name = "location")
-@Table(name = "location_table")
-public record Location(
+@Entity(name = "attention")
+@Table(name = "attention_table")
+public record Attention(
   @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "location_id") Long id,
   @Column(length = 10, nullable = false, name = "zip_code") @NotNull String zipCode,
   @Column(length = 45, nullable = false, name = "public_place") @NotNull String publicPlace,
@@ -24,5 +24,6 @@ public record Location(
   @Column(length = 20, nullable = false) @NotNull String country,
   @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true) List<Reaction> reactions,
   @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true) List<Painel> painels
-  ) {
+) {
+
 }
