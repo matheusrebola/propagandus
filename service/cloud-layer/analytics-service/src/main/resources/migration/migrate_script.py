@@ -2,33 +2,32 @@ import pymysql
 
 # Configurações do Banco de Origem
 source_db = {
-    'host': 'localhost',
-    'user': 'seu_usuario_origem',
-    'password': 'sua_senha_origem',
-    'database': 'seu_banco_origem'
+    'host': 'localhost:53300',
+    'user': 'propagandus',
+    'password': 'propagandus',
+    'database': 'data-lake'
 }
 
 # Configurações dos Bancos de Destino
 destinations = {
-    'microservice1': {
+    'analytics-service': {
         'db_config': {
-            'host': 'host_microservice1',
-            'user': 'user1',
-            'password': 'password1',
-            'database': 'db_microservice1'
+            'host': 'localhost:43350',
+            'user': 'propagandus',
+            'password': 'propagandus',
+            'database': 'data-analytics'
         },
-        'tables': ['Location', 'Painel', 'Reaction']
+        'tables': ['attention_table','painel_table','reaction_table', 'date_time_table', 'advertising_table', 'location_table']
     },
-    'microservice2': {
+    'backup-service': {
         'db_config': {
-            'host': 'host_microservice2',
-            'user': 'user2',
-            'password': 'password2',
-            'database': 'db_microservice2'
+            'host': 'localhost:53301',
+            'user': 'propagandus',
+            'password': 'propagandus',
+            'database': 'data-analytics'
         },
-        'tables': ['Advertising', 'Attention']
-    },
-    # Adicione mais microserviços conforme necessário
+        'tables': ['attention_table','painel_table','reaction_table', 'date_time_table', 'advertising_table', 'location_table']
+    }
 }
 
 def process_log_entry(source_conn, destination_conns, log_entry):

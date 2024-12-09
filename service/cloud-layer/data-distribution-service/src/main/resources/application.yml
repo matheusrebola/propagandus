@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT:40002}
+  port: ${SERVER_PORT:50002}
 
 logging:
   level:

@@ -1,0 +1,7 @@
+server:
+  port: 60003
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://sender:sender@mongodb-sender:61000/sender-db

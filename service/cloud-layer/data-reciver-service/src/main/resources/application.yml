@@ -1,7 +1,7 @@
 server:
-  port: ${SERVER_PORT:40003}
+  port: ${SERVER_PORT:50004}
 
-logging:
-  level:
-    root: INFO
-    org.springframework: DEBUG
+spring:
+  data:
+    mongodb:
+      uri: mongodb://reciver:reciver@mongodb-reciver:57020/reciver-db

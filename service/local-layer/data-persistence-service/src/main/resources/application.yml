@@ -1,0 +1,17 @@
+server:
+  port: 60001
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:63310/data-persistence-service
+    username: propagandus
+    password: propagandus
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+  data:
+    mongodb:
+      uri: mongodb://persistence:persistence@mongodb-persistence:61001/persistence-db

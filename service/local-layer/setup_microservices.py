@@ -1,48 +1,75 @@
-import os
 import subprocess
+import os
+import time
 
-def check_dependency(command, name):
-    """Verifica se uma dependência está instalada."""
+def run_docker_compose():
+    """
+    Executa o docker-compose para levantar os containers configurados.
+    """
     try:
-        subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
-    except subprocess.CalledProcessError:
-        print(f"Erro: {name} não está instalado. Instale antes de continuar.")
+        print("Iniciando os serviços Docker com docker-compose...")
+        subprocess.run(["docker-compose", "up", "--build", "-d"], check=True)
+        print("Docker Compose executado com sucesso!")
+    except subprocess.CalledProcessError as e:
+        print(f"Erro ao executar o Docker Compose: {e}")
         exit(1)
 
-def start_docker_compose():
-    """Sobe os containers do Docker Compose."""
-    print("Iniciando os containers com Docker Compose...")
-    subprocess.run(["docker-compose", "up", "-d"], check=True)
-    print("Containers iniciados com sucesso!")
+def build_java_services(services):
+    """
+    Compila os microserviços Java usando Maven e gera os JARs.
+    """
+    for service in services:
+        print(f"Compilando o microserviço: {service}...")
+        service_path = os.path.join(os.getcwd(), service)
+        try:
+            subprocess.run(["mvn", "clean", "package"], cwd=service_path, check=True)
+            print(f"{service} compilado com sucesso!")
+        except subprocess.CalledProcessError as e:
+            print(f"Erro ao compilar {service}: {e}")
+            exit(1)
 
-def start_microservices():
-    """Inicializa os microserviços."""
-    microservices = [
-        "./people-register-service",
-        "./attention-register-service",
-        "./reaction-register-service",
-        "./data-persistence-service",
-        "./sender-service",
-        "./advertising-service",
+def run_java_containers(services):
+    """
+    Inicia os containers dos microserviços Java criados com Dockerfile.
+    """
+    for service in services:
+        print(f"Iniciando o container para o serviço: {service}...")
+        service_path = os.path.join(os.getcwd(), service)
+        try:
+            subprocess.run(["docker", "build", "-t", service.lower(), "."], cwd=service_path, check=True)
+            subprocess.run(["docker", "run", "-d", "--name", service.lower(), service.lower()], check=True)
+            print(f"Container do serviço {service} iniciado com sucesso!")
+        except subprocess.CalledProcessError as e:
+            print(f"Erro ao iniciar o container do serviço {service}: {e}")
+            exit(1)
+
+def main():
+    """
+    Função principal para executar todo o fluxo.
+    """
+    # Lista dos microserviços Java
+    java_services = [
+        "data-persistence-service",
+        "register-service",
+        "sender-service"
     ]
 
-    print("Iniciando os microserviços locais...")
+    print("==== INICIANDO A CONFIGURAÇÃO DO AMBIENTE ====")
 
-    for service in microservices:
-        print(f"Iniciando o microserviço: {service}")
-        os.chdir(service)
-        subprocess.run(["npm", "install"], check=True)
-        subprocess.Popen(["npm", "start"])  # Executa em background
-        os.chdir("..")
+    # Etapa 1: Executar o Docker Compose para dependências
+    run_docker_compose()
 
-    print("Todos os microserviços foram inicializados com sucesso!")
+    # Aguardar um tempo para os bancos de dados subirem
+    print("Aguardando inicialização dos serviços de banco de dados...")
+    time.sleep(15)
+
+    # Etapa 2: Compilar os serviços Java
+    build_java_services(java_services)
+
+    # Etapa 3: Construir e rodar os containers Java
+    run_java_containers(java_services)
+
+    print("==== AMBIENTE CONFIGURADO COM SUCESSO ====")
 
 if __name__ == "__main__":
-    # Verifica dependências
-    check_dependency(["docker", "--version"], "Docker")
-    check_dependency(["docker-compose", "--version"], "Docker Compose")
-    check_dependency(["npm", "--version"], "npm")
-
-    # Sobe os containers e microserviços
-    start_docker_compose()
-    start_microservices()
+    main()

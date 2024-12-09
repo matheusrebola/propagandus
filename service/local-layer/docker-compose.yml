@@ -1,102 +1,72 @@
 version: '3.8'
 
 services:
-  mysql-persistence:
-    image: mysql:latest
+  mariadb-persistence:
+    image: mariadb:latest
     container_name: data-persistence-service
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: data-persistence-service2@
-      MYSQL_DATABASE: data-persistence-service
-      MYSQL_USER: propagandus
-      MYSQL_PASSWORD: propagandus2@
+      MARIADB_ROOT_PASSWORD: data-persistence-service
+      MARIADB_DATABASE: data-persistence-service
+      MARIADB_USER: propagandus
+      MARIADB_PASSWORD: propagandus
     ports:
-      - "53310:3306"
+      - "63310:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
-
-  mongodb-register:
-    image: mongo:latest
-    container_name: service-register
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: service-register
-      MONGO_INITDB_ROOT_PASSWORD: service-register
-      MONGO_INITDB_DATABASE: service-register-db
-    ports:
-      - "57010:27017"
-    volumes:
-      - mongo_register:/data/db/service-register
+      - mariadb_persistence_data:/var/lib/mysql
     networks:
       - propagandus
 
   mongodb-sender:
     image: mongo:latest
-    container_name: sender-service
+    container_name: data-sender
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: sender-service
-      MONGO_INITDB_ROOT_PASSWORD: sender-service
-      MONGO_INITDB_DATABASE: sender-service-db
+      MONGO_INITDB_ROOT_USERNAME: sender
+      MONGO_INITDB_ROOT_PASSWORD: sender
+      MONGO_INITDB_DATABASE: sender-db
     ports:
-      - "57011:27017"
+      - "61000:27017"
     volumes:
-      - mongo_sender:/data/db/sender-service
+      - mongo_sender_data:/data
     networks:
       - propagandus
   
-  redis-persistence:
-    image: redis:latest
-    container_name: data-persistence-queue
+  mongodb-persistence:
+    image: mongo:latest
+    container_name: data-persistence
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: persistence
+      MONGO_INITDB_ROOT_PASSWORD: persistence
+      MONGO_INITDB_DATABASE: persistence-db
     ports:
-      - "63791:6379"
+      - "61001:27017"
     volumes:
-      - redis_persistence_data:/data
+      - mongo_persistence_data:/data
     networks:
       - propagandus
 
-  redis-people-register:
-    image: redis:latest
-    container_name: people-register
+  mongodb-register:
+    image: mongo:latest
+    container_name: data-register
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: register
+      MONGO_INITDB_ROOT_PASSWORD: register
+      MONGO_INITDB_DATABASE: register-db
     ports:
-      - "63792:6379"
+      - "61002:27017"
     volumes:
-      - redis_people_register_data:/data
-    networks:
-      - propagandus
-
-  redis-attention-register:
-    image: redis:latest
-    container_name: attention-register
-    restart: always
-    ports:
-      - "63793:6379"
-    volumes:
-      - redis_attention_register_data:/data
-    networks:
-      - propagandus
-
-  redis-reaction-register:
-    image: redis:latest
-    container_name: reaction-register
-    restart: always
-    ports:
-      - "63794:6379"
-    volumes:
-      - redis_reaction_register_data:/data
+      - mongo_register_data:/data
     networks:
       - propagandus
 
 volumes:
-  mysql_data:
-  mongo_register:
-  mongo_sender:
-  redis_persistence_data:
-  redis_people_register_data:
-  redis_attention_register_data:
-  redis_reaction_register_data:
+  mariadb_persistence_data:
+  mongo_sender_data:
+  mongo_persistence_data:
+  mongo_register_data:
 
 networks:
   propagandus:

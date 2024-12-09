@@ -1,21 +1,21 @@
 services:
   mariadb-analytics:
     image: mariadb:latest
-    container_name: cloud-data-analytics
+    container_name: data-lake
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: data-analytics
-      MARIADB_DATABASE: data-analytics
+      MARIADB_ROOT_PASSWORD: data-lake
+      MARIADB_DATABASE: data-lake
       MARIADB_USER: propagandus
       MARIADB_PASSWORD: propagandus
     ports:
       - "53300:3306"
     volumes:
-      - mariadb_analytics_data:/var/lib/mysql
+      - mariadb_lake_data:/var/lib/mysql
 
   mariadb-backup:
     image: mariadb:latest
-    container_name: cloud-data-backup
+    container_name: data-backup
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: data-backup
@@ -29,46 +29,39 @@ services:
 
   mongodb-reciver:
     image: mongo:latest
-    container_name: cloud-data-reciver
+    container_name: data-reciver
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: data-reciver
-      MONGO_INITDB_ROOT_PASSWORD: data-reciver
+      MONGO_INITDB_ROOT_USERNAME: reciver
+      MONGO_INITDB_ROOT_PASSWORD: reciver
+      MONGO_INITDB_DATABASE: reciver-db
     ports:
       - "57020:27017"
     volumes:
-      - mongo_data:/data/db
+      - mongo_reciver_data:/data/db
     networks:
       - propagandus
 
-  redis-analytics:
-    image: redis:latest
-    container_name: cloud-data-analytics-redis
+  mongodb-organizer:
+    image: mongo:latest
+    container_name: data-organizer-mongo
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: organizer
+      MONGO_INITDB_ROOT_PASSWORD: organizer
+      MONGO_INITDB_DATABASE: organizer-db
     ports:
-      - "63780:6379"
+      - "57021:27017"
     volumes:
-      - redis_analytics_data:/data
-    networks:
-      - propagandus
-
-  redis-distribution:
-    image: redis:latest
-    container_name: cloud-data-distribution-redis
-    restart: always
-    ports:
-      - "63781:6379"
-    volumes:
-      - redis_distribution_data:/data
+      - mongo_organizer_data:/data/db
     networks:
       - propagandus
 
 volumes:
-  mariadb_analytics_data:
+  mariadb_lake_data:
   mariadb_backup_data:
-  mongo_data:
-  redis_analytics_data:
-  redis_distribution_data:
+  mongo_reciver_data:
+  mongo_organizer_data:
 
 networks:
   propagandus:

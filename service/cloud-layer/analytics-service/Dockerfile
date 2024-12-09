@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/*.jar app.jar
 
 # Define variáveis de ambiente para o container
-ENV SERVER_PORT=40000
+ENV SERVER_PORT=50000
 
 # Expõe a porta do servidor
 EXPOSE ${SERVER_PORT}
