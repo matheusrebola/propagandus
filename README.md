@@ -8,7 +8,7 @@ Este projeto é composto por uma arquitetura de microserviços, que se comunica 
 
 ---
 ## Tecnologias Utilizadas
-[![SkillIcons](https://skillicons.dev/icons?i=java,spring,kafka,mongodb,python,linux,docker,mysql,raspberrypi,kubernetes)](https://skillicons.dev)
+<div align="center">[![SkillIcons](https://skillicons.dev/icons?i=java,spring,kafka,mongodb,python,linux,docker,mysql,raspberrypi,kubernetes)](https://skillicons.dev)</div>
 
 ### **Backend**
 - **MongoDB**: Banco de dados NoSQL utilizado para armazenar os dados de atenção, reações e pessoas detectadas.
@@ -27,25 +27,25 @@ Este projeto é composto por uma arquitetura de microserviços, que se comunica 
 
 ---
 
-Essa organização diferencia bem as tecnologias utilizadas entre os microserviços locais e remotos, refletindo a arquitetura híbrida do seu sistema. Se quiser mais algum ajuste ou detalhamento, só avisar!
-
 ## Como Funciona
 
 1. **Captura de Dados pela IA**: A IA identifica e reconhece as pessoas, analisa sua atenção (olhar) e avalia sua reação (positiva, negativa, neutra) com base nas propagandas exibidas nos painéis públicos.
 
-2. **Envio dos Dados para Microserviços**: Os dados de cada pessoa, sua atenção e reação são enviados para os respectivos microserviços de registro: `People-Register-Service`, `Attention-Register-Service` e `Reaction-Register-Service`.
+2. **Envio dos Dados para Microserviços**: Os dados de cada pessoa, sua atenção, atenção e reação são enviados para o microserviço de registro: `Register-Service`.
 
 3. **Persistência de Dados**: O microserviço `Data-Persistence-Service` lê os dados dos microserviços de registro e os armazena no banco de dados relacional MySQL.
 
-4. **Envio para Sistema Remoto**: O `Sender-Service` envia os dados para o microserviço remoto `Data-Reciver-Service`, que os armazena e finaliza a Saga.
+4. **Envio para Sistema Remoto**: O `Sender-Service` envia os dados para o microserviço remoto `Data-Reciver-Service`, que os armazena em um banco de dados MongoDB e finaliza a Saga iniciado no `Sender-Service`.
 
-5. **Distribuição de Dados**: O microserviço `Data-Distribution-Service` envia os dados persistidos para os microserviços analíticos e de backup, garantindo a continuidade do fluxo de dados.
+5. **Distribuição de Dados**: O microserviço `Data-Distribution-Service` envia os dados persistidos para o microserviço de `Analitics-Service` que salva todos os dados em um Data Lake. O script Python atualiza os bancos de dados, um utilizado para análise de dados e outro para backup.
+
+6. **Análise de Dados**: Seis microseriviços foram criados para buscar dados personalizados, `Attention-Service`, `Painel-Service`, `Date-Time-Service`, `Location-Service`, `Reaction-Service`, `Advertising-Service`, responsáveis por análises mais profunda, separada por assunto.
 
 ---
 
-## Padrão **Saga Coreografada**
+## Padrão **Saga Coreografada** e **Saga Orquestrado**
 
-A arquitetura do sistema segue o padrão **Saga Coreografada** para garantir a consistência dos dados durante as transações. Cada microserviço é responsável por enviar eventos de forma assíncrona para o próximo serviço da cadeia, garantindo que a consistência dos dados seja preservada, mesmo em cenários de falhas.
+A arquitetura do sistema segue o padrão **Saga Coreografada** em alguns pontos e em outros o **Saga Orquestrado** para garantir a consistência dos dados durante as transações.
 
 ---
 
@@ -90,11 +90,5 @@ Contribuições para este projeto são bem-vindas! Se você deseja contribuir, s
 3. Faça commit das suas alterações (`git commit -am 'Add nova feature'`).
 4. Envie para o repositório remoto (`git push origin feature/nova-feature`).
 5. Abra um pull request.
-
----
-
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ---
