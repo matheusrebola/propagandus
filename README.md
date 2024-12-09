@@ -7,57 +7,6 @@ O **Propagandus** é um projeto inovador que utiliza Inteligência Artificial (I
 Este projeto é composto por uma arquitetura de microserviços, que se comunica de forma eficiente através de bancos de dados distribuídos e mensageria. A aplicação é projetada para rodar localmente em hardwares de Raspberry Pi, formando um cluster para processamento e comunicação de dados.
 
 ---
-
-## Arquitetura
-
-O sistema é composto pelos seguintes **microserviços**:
-
-### 1. **People-Register-Service**
-   - **Função**: Registra as pessoas que são detectadas nas imagens capturadas pela IA.
-   - **Bancos de Dados**:
-     - **Redis**: Para garantir que as requisições sejam recebidas sem perdas.
-     - **MongoDB**: Para armazenar os dados de pessoas registradas.
-
-### 2. **Attention-Register-Service**
-   - **Função**: Registra a atenção das pessoas, baseada no reconhecimento do olhar.
-   - **Bancos de Dados**:
-     - **Redis**: Para garantir que os dados de atenção sejam armazenados sem perdas.
-     - **MongoDB**: Para armazenar os dados de atenção de cada pessoa.
-
-### 3. **Reaction-Register-Service**
-   - **Função**: Registra a reação das pessoas às propagandas, identificando reações positivas, negativas ou neutras.
-   - **Bancos de Dados**:
-     - **Redis**: Para garantir que os dados de reações sejam registrados sem perdas.
-     - **MongoDB**: Para armazenar as reações detectadas.
-
-### 4. **Data-Persistence-Service**
-   - **Função**: Lê os dados dos microserviços de registro e os persiste em um banco de dados relacional (MySQL).
-   - **Bancos de Dados**:
-     - **MySQL**: Para armazenar dados persistentes e relacionais.
-     - **Redis**: Para organizar a fila de dados e garantir a entrega sem perdas.
-     - **MongoDB**: Para coletar os dados recebidos dos microserviços de registro.
-
-### 5. **Sender-Service**
-   - **Função**: Envia os dados coletados para o microserviço remoto `Data-Reciver-Service`, usando o padrão **Saga Coreografada** para garantir a consistência de dados.
-   - **Bancos de Dados**:
-     - **MongoDB**: Para armazenar as requisições enviadas.
-
-### 6. **Data-Reciver-Service**
-   - **Função**: Recebe os dados do `Sender-Service` e os armazena em seu MongoDB. Quando todos os dados são recebidos e armazenados, a Saga é finalizada e a próxima pode ser iniciada.
-   - **Bancos de Dados**:
-     - **MongoDB**: Para armazenar os dados recebidos.
-
-### 7. **Data-Distribution-Service**
-   - **Função**: Envia os dados para os microserviços de persistência e analíticos, iniciando outra Saga Coreografada.
-   - **Bancos de Dados**:
-     - **MySQL**: Para persistir os dados em bancos relacionais.
-     - **Redis**: Para garantir a integridade e consistência dos dados.
-
-### 8. **Advertising**
-   - **Função**: Fornece informações sobre as propagandas que estão sendo exibidas nos painéis de propaganda. O microserviço pode lidar com painéis estáticos ou dinâmicos (que alternam entre várias propagandas).
-   - **Integração**:
-     - Envia dados para o `Data-Persistence-Service` para associar propagandas com os dados de atenção e reação das pessoas.
-
 ## Tecnologias Utilizadas
 [![SkillIcons](https://skillicons.dev/icons?i=typescript,nestjs,java,spring,kafka,mongodb,python,redis,docker,mysql,raspberrypi,kubernetes)](https://skillicons.dev)
 
