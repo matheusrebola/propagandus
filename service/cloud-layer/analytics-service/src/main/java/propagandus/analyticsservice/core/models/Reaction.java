@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import propagandus.analyticsservice.core.models.enumerators.EReactionType;
 
@@ -16,7 +17,7 @@ import propagandus.analyticsservice.core.models.enumerators.EReactionType;
 @Table(name = "reaction_table")
 public record Reaction(
   @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "reaction_id") Long id,
-  //@OneToOne(CascadeType.AUTO) @JoinColumn(name = "period_time_id", referencedColumnName = "id") PeriodRegister reactionTime,
+  @OneToOne @JoinColumn(name = "period_time_id", referencedColumnName = "period_register_id", nullable = false) PeriodRegister reactionTime,
   @ManyToOne @JoinColumn(name = "advertising_id", nullable = false) Advertising advertising,
   @ManyToOne @JoinColumn(name = "location_id", nullable = false) Location location,
   @ManyToOne @JoinColumn(name = "painel_id", nullable = false) Painel painel,

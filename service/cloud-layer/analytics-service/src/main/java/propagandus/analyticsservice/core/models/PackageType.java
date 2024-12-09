@@ -7,6 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import propagandus.analyticsservice.core.models.enumerators.EPackageType;
 
@@ -14,6 +15,7 @@ import propagandus.analyticsservice.core.models.enumerators.EPackageType;
 @Table(name = "package_type_table")
 public record PackageType(
   @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "package_type_id") Long id,
-  @Enumerated(EnumType.STRING) @Column(length = 8) EPackageType packageType
+  @Enumerated(EnumType.STRING) @Column(length = 8) EPackageType packageType,
+  @OneToOne(mappedBy = "packageType") Painel painel
   ) {
 }
