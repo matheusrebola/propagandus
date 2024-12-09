@@ -18,6 +18,15 @@ destinations = {
             'database': 'data-analytics'
         },
         'tables': ['attention_table','painel_table','reaction_table', 'date_time_table', 'advertising_table', 'location_table']
+    },
+    'backup-service': {
+        'db_config': {
+            'host': 'localhost:53301',
+            'user': 'propagandus',
+            'password': 'propagandus',
+            'database': 'data-analytics'
+        },
+        'tables': ['attention_table','painel_table','reaction_table', 'date_time_table', 'advertising_table', 'location_table']
     }
 }
 
