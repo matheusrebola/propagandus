@@ -9,14 +9,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import propagandus.attentionservice.core.models.enumerators.EPackageType;
 
 @Entity(name = "package_type")
 @Table(name = "package_type_table")
 public record PackageType(
   @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "package_type_id") Long id,
-  @Enumerated(EnumType.STRING) @Column(length = 8) @NotNull EPackageType packageType,
+  @Enumerated(EnumType.STRING) @Column(length = 8, nullable = false) EPackageType packageType,
   @OneToOne(mappedBy = "packageType") Painel painel
   ) {
 }

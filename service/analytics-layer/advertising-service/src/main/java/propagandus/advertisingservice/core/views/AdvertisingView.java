@@ -63,5 +63,5 @@ public interface AdvertisingView {
 
   //Listar propagandas que geraram reações em locais com mais de N painéis
   @Query("SELECT a FROM advertising a JOIN a.reactions r JOIN r.location l WHERE SIZE(l.paineis) > :painelCount")
-  List<Advertising> findAdvertisingInLocationsWithMorePainels(@Param("painelCount") int painelCount);
+  List<Advertising> findAdvertisingInLocationsWithMorePainels(@Param("painelCount") Byte painelCount);
 }

@@ -90,3 +90,4 @@ Contribuições para este projeto são bem-vindas! Se você deseja contribuir, s
 3. Faça commit das suas alterações (`git commit -am 'Add nova feature'`).
 4. Envie para o repositório remoto (`git push origin feature/nova-feature`).
 5. Abra um pull request.
+

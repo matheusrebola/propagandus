@@ -15,16 +15,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import propagandus.attentionservice.core.models.enumerators.EStatus;
 
 @Entity(name = "painel")
 @Table(name = "painel_table")
 public record Painel(
   @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "painel_id") Long id,
-  @Column(length = 10) @NotNull String identification,
-  @Enumerated(EnumType.STRING) @Column(length = 4) @NotNull EStatus status,
-  @Column(length = 20) @NotNull String model,
+  @Column(length = 10, nullable = false) String identification,
+  @Enumerated(EnumType.STRING) @Column(length = 4, nullable = false) EStatus status,
+  @Column(length = 20, nullable = false) String model,
   @ManyToOne @JoinColumn(name="location_id", nullable=false) Location location,
   @OneToMany(mappedBy = "painel", cascade = CascadeType.ALL, orphanRemoval = true) List<Advertising> advertisings,
   @OneToMany(mappedBy = "painel", cascade = CascadeType.ALL, orphanRemoval = true) List<Attention> attentions,
