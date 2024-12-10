@@ -17,39 +17,42 @@ databases = {
     }
 }
 
-# Mapeamento dos arquivos CSV para os bancos e tabelas
-csv_to_db_mapping = {
-    "advertising_table.csv": ("analytics", "advertising"),
-    "attention_table.csv": ("lake", "attention"),
-    "location_table.csv": ("backup", "location"),
-    "painel_table.csv": ("persistence", "painel"),
-    "data_time.csv": ("lake", "data_time"),
-    "reaction_table.csv": ("analytics", "reaction"),
-}
+# Lista de arquivos CSV
+csv_files = [
+    "advertising_table.csv",
+    "attention_table.csv",
+    "location_table.csv",
+    "painel_table.csv",
+    "data_time.csv",
+    "reaction_table.csv",
+]
 
-def load_csv_to_db(csv_file, db_key, table_name):
-    """Carrega os dados de um arquivo CSV para o banco especificado."""
-    # Lê o CSV
+def load_csv_to_all_databases(csv_file, table_name):
+    """Carrega os dados de um arquivo CSV em todas as bases de dados."""
     print(f"Lendo o arquivo {csv_file}...")
     data = pd.read_csv(csv_file)
 
-    # Conecta ao banco de dados
-    db_url = databases[db_key]["url"]
-    print(f"Conectando ao banco: {db_key} na tabela: {table_name}...")
-    engine = create_engine(db_url)
+    for db_key, db_config in databases.items():
+        try:
+            # Conecta ao banco de dados
+            db_url = db_config["url"]
+            print(f"Conectando ao banco: {db_key}, inserindo na tabela: {table_name}...")
+            engine = create_engine(db_url)
 
-    # Insere os dados no banco
-    print(f"Inserindo dados na tabela {table_name}...")
-    data.to_sql(table_name, engine, if_exists="replace", index=False)
-    print(f"Dados do arquivo {csv_file} carregados com sucesso na tabela {table_name} do banco {db_key}.")
+            # Insere os dados na tabela
+            print(f"Inserindo dados na tabela {table_name} do banco {db_key}...")
+            data.to_sql(table_name, engine, if_exists="replace", index=False)
+            print(f"Dados do arquivo {csv_file} carregados com sucesso na tabela {table_name} do banco {db_key}.")
+        except Exception as e:
+            print(f"Erro ao processar {csv_file} no banco {db_key}: {e}")
 
 def main():
-    # Itera sobre os arquivos e faz o upload
-    for csv_file, (db_key, table_name) in csv_to_db_mapping.items():
-        try:
-            load_csv_to_db(csv_file, db_key, table_name)
-        except Exception as e:
-            print(f"Erro ao processar {csv_file}: {e}")
+    # Processa cada arquivo CSV
+    for csv_file in csv_files:
+        # Remove a extensão .csv para usar como nome da tabela
+        table_name = csv_file.split(".csv")[0]
+        # Carrega os dados em todos os bancos
+        load_csv_to_all_databases(csv_file, table_name)
 
 if __name__ == "__main__":
     main()
