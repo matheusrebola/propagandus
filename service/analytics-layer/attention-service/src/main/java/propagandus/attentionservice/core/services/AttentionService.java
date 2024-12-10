@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import propagandus.attentionservice.core.models.Attention;
 import propagandus.attentionservice.core.models.Painel;
+import propagandus.attentionservice.core.models.enumerators.EAttentionLevel;
 import propagandus.attentionservice.core.models.enumerators.EDayWeek;
 import propagandus.attentionservice.core.models.enumerators.EMonth;
 import propagandus.attentionservice.core.models.enumerators.EPeriodOfTheDay;
@@ -21,6 +22,7 @@ public class AttentionService {
   //repository
   public List<Attention> findAll(){return attentionRepository.findAll();}
   public Attention findById(Long id){return attentionRepository.findById(id).orElse(null);}
+  List<EAttentionLevel> findByAttention(EAttentionLevel attention){return attentionRepository.findByAttention(attention);}
   public List<Byte> findByAttentionLevel(Byte attention){return findByAttentionLevel(attention);}
   public List<Short> findByLookCount(Short lookCount){return findByLookCount(lookCount);}
   public List<Short> findByPeopleCount(Short peopleCount){return findByPeopleCount(peopleCount);}

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import propagandus.locationservice.core.models.Location;
+import propagandus.locationservice.core.models.enumerators.ELocationType;
 import propagandus.locationservice.core.repositorys.LocationRepository;
 
 @Service
@@ -17,6 +18,9 @@ public class LocationService {
   public List<Location> findAll(){return locationRepository.findAll();}
   public Location findById(Long id){return locationRepository.findById(id).orElse(null);}
   public boolean existsByID(Long id){return locationRepository.existsById(id);}
+  public List<String> findByZipCode(String zipCode){return locationRepository.findByZipCode(zipCode);}
+  public List<String> findByPublicPlace(String publicPlace){return locationRepository.findByPublicPlace(publicPlace);}
+  public List<ELocationType> findByLocationType(ELocationType locationType){return findByLocationType(locationType);}
 
   //views
   public List<Object[]> findLocationsWithMostReactions(){return locationRepository.findLocationsWithMostReactions();}
