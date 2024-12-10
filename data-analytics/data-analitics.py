@@ -1,115 +1,55 @@
-from sqlalchemy import create_engine
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+from sqlalchemy import create_engine
 
-# Configure a conexão com o banco de dados MySQL
-user = "propagandus"
-password = "propagandus2@"
-host = "localhost"  # Ou IP do servidor
-port = "53300"      # Porta que você configurou no docker-compose
-database = "data_analitics"
+# Configuração dos bancos de dados
+databases = {
+    "analytics": {
+        "url": "mysql+pymysql://propagandus:propagandus@localhost:43350/data-analytics"
+    },
+    "lake": {
+        "url": "mysql+pymysql://propagandus:propagandus@localhost:53300/data-lake"
+    },
+    "backup": {
+        "url": "mysql+pymysql://propagandus:propagandus@localhost:53301/data-backup"
+    },
+    "persistence": {
+        "url": "mysql+pymysql://propagandus:propagandus@localhost:63310/data-persistence-service"
+    }
+}
 
-# Crie a engine para conexão
-engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}")
+# Mapeamento dos arquivos CSV para os bancos e tabelas
+csv_to_db_mapping = {
+    "advertising_table.csv": ("analytics", "advertising"),
+    "attention_table.csv": ("lake", "attention"),
+    "location_table.csv": ("backup", "location"),
+    "painel_table.csv": ("persistence", "painel"),
+    "data_time.csv": ("lake", "data_time"),
+    "reaction_table.csv": ("analytics", "reaction"),
+}
 
-# Garantir que todos os DataFrames foram carregados corretamente
-reaction_df = pd.read_sql("SELECT * FROM reaction", engine)
-advertising_df = pd.read_sql("SELECT * FROM advertising", engine)
-location_df = pd.read_sql("SELECT * FROM location", engine)
-attention_df = pd.read_sql("SELECT * FROM attention", engine)
-painel_df = pd.read_sql("SELECT * FROM painel", engine)
+def load_csv_to_db(csv_file, db_key, table_name):
+    """Carrega os dados de um arquivo CSV para o banco especificado."""
+    # Lê o CSV
+    print(f"Lendo o arquivo {csv_file}...")
+    data = pd.read_csv(csv_file)
 
-# Verificar as colunas de cada tabela para garantir compatibilidade
-print("Reaction:", reaction_df.columns)
-print("Advertising:", advertising_df.columns)
-print("Location:", location_df.columns)
-print("Attention:", attention_df.columns)
-print("Painel:", painel_df.columns)
+    # Conecta ao banco de dados
+    db_url = databases[db_key]["url"]
+    print(f"Conectando ao banco: {db_key} na tabela: {table_name}...")
+    engine = create_engine(db_url)
 
-# Unindo os DataFrames para facilitar as análises
-# Juntando Reaction com Advertising
-data = pd.merge(reaction_df, advertising_df, on='advertising_id', how='inner')
+    # Insere os dados no banco
+    print(f"Inserindo dados na tabela {table_name}...")
+    data.to_sql(table_name, engine, if_exists="replace", index=False)
+    print(f"Dados do arquivo {csv_file} carregados com sucesso na tabela {table_name} do banco {db_key}.")
 
-# Juntando o resultado com Location
-data = pd.merge(data, location_df, on='location_id', how='inner')
+def main():
+    # Itera sobre os arquivos e faz o upload
+    for csv_file, (db_key, table_name) in csv_to_db_mapping.items():
+        try:
+            load_csv_to_db(csv_file, db_key, table_name)
+        except Exception as e:
+            print(f"Erro ao processar {csv_file}: {e}")
 
-# Juntando o resultado com Painel (caso seja necessário verificar outra chave)
-data = pd.merge(data, painel_df, on='location_id', how='inner')
-
-# Juntando o resultado com Attention
-data = pd.merge(data, attention_df, on='attention_id', how='inner')
-
-# Adicionar checagem para colunas necessárias antes da análise
-required_columns = [
-    'product_name', 'advertising_version', 'attention_level',
-    'city_zone', 'painel_model', 'look_count', 'people_count', 'company_name'
-]
-missing_columns = [col for col in required_columns if col not in data.columns]
-if missing_columns:
-    raise ValueError(f"As colunas necessárias estão ausentes: {missing_columns}")
-
-# Análise de Eficácia dos Anúncios
-eficacia_anuncios = data.groupby(['product_name', 'advertising_version'])['attention_level'].mean().reset_index()
-
-# Visualizando a eficácia dos anúncios
-plt.figure(figsize=(14, 7))
-sns.barplot(x='product_name', y='attention_level', hue='advertising_version', data=eficacia_anuncios)
-plt.xticks(rotation=45)
-plt.title('Nível Médio de Atenção por Tipo e Versão de Anúncio')
-plt.xlabel('Tipo de Produto')
-plt.ylabel('Nível Médio de Atenção')
-plt.tight_layout()
-plt.show()
-
-# Análise de Desempenho por Localização
-desempenho_local = data.groupby('city_zone')['attention_level'].mean().reset_index()
-
-# Visualizando o desempenho por localização
-plt.figure(figsize=(10, 6))
-sns.barplot(x='city_zone', y='attention_level', data=desempenho_local, palette='viridis')
-plt.xticks(rotation=45)
-plt.title('Nível Médio de Atenção por Zona da Cidade')
-plt.xlabel('Zona da Cidade')
-plt.ylabel('Nível Médio de Atenção')
-plt.tight_layout()
-plt.show()
-
-# Análise de Desempenho dos Painéis
-desempenho_paineis = data.groupby('painel_model')['attention_level'].mean().reset_index()
-
-# Visualizando o desempenho dos painéis
-plt.figure(figsize=(10, 6))
-sns.barplot(x='painel_model', y='attention_level', data=desempenho_paineis, palette='coolwarm')
-plt.title('Nível Médio de Atenção por Modelo de Painel')
-plt.xlabel('Modelo de Painel')
-plt.ylabel('Nível Médio de Atenção')
-plt.tight_layout()
-plt.show()
-
-# Calculando o percentual de engajamento (Evitar divisão por zero)
-data['engagement_rate'] = data.apply(
-    lambda row: (row['look_count'] / row['people_count']) * 100 if row['people_count'] > 0 else 0, axis=1
-)
-
-# Visualizando o engajamento do público
-plt.figure(figsize=(12, 6))
-sns.histplot(data['engagement_rate'], bins=20, kde=True)
-plt.title('Distribuição da Taxa de Engajamento do Público')
-plt.xlabel('Taxa de Engajamento (%)')
-plt.ylabel('Frequência')
-plt.tight_layout()
-plt.show()
-
-# Análise por empresa
-segmentacao_audiencia = data.groupby('company_name')['engagement_rate'].mean().reset_index()
-
-# Visualizando a segmentação de audiência
-plt.figure(figsize=(14, 7))
-sns.barplot(x='company_name', y='engagement_rate', data=segmentacao_audiencia, palette='plasma')
-plt.xticks(rotation=45)
-plt.title('Taxa Média de Engajamento por Empresa')
-plt.xlabel('Nome da Empresa')
-plt.ylabel('Taxa Média de Engajamento (%)')
-plt.tight_layout()
-plt.show()
+if __name__ == "__main__":
+    main()
