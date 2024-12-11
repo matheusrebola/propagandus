@@ -18,6 +18,9 @@ public class PainelService {
   public List<Painel> findAll(){return painelRepository.findAll();}
   public Painel findById(Long id){return painelRepository.findById(id).orElse(null);}
   public boolean existsById(Long id){return painelRepository.existsById(id);}
+  String findByIdentification(String identification){return painelRepository.findByIdentification(identification);}
+  List<EStatus> findByEStatus(EStatus status){return painelRepository.findByStatus(status);}
+  List<String> findByModel(String model){return painelRepository.findByModel(model);}
 
   //view
   public List<Painel> findActivePainelsByCity(String city){return painelRepository.findActivePainelsByCity(city);}

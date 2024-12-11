@@ -16,7 +16,7 @@ import propagandus.locationservice.core.models.enumerators.EPackageType;
 @Table(name = "package_type_table")
 public record PackageType(
   @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "package_type_id") Long id,
-  @Enumerated(EnumType.STRING) @Column(length = 8) @NotNull EPackageType packageType,
+  @Enumerated(EnumType.STRING) @Column(length = 10) @NotNull EPackageType packageType,
   @OneToOne(mappedBy = "packageType") Painel painel
   ) {
 }

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import propagandus.advertisingservice.core.dtos.AdvertisingDto;
 import propagandus.advertisingservice.core.mappers.AdvertisingMapper;
+import propagandus.advertisingservice.core.models.Advertising;
+import propagandus.advertisingservice.core.models.enumerators.EReactionType;
 import propagandus.advertisingservice.core.services.AdvertisingService;
 
 @RestController
@@ -40,4 +42,52 @@ public class AdvertisingController {
     AdvertisingDto dto = advertisingMapper.map(advertisingService.findById(id));
     return new ResponseEntity<>(dto, HttpStatus.OK);
   }
+
+  @GetMapping("{name}")
+  public List<String> findByName(String name){return null;}
+
+  @GetMapping("{company}")
+  public List<String> findByCompany(String company){return null;}
+
+  @GetMapping("{product}")
+  public List<String> findByProduct(String product){return null;}
+
+  @GetMapping("{reaction-type}")
+  public List<Advertising> findByReactionType(EReactionType reactionType){return null;}
+
+  @GetMapping("{positive-reaction-by-company}")
+  public List<Advertising> findPositiveReactionsByCompany(String company){return null;}
+
+  @GetMapping("{city-with-reactions}")
+  public List<Advertising> findByCityWithReactions(String city){return null;}
+
+  @GetMapping("{details-with-reactions}")
+  public List<Object[]> findAdvertisingDetailsWithReactions(String name){return null;}
+
+  @GetMapping("{state-with-reactions}")
+  public List<Advertising> findByStateWithReactions(String state){return null;}
+
+  @GetMapping("{reaction-by-advertising}")
+  public List<Object[]> countReactionsByAdvertising(){return null;}
+
+  @GetMapping("/advertising-with-most-reactions-in-city")
+  public List<Object[]> findAdvertisingWithMostReactionsInCity(String city){return null;}
+
+  @GetMapping("{advertising_with_most_reaction}")
+  public List<Object[]> findAdvertisingWithMostReactionsByType(EReactionType reactionType){return null;}
+
+  @GetMapping("{reaction_product}")
+  public List<Object[]> countReactionsByProduct(){return null;}
+
+  @GetMapping("{painel}")
+  public List<Advertising> findAdvertisingByPainel(Long painelId){return null;}
+
+  @GetMapping("{count_advertising}")
+  public List<Object[]> countReactionsByAdvertisingAndCity(){return null;}
+
+  @GetMapping("{product_most_reaction}")
+  public List<Advertising> findAdvertisingByProductWithReactionsAboveThreshold(String product, Long threshold){return null;}
+  
+  @GetMapping("{locations_painels}")
+  public List<Advertising> findAdvertisingInLocationsWithMorePainels(Byte painelCount){return null;}
 }

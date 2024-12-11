@@ -10,7 +10,8 @@ import propagandus.advertisingservice.core.views.AdvertisingView;
 
 @Repository
 public interface AdvertisingRepository extends JpaRepository<Advertising, Long>, AdvertisingView {
-  String findByName(String name);
+  List<String> findByName(String name);
+  List<String> findByVersion(String version);
   List<String> findByCompany(String company);
   List<String> findByProduct(String product);
 }

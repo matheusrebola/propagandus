@@ -17,7 +17,10 @@ import jakarta.persistence.Table;
 @Table(name = "advertising_table")
 public record Advertising(
   @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "advertising_id") Long id,
-  @Column(name = "advertising_exibition", nullable = false) Byte advertisingExibition,
+  @Column(length = 20, nullable = false, name = "advertising_name") String name,
+  @Column(length = 4, nullable = false, name = "advertising_version") String version,
+  @Column(length = 50, nullable = false) String company,
+  @Column(length = 20, nullable = false) String product,
   @OneToMany(mappedBy = "advertising", cascade = CascadeType.ALL, orphanRemoval = true) List<Reaction> reactions,
   @OneToMany(mappedBy = "advertising", cascade = CascadeType.ALL, orphanRemoval = true) List<PeriodRegister> advertisingTime,
   @ManyToOne @JoinColumn(name = "painel_id", nullable = false) Painel painel

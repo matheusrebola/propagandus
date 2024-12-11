@@ -22,8 +22,8 @@ import propagandus.periodregisterservice.core.models.enumerators.EStatus;
 @Table(name = "painel_table")
 public record Painel(
   @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "painel_id") Long id,
-  @Column(length = 10) @NotNull String identification,
-  @Enumerated(EnumType.STRING) @Column(length = 4) @NotNull EStatus status,
+  @Column(length = 50) @NotNull String identification,
+  @Enumerated(EnumType.STRING) @Column(length = 6, name = "painel_status") @NotNull EStatus status,
   @Column(length = 20) @NotNull String model,
   @ManyToOne @JoinColumn(name="location_id", nullable=false) Location location,
   @OneToMany(mappedBy = "painel", cascade = CascadeType.ALL, orphanRemoval = true) List<Advertising> advertisings,
