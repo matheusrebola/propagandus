@@ -23,13 +23,13 @@ import propagandus.attentionservice.core.models.enumerators.EPeriodOfTheDay;
 public record PeriodRegister(
   @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "period_register_id") Long id,
   @NotNull Byte day,
-  @Enumerated(EnumType.STRING) @Column(length = 3) @NotNull EDayWeek dayWeek,
+  @Enumerated(EnumType.STRING) @Column(length = 3, name = "day_week") @NotNull EDayWeek dayWeek,
   @NotNull Byte hour,
   @NotNull Byte minute,
-  @Enumerated(EnumType.STRING) @Column(length = 5) @NotNull EPeriodOfTheDay periodOfTheDay,
+  @Enumerated(EnumType.STRING) @Column(length = 5, name = "period_of_the_day") @NotNull EPeriodOfTheDay periodOfTheDay,
   @Enumerated(EnumType.STRING) @Column(length = 3) @NotNull EMonth month,
   @Column(length = 4) @NotNull String year,
-  @NotNull LocalDateTime registerTime,
+  @NotNull @Column(name = "register_time") LocalDateTime registerTime,
   @OneToOne(mappedBy = "attentionTime") Attention attention,
   @OneToOne(mappedBy = "reactionTime") Reaction reaction,
   @ManyToOne @JoinColumn(name="advertising_id", nullable=false) Advertising advertising
