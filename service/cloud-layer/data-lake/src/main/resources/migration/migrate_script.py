@@ -2,7 +2,8 @@ import pymysql
 
 # Configurações do Banco de Origem
 source_db = {
-    'host': 'localhost:53300',
+    'host': 'localhost',
+    'port': 53300,
     'user': 'propagandus',
     'password': 'propagandus',
     'database': 'data-lake'
@@ -12,7 +13,8 @@ source_db = {
 destinations = {
     'analytics-service': {
         'db_config': {
-            'host': 'localhost:43350',
+            'host': 'localhost',
+            'port': 43350,
             'user': 'propagandus',
             'password': 'propagandus',
             'database': 'data-analytics'
@@ -21,10 +23,11 @@ destinations = {
     },
     'backup-service': {
         'db_config': {
-            'host': 'localhost:53301',
+            'host': 'localhost',
+            'port': 53301,
             'user': 'propagandus',
             'password': 'propagandus',
-            'database': 'data-analytics'
+            'database': 'data-backup'
         },
         'tables': ['attention_table','painel_table','reaction_table', 'date_time_table', 'advertising_table', 'location_table']
     }
