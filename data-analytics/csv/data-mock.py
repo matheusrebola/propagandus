@@ -4,10 +4,10 @@ import csv
 # Configurações de conexão com o MariaDB
 DB_CONFIG = {
     "host": "localhost",
-    "port": 53300,
+    "port": 43350,
     "user": "propagandus",
     "password": "propagandus",
-    "database": "data-lake"
+    "database": "data-analytics"
 }
 
 # Mapear arquivos .csv para as respectivas tabelas e colunas
