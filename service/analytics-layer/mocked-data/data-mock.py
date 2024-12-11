@@ -13,31 +13,31 @@ DB_CONFIG = {
 # Mapear arquivos .csv para as respectivas tabelas e colunas
 CSV_FILES = {
     "package_type": {
-        "file": "package_type.csv",
+        "file": "csv/package_type.csv",
         "query": "INSERT INTO package_type_table (package_type_id, package_type) VALUES (%s, %s)"
     },
     "location": {
-        "file": "location.csv",
+        "file": "csv/location.csv",
         "query": "INSERT INTO location_table (location_id, zip_code, public_place, street_number, location_type, city, district, country) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
     },
     "painel": {
-        "file": "painel.csv",
+        "file": "csv/painel.csv",
         "query": "INSERT INTO painel_table (painel_id, identification, painel_status, model, location_id, package_type_id) VALUES (%s, %s, %s, %s, %s, %s)"
     },
     "advertising": {
-        "file": "advertising.csv",
+        "file": "csv/advertising.csv",
         "query": "INSERT INTO advertising_table (advertising_id, advertising_name, advertising_version, company, product, painel_id) VALUES (%s, %s, %s, %s, %s, %s)"
     },
     "period_register": {
-        "file": "date_time.csv",
+        "file": "csv/date_time.csv",
         "query": "INSERT INTO date_time_table (period_register_id, day, day_week, hour, minute, period_of_the_day, month, year, register_time, advertising_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     },
     "attention": {
-        "file": "attention.csv",
+        "file": "csv/attention.csv",
         "query": "INSERT INTO attention_table (attention_id, attention, attention_level, look_count, people_count, attention_time_id, painel_id) VALUES (%s, %s, %s, %s, %s, %s, %s)"
     },
     "reaction": {
-        "file": "reaction.csv",
+        "file": "csv/reaction.csv",
         "query": "INSERT INTO reaction_table (reaction_id, reaction_type, period_time_id, advertising_id, location_id, painel_id) VALUES (%s, %s, %s, %s, %s, %s)"
     }
 }
