@@ -13,7 +13,7 @@ public interface LocationView {
   List<Object[]> findLocationsWithMostReactions();
 
   //Listar todas as localizações com propagandas associadas
-  @Query("SELECT DISTINCT l FROM location l JOIN l.paineis p WHERE p IS NOT NULL")
+  @Query("SELECT DISTINCT l FROM location l JOIN l.painels p WHERE p IS NOT NULL")
   List<Location> findLocationsWithAdvertisements();
 
   //Buscar todas as localizações em uma cidade específica com reações positivas
@@ -25,7 +25,7 @@ public interface LocationView {
   List<Location> findLocationsWithReactions();
 
   //Contar quantas propagandas existem em cada estado
-  @Query("SELECT l.state, COUNT(p) FROM location l JOIN l.paineis p GROUP BY l.state")
+  @Query("SELECT l.state, COUNT(p) FROM location l JOIN l.painels p GROUP BY l.state")
   List<Object[]> countAdvertisementsByState();
 
   //Buscar localizações de um país específico que possuem reações negativas
@@ -33,7 +33,7 @@ public interface LocationView {
   List<Location> findLocationsByCountryWithNegativeReactions(@Param("country") String country);
 
   //Listar todas as localizações com propagandas de uma empresa específica
-  @Query("SELECT DISTINCT l FROM location l JOIN l.paineis p JOIN p.advertising a WHERE a.company = :company")
+  @Query("SELECT DISTINCT l FROM location l JOIN l.painels p JOIN p.advertisings a WHERE a.company = :company")
   List<Location> findLocationsWithAdvertisementsByCompany(@Param("company") String company);
 
   //Contar reações por tipo de reação em uma cidade específica
@@ -41,7 +41,7 @@ public interface LocationView {
   List<Object[]> countReactionsByTypeInCity(@Param("city") String city);
 
   //Obter detalhes das localizações com propagandas e reações relacionadas
-  @Query("SELECT l, p, r FROM location l LEFT JOIN l.paineis p LEFT JOIN l.reactions r WHERE r IS NOT NULL OR p IS NOT NULL")
+  @Query("SELECT l, p, r FROM location l LEFT JOIN l.painels p LEFT JOIN l.reactions r WHERE r IS NOT NULL OR p IS NOT NULL")
   List<Object[]> findLocationsWithAdvertisementsAndReactions();
 
   //Buscar todas as localizações que possuem reações para um produto específico
@@ -57,7 +57,7 @@ public interface LocationView {
   List<Location> findLocationsWithMoreThanXReactionsForAdvertising(@Param("advertisingName") String advertisingName, @Param("reactionCount") Long reactionCount);
 
   //Buscar todas as localizações com propagandas e reações em um estado específico
-  @Query("SELECT DISTINCT l FROM location l JOIN l.paineis p JOIN l.reactions r WHERE l.state = :state")
+  @Query("SELECT DISTINCT l FROM location l JOIN l.painels p JOIN l.reactions r WHERE l.state = :state")
   List<Location> findLocationsWithAdvertisementsAndReactionsByState(@Param("state") String state);
 
   //Contar as reações positivas por localização e ordená-las por cidade
