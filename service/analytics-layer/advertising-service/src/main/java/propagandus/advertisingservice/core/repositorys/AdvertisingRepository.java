@@ -72,4 +72,10 @@ public interface AdvertisingRepository extends JpaRepository<Advertising,Long>{
   //Listar propagandas que geraram reações em locais com mais de N painéis
   @Query("SELECT a FROM advertising a JOIN a.reactions r JOIN r.location l WHERE SIZE(l.painels) > :painelCount")
   List<Advertising> findAdvertisingInLocationsWithMorePainels(@Param("painelCount") Byte painelCount);
+
+  //@Query("SELECT pr.period_of_the_day, COUNT(DISTINCT pr.advertising_id) AS total_advertisings FROM date_time_table pr GROUP BY pr.period_of_the_day")
+  //List<Object[]> totalAdvertisingyPeriodOfTheDay();
+
+  //@Query("SELECT a.advertising_id AS id, a.advertising_name AS name, a.company, a.product, COUNT(DISTINCT r.reaction_id) AS total_reactions, COUNT(DISTINCT pr.period_register_id) AS total_periods FROM advertising_table a LEFT JOIN reaction_table r ON r.advertising_id = a.advertising_id LEFT JOIN date_time_table pr ON pr.advertising_id = a.advertising_id GROUP BY a.advertising_id, a.advertising_name, a.company, a.product")
+  //List<Object[]> advertisingsWithReactionInPeriod();
 }

@@ -75,4 +75,27 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
   //Buscar todas as localizações que não possuem reações
   @Query("SELECT l FROM location l WHERE l.reactions IS EMPTY")
   List<Location> findLocationsWithoutReactions();
+
+  /*@Query("""
+    SELECT 
+        a.advertising_name AS advertising,
+        l.city,
+        l.district,
+        COUNT(r.reaction_id) AS total_reactions
+    FROM reaction_table r
+    LEFT JOIN advertising_table a ON a.advertising_id = r.advertising_id
+    LEFT JOIN location_table l ON l.location_id = r.location_id
+    GROUP BY a.advertising_name, l.city, l.district;
+""") */
+  /*@Query("""
+    SELECT 
+        l.location_id AS id,
+        l.city,
+        l.district,
+        r.reaction_type,
+        COUNT(r.reaction_id) AS total_reactions
+    FROM location_table l
+    LEFT JOIN reaction_table r ON r.location_id = l.location_id
+    GROUP BY l.location_id, l.city, l.district, r.reaction_type;
+""") */
 }

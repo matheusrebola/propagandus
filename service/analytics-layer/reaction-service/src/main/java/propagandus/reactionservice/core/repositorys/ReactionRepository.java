@@ -55,4 +55,39 @@ public interface ReactionRepository extends JpaRepository<Reaction, Long> {
   //Obter todas as reações associadas a painéis em uma localização específica durante um período do dia
   @Query("SELECT r FROM reaction r JOIN r.location l JOIN period_register p ON r.id = p.id WHERE l.city = :city AND p.periodOfTheDay = :period")
   List<Reaction> findReactionsByLocationAndPeriod(@Param("city") String city, @Param("period") EPeriodOfTheDay period);
+
+  /*@Query"""
+    SELECT 
+        a.advertising_name AS advertising,
+        AVG(r.reaction_type) AS avg_reaction_type
+    FROM reaction_table r
+    LEFT JOIN advertising_table a ON a.advertising_id = r.advertising_id
+    GROUP BY a.advertising_name
+""") */
+  /*@Query("""
+    SELECT 
+        l.location_type,
+        r.reaction_type,
+        COUNT(r.reaction_id) AS total_reactions
+    FROM reaction_table r
+    LEFT JOIN location_table l ON l.location_id = r.location_id
+    GROUP BY l.location_type, r.reaction_type
+""") */
+  /*@Query("""
+    SELECT 
+        p.painel_status AS status,
+        COUNT(r.reaction_id) AS total_reactions
+    FROM reaction_table r
+    LEFT JOIN painel_table p ON p.painel_id = r.painel_id
+    GROUP BY p.painel_status
+""") */
+  /*@Query"""
+    SELECT 
+        r.reaction_type,
+        pr.period_of_the_day,
+        COUNT(r.reaction_id) AS total_reactions
+    FROM reaction_table r
+    LEFT JOIN date_time_table pr ON pr.period_register_id = r.period_time_id
+    GROUP BY r.reaction_type, pr.period_of_the_day
+""") */
 }

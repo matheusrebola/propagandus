@@ -71,4 +71,33 @@ public interface PainelRepository extends JpaRepository<Painel, Long> {
   //Listar painéis mais interativos por hora
   @Query("SELECT p, SUM(a.lookCount) AS totalInteractions FROM painel p JOIN attention a ON p.id = a.painel.id JOIN period_register pr ON pr.id = a.id WHERE pr.hour = :hour GROUP BY p ORDER BY totalInteractions DESC")
   List<Object[]> findMostInteractivePainelsByHour(@Param("hour") Byte hour);
+
+  /*@Query("""
+    SELECT 
+        l.city,
+        COUNT(p.painel_id) AS total_active_painels
+    FROM painel_table p
+    LEFT JOIN location_table l ON l.location_id = p.location_id
+    WHERE p.painel_status = 'ON'
+    GROUP BY l.city
+""") */
+  /*@Query("""
+    SELECT 
+        pt.package_type,
+        COUNT(p.painel_id) AS total_painels
+    FROM package_type_table pt
+    LEFT JOIN painel_table p ON p.package_type_id = pt.package_type_id
+    GROUP BY pt.package_type
+""") */
+  /*@Query"""
+    SELECT 
+        p.painel_id AS id,
+        p.identification AS painel_identification,
+        COUNT(DISTINCT a.advertising_id) AS total_advertisings,
+        COUNT(r.reaction_id) AS total_reactions
+    FROM painel_table p
+    LEFT JOIN advertising_table a ON a.painel_id = p.painel_id
+    LEFT JOIN reaction_table r ON r.painel_id = p.painel_id
+    GROUP BY p.painel_id, p.identification
+""" */
 }

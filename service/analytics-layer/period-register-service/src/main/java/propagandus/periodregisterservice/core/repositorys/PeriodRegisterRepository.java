@@ -80,5 +80,29 @@ public interface PeriodRegisterRepository extends JpaRepository<PeriodRegister, 
 
   //Obter os registros mais recentes
   @Query("SELECT pr FROM period_register pr ORDER BY pr.registerTime DESC")
-  List<PeriodRegister> findMostRecentRegisters(Pageable pageable); 
+  List<PeriodRegister> findMostRecentRegisters(Pageable pageable);
+  
+  /*@Query("""
+    SELECT 
+        pr.hour,
+        COUNT(r.reaction_id) AS total_interactions
+    FROM reaction_table r
+    LEFT JOIN date_time_table pr ON pr.period_register_id = r.period_time_id
+    GROUP BY pr.hour
+""") */
+  /*@Query("""
+    SELECT 
+        pr.month,
+        COUNT(pr.period_register_id) AS total_registers
+    FROM date_time_table pr
+    GROUP BY pr.month
+""") */
+  /*@Query("""
+    SELECT 
+        pr.day_week,
+        COUNT(r.reaction_id) AS total_reactions
+    FROM reaction_table r
+    LEFT JOIN date_time_table pr ON pr.period_register_id = r.period_time_id
+    GROUP BY pr.day_week
+""") */
 }

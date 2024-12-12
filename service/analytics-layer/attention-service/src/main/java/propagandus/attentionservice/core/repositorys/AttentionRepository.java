@@ -101,5 +101,43 @@ public interface AttentionRepository extends JpaRepository<Attention, Long> {
   //Buscar os painéis com maior quantidade de interações em um dia da semana específico
   @Query("SELECT a.painel, COUNT(a) AS interactionCount FROM attention a JOIN period_register pr ON a.painel.id = pr.id WHERE pr.dayWeek = :dayWeek GROUP BY a.painel ORDER BY interactionCount DESC")
   List<Object[]> findPainelsWithMostInteractionsByDayOfWeek(@Param("dayWeek") EDayWeek dayWeek);
+
+  /*@Query("""
+    SELECT 
+        p.painel_id AS id,
+        p.identification AS painel_identification,
+        AVG(a.attention_level) AS avg_attention_level,
+        SUM(a.people_count) AS total_people
+    FROM painel_table p
+    LEFT JOIN attention_table a ON a.painel_id = p.painel_id
+    GROUP BY p.painel_id, p.identification
+""")*/
+  /*@Query("""
+    SELECT 
+        l.city,
+        AVG(a.attention_level) AS avg_attention_level,
+        SUM(a.people_count) AS total_people
+    FROM attention_table a
+    LEFT JOIN painel_table p ON p.painel_id = a.painel_id
+    LEFT JOIN location_table l ON l.location_id = p.location_id
+    GROUP BY l.city
+""") */
+  /*@Query("""
+    SELECT 
+        l.city,
+        AVG(a.attention_level) AS avg_attention_level,
+        SUM(a.people_count) AS total_people
+    FROM attention_table a
+    LEFT JOIN painel_table p ON p.painel_id = a.painel_id
+    LEFT JOIN location_table l ON l.location_id = p.location_id
+    GROUP BY l.city
+""") */
+  /*@Query("""
+    SELECT 
+        a.attention,
+        SUM(a.people_count) AS total_people
+    FROM attention_table a
+    GROUP BY a.attention
+""") */
 }
 
