@@ -16,13 +16,6 @@ import propagandus.reactionservice.core.repositorys.ReactionRepository;
 public class ReactionService {
   private final ReactionRepository reactionRepository;
 
-  //repository
-  public List<Reaction> findAll(){return reactionRepository.findAll();}
-  public Reaction findById(Long id){return reactionRepository.findById(id).orElse(null);}
-  public boolean existsById(Long id){return reactionRepository.existsById(id);}
-  List<EReactionType> findByReactionType(EReactionType reactionType){return reactionRepository.findByReactionType(reactionType);}
-
-  //view
   public List<Reaction> findByCityAndReactionType(String city, EReactionType reactionType){return reactionRepository.findByCityAndReactionType(city, reactionType);}
   public List<Object[]> countReactionsByAdvertising(){return reactionRepository.countReactionsByAdvertising();}
   public List<Reaction> findByZipCode(String zipCode){return reactionRepository.findByZipCode(zipCode);}
