@@ -14,4 +14,4 @@ spring:
     show-sql: true
   data:
     mongodb:
-      uri: mongodb://advertising:advertising@mongodb-advertising:47050/advertising-db
+      uri: mongodb://analytics:analytics@mongodb-analytics:47050/analytics-db

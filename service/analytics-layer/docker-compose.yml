@@ -2,93 +2,18 @@ version: "3.9"
 
 services:
   # MongoDB Services
-  mongodb-advertising:
+  mongodb-analytics:
     image: mongo:latest
-    container_name: mongodb-advertising
+    container_name: mongodb-analytics
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: advertising
-      MONGO_INITDB_ROOT_PASSWORD: advertising
-      MONGO_INITDB_DATABASE: advertising-db
+      MONGO_INITDB_ROOT_USERNAME: analytics
+      MONGO_INITDB_ROOT_PASSWORD: analytics
+      MONGO_INITDB_DATABASE: analytics-db
     ports:
       - "47050:27017"
     volumes:
-      - mongo_advertising_data:/data/db
-    networks:
-      - propagandus
-  
-  mongodb-attention:
-    image: mongo:latest
-    container_name: mongodb-attention
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: attention
-      MONGO_INITDB_ROOT_PASSWORD: attention
-      MONGO_INITDB_DATABASE: attention-db
-    ports:
-      - "47051:27017"
-    volumes:
-      - mongo_attention_data:/data/db
-    networks:
-      - propagandus
-
-  mongodb-location:
-    image: mongo:latest
-    container_name: mongodb-location
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: location
-      MONGO_INITDB_ROOT_PASSWORD: location
-      MONGO_INITDB_DATABASE: location-db
-    ports:
-      - "47052:27017"
-    volumes:
-      - mongo_location_data:/data/db
-    networks:
-      - propagandus
-
-  mongodb-painel:
-    image: mongo:latest
-    container_name: mongodb-painel
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: painel
-      MONGO_INITDB_ROOT_PASSWORD: painel
-      MONGO_INITDB_DATABASE: painel-db
-    ports:
-      - "47053:27017"
-    volumes:
-      - mongo_painel_data:/data/db
-    networks:
-      - propagandus
-
-  mongodb-period-register:
-    image: mongo:latest
-    container_name: mongodb-period-register
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: period-register
-      MONGO_INITDB_ROOT_PASSWORD: period-register
-      MONGO_INITDB_DATABASE: period-db
-    ports:
-      - "47054:27017"
-    volumes:
-      - mongo_period_register_data:/data/db
-    networks:
-      - propagandus
-
-  mongodb-reaction:
-    image: mongo:latest
-    container_name: mongodb-reaction
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: reaction
-      MONGO_INITDB_ROOT_PASSWORD: reaction
-      MONGO_INITDB_DATABASE: reaction-db
-    ports:
-      - "47055:27017"
-    volumes:
-      - mongo_reaction_data:/data/db
+      - mongo_analytics_data:/data/db
     networks:
       - propagandus
 
@@ -110,13 +35,7 @@ services:
       - propagandus
 
 volumes:
-  mongo_advertising_data:
-  mongo_attention_data:
-  mongo_location_data:
-  mongo_order_data:
-  mongo_painel_data:
-  mongo_period_register_data:
-  mongo_reaction_data:
+  mongo_analytics_data:
   mariadb_analytics_data:
 
 networks:
