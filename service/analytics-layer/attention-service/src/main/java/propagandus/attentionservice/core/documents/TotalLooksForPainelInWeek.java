@@ -1,5 +1,10 @@
 package propagandus.attentionservice.core.documents;
 
-public record TotalLooksForPainelInWeek() {
+import jakarta.persistence.Id;
+
+public record TotalLooksForPainelInWeek(
+  @Id Long id,
+  Integer totalLooks
+) {
 
 }

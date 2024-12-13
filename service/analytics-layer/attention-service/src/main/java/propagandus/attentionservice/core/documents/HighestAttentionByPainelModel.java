@@ -1,5 +1,11 @@
 package propagandus.attentionservice.core.documents;
 
-public record HighestAttentionByPainelModel() {
+import jakarta.persistence.Id;
+
+public record HighestAttentionByPainelModel(
+  @Id Long id,
+  String category, // Pode ser modelo ou estado
+  Double maxAttention
+) {
 
 }

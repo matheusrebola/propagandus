@@ -1,5 +1,13 @@
 package propagandus.attentionservice.core.documents;
 
-public record LooksByCityAndPeriod() {
+import jakarta.persistence.Id;
+import propagandus.attentionservice.core.models.enumerators.EPeriodOfTheDay;
+
+public record LooksByCityAndPeriod(
+  @Id Long id,
+  String city,
+  EPeriodOfTheDay period,
+  Long totalLooks
+) {
 
 }

@@ -1,5 +1,12 @@
 package propagandus.attentionservice.core.documents;
 
-public record AverageLooksByPainelAtHour() {
+import jakarta.persistence.Id;
+
+public record AverageLooksByPainelAtHour(
+  @Id Long id,
+  Long painelId,
+  String location,
+  Double avgAttention
+) {
 
 }

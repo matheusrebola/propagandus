@@ -1,5 +1,12 @@
 package propagandus.attentionservice.core.documents;
 
-public record AverageAttentionByPainelInCity() {
+import jakarta.persistence.Id;
+
+public record AverageAttentionByPainelInCity(
+  @Id Long id,
+  Long painelId,
+  String location,
+  Double avgAttention
+) {
 
 }
