@@ -67,23 +67,14 @@ public class AdvertisingController {
   @GetMapping("{state-with-reactions}")
   public List<Advertising> findByStateWithReactions(String state){return null;}
 
-  @GetMapping("{reaction-by-advertising}")
-  public List<Object[]> countReactionsByAdvertising(){return null;}
-
   @GetMapping("/advertising-with-most-reactions-in-city")
   public List<Object[]> findAdvertisingWithMostReactionsInCity(String city){return null;}
 
   @GetMapping("{advertising_with_most_reaction}")
   public List<Object[]> findAdvertisingWithMostReactionsByType(EReactionType reactionType){return null;}
 
-  @GetMapping("{reaction_product}")
-  public List<Object[]> countReactionsByProduct(){return null;}
-
   @GetMapping("{painel}")
   public List<Advertising> findAdvertisingByPainel(Long painelId){return null;}
-
-  @GetMapping("{count_advertising}")
-  public List<Object[]> countReactionsByAdvertisingAndCity(){return null;}
 
   @GetMapping("{product_most_reaction}")
   public List<Advertising> findAdvertisingByProductWithReactionsAboveThreshold(String product, Long threshold){return null;}

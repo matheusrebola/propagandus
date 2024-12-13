@@ -19,8 +19,6 @@ import propagandus.attentionservice.core.models.enumerators.EPeriodOfTheDay;
 @RequiredArgsConstructor
 public class AttentionController {
   
-
-  public List<Attention> findAll(){return null;}
   public Attention findById(Long id){return null;}
   List<EAttentionLevel> findByAttention(EAttentionLevel attention){return null;}
   public List<Byte> findByAttentionLevel(Byte attention){return null;}
@@ -32,16 +30,10 @@ public class AttentionController {
   public List<Object[]> findPainelsWithHighestAttentionByMonth(EMonth month){return null;}
   public List<Object[]> findAverageAttentionByPainelInCity(String city){return null;}
   public List<Object[]> findPainelsWithMostPeopleInPeriod(EPeriodOfTheDay period){return null;}
-  public List<Object[]> findAverageAttentionByCity(){return null;}
-  public List<Object[]> findPainelsWithMostLooks(){return null;}
-  public List<Object[]> findHighestAttentionByPainelModel(){return null;}
   public Long findTotalLooksForPainelInWeek(Long painelId){return null;}
-  public List<Object[]> findPainelsWithMostPeopleAtNight(){return null;}
-  public List<Object[]> findHighestAttentionByState(){return null;}
   public List<Object[]> findInteractionCountByPainelAndMonth(EMonth month){return null;}
   public List<Object[]> findAveragePeopleCountByCity(String city){return null;}
   public List<Object[]> findPainelsWithMostInteractionsAtHour(Byte hour){return null;}
-  public List<Object[]> countLooksByCityAndPeriod(){return null;}
   public List<Object[]> findMostViewedPainelsByDate(LocalDateTime date){return null;}
   public List<Object[]> findHighestAttentionLevelByPainelInState(String state){return null;}
   public List<Object[]> findAverageLooksByPainelAtHour(Byte hour){return null;}
