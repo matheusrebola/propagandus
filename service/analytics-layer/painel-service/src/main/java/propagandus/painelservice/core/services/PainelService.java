@@ -28,7 +28,6 @@ public class PainelService {
   public List<Painel> findByStatusAndCity(EStatus status, String city){return painelRepository.findByStatusAndCity(status, city);}
   public List<Object[]> countPainelsByState(){return painelRepository.countPainelsByState();}
   public List<Object[]> findPainelsWithMostInteractions(){return painelRepository.findPainelsWithMostInteractions();}
-  public List<Painel> findActivePainelsByModel(String model){return painelRepository.findActivePainelsByModel(model);}
   public List<Object[]> countPainelsByCityAndStatus(){return painelRepository.countPainelsByCityAndStatus();}
   public List<Painel> findPainelsWithAttentionAboveLevel(Byte level){return painelRepository.findPainelsWithAttentionAboveLevel(level);}
   public List<Object[]> findModelsWithMostPeopleRegistered(){return painelRepository.findModelsWithMostPeopleRegistered();}
