@@ -1,13 +1,13 @@
 package propagandus.locationservice.core.dtos;
 
-public record LocationDto(
+public record LocationDTO(
   Long locationId,
   String zipCode,
   String publicPlace,
   String number,
   String city,
   String state,
-  String counry,
+  String country,
   Long reactionId,
   Long painelId
 ) {
