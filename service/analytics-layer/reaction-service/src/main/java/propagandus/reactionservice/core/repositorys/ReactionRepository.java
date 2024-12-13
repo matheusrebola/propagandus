@@ -14,6 +14,7 @@ import propagandus.reactionservice.core.models.enumerators.EReactionType;
 
 @Repository
 public interface ReactionRepository extends JpaRepository<Reaction, Long> {
+  List<EReactionType> findByReactionType(EReactionType reactionType);
 
   //Encontrar reações por cidade e tipo de reação
   @Query("SELECT r FROM reaction r WHERE r.location.city = :city AND r.reactionType = :reactionType")
