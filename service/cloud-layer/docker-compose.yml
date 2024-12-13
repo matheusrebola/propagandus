@@ -1,5 +1,5 @@
 services:
-  mariadb-analytics:
+  mariadb-lake:
     image: mariadb:latest
     container_name: data-lake
     restart: always
