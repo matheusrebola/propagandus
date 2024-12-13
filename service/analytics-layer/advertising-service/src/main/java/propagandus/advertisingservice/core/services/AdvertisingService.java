@@ -15,7 +15,6 @@ public class AdvertisingService {
   private final AdvertisingRepository advertisingRepository;
 
   //repository
-  public List<Advertising> findAll(){return advertisingRepository.findAll();}
   public Advertising findById(Long id){return advertisingRepository.findById(id).orElse(null);}
   public boolean exists(Long id){return advertisingRepository.existsById(id);}
   public List<String> findByName(String name){return advertisingRepository.findByName(name);}
