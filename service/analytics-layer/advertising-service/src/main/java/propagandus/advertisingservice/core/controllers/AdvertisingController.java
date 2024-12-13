@@ -43,42 +43,27 @@ public class AdvertisingController {
     return new ResponseEntity<>(dto, HttpStatus.OK);
   }
 
-  @GetMapping("{name}")
-  public List<String> findByName(String name){return null;}
+  @GetMapping("/reaction/{company}")
+  public List<Advertising> findPositiveReactionsByCompany(@PathVariable String company){return null;}
 
-  @GetMapping("{company}")
-  public List<String> findByCompany(String company){return null;}
+  @GetMapping("/reaction/{city}")
+  public List<Advertising> findByCityWithReactions(@PathVariable String city){return null;}
 
-  @GetMapping("{product}")
-  public List<String> findByProduct(String product){return null;}
+  @GetMapping("/reaction/{name}")
+  public List<Object[]> findAdvertisingDetailsWithReactions(@PathVariable String name){return null;}
 
-  @GetMapping("{reaction-type}")
-  public List<Advertising> findByReactionType(EReactionType reactionType){return null;}
+  @GetMapping("/location/{state}")
+  public List<Advertising> findByStateWithReactions(@PathVariable String state){return null;}
 
-  @GetMapping("{positive-reaction-by-company}")
-  public List<Advertising> findPositiveReactionsByCompany(String company){return null;}
+  @GetMapping("/location/{city}")
+  public List<Object[]> findAdvertisingWithMostReactionsInCity(@PathVariable String city){return null;}
 
-  @GetMapping("{city-with-reactions}")
-  public List<Advertising> findByCityWithReactions(String city){return null;}
+  @GetMapping("/reaction/{reaction-type}")
+  public List<Object[]> findAdvertisingWithMostReactionsByType(@PathVariable EReactionType reactionType){return null;}
 
-  @GetMapping("{details-with-reactions}")
-  public List<Object[]> findAdvertisingDetailsWithReactions(String name){return null;}
-
-  @GetMapping("{state-with-reactions}")
-  public List<Advertising> findByStateWithReactions(String state){return null;}
-
-  @GetMapping("/advertising-with-most-reactions-in-city")
-  public List<Object[]> findAdvertisingWithMostReactionsInCity(String city){return null;}
-
-  @GetMapping("{advertising_with_most_reaction}")
-  public List<Object[]> findAdvertisingWithMostReactionsByType(EReactionType reactionType){return null;}
-
-  @GetMapping("{painel}")
-  public List<Advertising> findAdvertisingByPainel(Long painelId){return null;}
-
-  @GetMapping("{product_most_reaction}")
-  public List<Advertising> findAdvertisingByProductWithReactionsAboveThreshold(String product, Long threshold){return null;}
+  @GetMapping("/painel/{painel-id}")
+  public List<Advertising> findAdvertisingByPainel(@PathVariable Long painelId){return null;}
   
-  @GetMapping("{locations_painels}")
-  public List<Advertising> findAdvertisingInLocationsWithMorePainels(Byte painelCount){return null;}
+  @GetMapping("/painel/{painel-count}")
+  public List<Advertising> findAdvertisingInLocationsWithMorePainels(@PathVariable Byte painelCount){return null;}
 }
