@@ -5,12 +5,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.persistence.Id;
 
 @Document
-public record AdvertisingWithMostReactionsInCity(
+public record StatetWithReactions(
   @Id Long id,
   Long advertisingId,
-  String advertisingName,
-  String city,
-  Long totalReactions
+  String name,
+  String version,
+  String company,
+  String product,
+  Long reactionId,
+  Long periodRegisterId,
+  Long painelId
 ) {
 
 }
