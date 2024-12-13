@@ -44,10 +44,6 @@ public interface PainelRepository extends JpaRepository<Painel, Long> {
   @Query("SELECT p, COUNT(a) AS interactionCount FROM painel p JOIN attention a ON p.id = a.painel.id GROUP BY p ORDER BY interactionCount DESC")
   List<Object[]> findPainelsWithMostInteractions();
 
-  //Buscar painéis de um modelo específico com status ativo
-  @Query("SELECT p FROM painel p WHERE p.model = :model AND p.status = 'ACTIVE'")
-  List<Painel> findActivePainelsByModel(@Param("model") String model);
-
   //Listar painéis por cidade e status
   @Query("SELECT p.location.city, p.status, COUNT(p) AS painelCount FROM painel p GROUP BY p.location.city, p.status ORDER BY painelCount DESC")
   List<Object[]> countPainelsByCityAndStatus();
