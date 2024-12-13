@@ -1,5 +1,12 @@
 package propagandus.periodregisterservice.core.documents;
 
-public record RegistersByDayWeekAndPeriod() {
+import jakarta.persistence.Id;
+
+public record RegistersByDayWeekAndPeriod(
+  @Id Long id,
+  String dayWeek,
+  String periodOfTheDay,
+  Long registerCount
+) {
 
 }

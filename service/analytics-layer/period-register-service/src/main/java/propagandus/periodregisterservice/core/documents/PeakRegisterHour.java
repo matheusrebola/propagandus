@@ -1,5 +1,11 @@
 package propagandus.periodregisterservice.core.documents;
 
-public record PeakRegisterHour() {
+import jakarta.persistence.Id;
+
+public record PeakRegisterHour(
+  @Id Long id,
+  Byte hour,
+  Long registerCount
+) {
 
 }

@@ -1,5 +1,13 @@
 package propagandus.periodregisterservice.core.documents;
 
-public record RegistersByPeriodAndMonth() {
+import jakarta.persistence.Id;
+import propagandus.periodregisterservice.core.models.enumerators.EMonth;
+
+public record RegistersByPeriodAndMonth(
+  @Id Long id,
+  String periodOfTheDay,
+  EMonth month,
+  Long registerCount
+) {
 
 }

@@ -1,5 +1,11 @@
 package propagandus.periodregisterservice.core.documents;
 
-public record DayWithMostRegistersInMonth() {
+import jakarta.persistence.Id;
+
+public record DayWithMostRegistersInMonth(
+  @Id Long id,
+  Byte day,
+  Long registerCount
+) {
 
 }

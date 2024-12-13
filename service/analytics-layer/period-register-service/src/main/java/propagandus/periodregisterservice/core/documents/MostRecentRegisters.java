@@ -10,7 +10,7 @@ import propagandus.periodregisterservice.core.models.enumerators.EMonth;
 import propagandus.periodregisterservice.core.models.enumerators.EPeriodOfTheDay;
 
 @Document
-public record MonthOrderedByTime(
+public record MostRecentRegisters(
   @Id Long id,
   Long periodRegisterId,
   Byte day,

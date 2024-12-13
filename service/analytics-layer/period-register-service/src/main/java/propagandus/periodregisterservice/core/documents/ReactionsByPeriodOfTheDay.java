@@ -1,5 +1,11 @@
 package propagandus.periodregisterservice.core.documents;
 
-public record ReactionsByPeriodOfTheDay() {
+import jakarta.persistence.Id;
+
+public record ReactionsByPeriodOfTheDay(
+  @Id Long id,
+  String periodOfTheDay,
+  Long reactionCount
+) {
 
 }
