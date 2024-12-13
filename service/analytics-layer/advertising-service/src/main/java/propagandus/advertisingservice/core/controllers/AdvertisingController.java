@@ -16,16 +16,16 @@ import propagandus.advertisingservice.core.models.enumerators.EReactionType;
 public class AdvertisingController {
   
   @GetMapping("{name}")
-  List<String> findByName(String name){return null;}
+  List<String> findByName(@PathVariable String name){return null;}
   
   @GetMapping("{version}")
-  List<String> findByVersion(String version){return null;}
+  List<String> findByVersion(@PathVariable String version){return null;}
 
   @GetMapping("{company}")
-  List<String> findByCompany(String company){return null;}
+  List<String> findByCompany(@PathVariable String company){return null;}
 
   @GetMapping("{product}")
-  List<String> findByProduct(String product){return null;}
+  List<String> findByProduct(@PathVariable String product){return null;}
 
   @GetMapping("/reaction/{company}")
   public List<Advertising> findPositiveReactionsByCompany(@PathVariable String company){return null;}
