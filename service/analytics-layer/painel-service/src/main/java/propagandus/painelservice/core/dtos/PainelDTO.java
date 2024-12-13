@@ -2,7 +2,7 @@ package propagandus.painelservice.core.dtos;
 
 import propagandus.painelservice.core.models.enumerators.EStatus;
 
-public record PainelDto(
+public record PainelDTO(
   Long painelId,
   Long locationId,
   String identification,
