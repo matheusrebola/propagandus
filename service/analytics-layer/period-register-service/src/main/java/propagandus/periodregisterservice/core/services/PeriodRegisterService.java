@@ -16,8 +16,6 @@ public class PeriodRegisterService {
   private final PeriodRegisterRepository periodRegisterRepository;
 
   //repository
-  public List<PeriodRegister> findAll(){return periodRegisterRepository.findAll();}
-  public PeriodRegister findById(Long id){return periodRegisterRepository.findById(id).orElse(null);}
   public boolean existsById(Long id){return periodRegisterRepository.existsById(id);}
 
   //view
