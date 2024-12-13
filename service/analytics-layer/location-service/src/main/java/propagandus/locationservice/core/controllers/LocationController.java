@@ -15,7 +15,12 @@ import propagandus.locationservice.core.models.enumerators.ELocationType;
 @RequestMapping("/location")
 @RequiredArgsConstructor
 public class LocationController {
-  
+
+  @GetMapping("{zip-code}")
+  List<String> findByZipCode(@PathVariable String zipCode){return null;}
+
+  @GetMapping("{public-place}")
+  List<String> findByPublicPlace(@PathVariable String publicPlace){return null;}
 
   @GetMapping("{location-type}")
   public List<ELocationType> findByLocationType(@PathVariable ELocationType locationType){return null;}
