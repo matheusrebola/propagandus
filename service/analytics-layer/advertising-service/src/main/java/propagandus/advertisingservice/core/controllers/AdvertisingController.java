@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import propagandus.advertisingservice.core.dtos.AdvertisingReactionCountDTO;
+import propagandus.advertisingservice.core.dtos.ProductReactionCountDTO;
 import propagandus.advertisingservice.core.models.Advertising;
 import propagandus.advertisingservice.core.models.enumerators.EReactionType;
 
@@ -14,6 +16,15 @@ import propagandus.advertisingservice.core.models.enumerators.EReactionType;
 @RequestMapping("/advertising")
 @RequiredArgsConstructor
 public class AdvertisingController {
+
+  @GetMapping("/reaction")
+  public List<AdvertisingReactionCountDTO> countReactionsByAdvertising(){return null;}
+
+  @GetMapping("/product")
+  public List<ProductReactionCountDTO> countReactionsByProduct(){return null;}
+
+  @GetMapping("/city")
+  public List<ProductReactionCountDTO> countReactionsByAdvertisingAndCity(){return null;}
   
   @GetMapping("{name}")
   List<String> findByName(@PathVariable String name){return null;}
