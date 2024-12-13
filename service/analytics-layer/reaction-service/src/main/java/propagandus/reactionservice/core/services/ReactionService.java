@@ -17,7 +17,6 @@ public class ReactionService {
   private final ReactionRepository reactionRepository;
 
   //repository
-  public List<Reaction> findAll(){return reactionRepository.findAll();}
   public Reaction findById(Long id){return reactionRepository.findById(id).orElse(null);}
   public boolean existsById(Long id){return reactionRepository.existsById(id);}
   List<EReactionType> findByReactionType(EReactionType reactionType){return reactionRepository.findByReactionType(reactionType);}
