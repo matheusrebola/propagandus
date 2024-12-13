@@ -20,7 +20,6 @@ public class AttentionService {
   private final AttentionRepository attentionRepository;
 
   //repository
-  public List<Attention> findAll(){return attentionRepository.findAll();}
   public Attention findById(Long id){return attentionRepository.findById(id).orElse(null);}
   List<EAttentionLevel> findByAttention(EAttentionLevel attention){return attentionRepository.findByAttention(attention);}
   public List<Byte> findByAttentionLevel(Byte attention){return findByAttentionLevel(attention);}
