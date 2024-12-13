@@ -1,5 +1,11 @@
 package propagandus.reactionservice.core.repositorys.mongo;
 
-public interface ReactionsByProductRepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+import propagandus.reactionservice.core.documents.ReactionsByProduct;
+
+@Repository
+public interface ReactionsByProductRepository extends MongoRepository<ReactionsByProduct,Long> {
 
 }
