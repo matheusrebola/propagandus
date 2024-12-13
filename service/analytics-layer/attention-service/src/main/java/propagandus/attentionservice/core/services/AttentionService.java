@@ -6,8 +6,15 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import propagandus.attentionservice.core.dtos.AttentionLevelDTO;
+import propagandus.attentionservice.core.dtos.AverageAttentionDTO;
+import propagandus.attentionservice.core.dtos.CityPeriodLookDTO;
+import propagandus.attentionservice.core.dtos.PainelAttentionDTO;
+import propagandus.attentionservice.core.dtos.PainelAttentionPeriodDTO;
+import propagandus.attentionservice.core.dtos.PainelAttentionStateDTO;
+import propagandus.attentionservice.core.dtos.PainelDTO;
+import propagandus.attentionservice.core.dtos.PainelInteractionDTO;
 import propagandus.attentionservice.core.models.Attention;
-import propagandus.attentionservice.core.models.Painel;
 import propagandus.attentionservice.core.models.enumerators.EAttentionLevel;
 import propagandus.attentionservice.core.models.enumerators.EDayWeek;
 import propagandus.attentionservice.core.models.enumerators.EMonth;
@@ -27,24 +34,24 @@ public class AttentionService {
   public List<Short> findByPeopleCount(Short peopleCount){return findByPeopleCount(peopleCount);}
 
   //view
-  public List<Object[]> findPainelsWithHighestAttentionByCity(String city){return attentionRepository.findPainelsWithHighestAttentionByCity(city);}
-  public List<Painel> findPainelsWithAttentionAboveThreshold(Short threshold){return attentionRepository.findPainelsWithAttentionAboveThreshold(threshold);}
-  public List<Object[]> findPeakAttentionPeriodsByPainel(Long painelId){return attentionRepository.findPeakAttentionPeriodsByPainel(painelId);}
-  public List<Object[]> findPainelsWithHighestAttentionByMonth(EMonth month){return attentionRepository.findPainelsWithHighestAttentionByMonth(month);}
-  public List<Object[]> findAverageAttentionByPainelInCity(String city){return attentionRepository.findAverageAttentionByPainelInCity(city);}
+  public List<PainelAttentionDTO> findPainelsWithHighestAttentionByCity(String city){return attentionRepository.findPainelsWithHighestAttentionByCity(city);}
+  public List<PainelDTO> findPainelsWithAttentionAboveThreshold(Short threshold){return attentionRepository.findPainelsWithAttentionAboveThreshold(threshold);}
+  public List<PainelAttentionPeriodDTO> findPeakAttentionPeriodsByPainel(Long painelId){return attentionRepository.findPeakAttentionPeriodsByPainel(painelId);}
+  public List<PainelAttentionDTO> findPainelsWithHighestAttentionByMonth(EMonth month){return attentionRepository.findPainelsWithHighestAttentionByMonth(month);}
+  public List<AverageAttentionDTO> findAverageAttentionByPainelInCity(String city){return attentionRepository.findAverageAttentionByPainelInCity(city);}
   public List<Object[]> findPainelsWithMostPeopleInPeriod(EPeriodOfTheDay period){return attentionRepository.findPainelsWithMostPeopleInPeriod(period);}
-  public List<Object[]> findAverageAttentionByCity(){return attentionRepository.findAverageAttentionByCity();}
+  public List<AverageAttentionDTO> findAverageAttentionByCity(){return attentionRepository.findAverageAttentionByCity();}
   public List<Object[]> findPainelsWithMostLooks(){return attentionRepository.findPainelsWithMostLooks();}
-  public List<Object[]> findHighestAttentionByPainelModel(){return attentionRepository.findHighestAttentionByPainelModel();}
-  public Long findTotalLooksForPainelInWeek(Long painelId){return attentionRepository.findTotalLooksForPainelInWeek(painelId);}
-  public List<Object[]> findPainelsWithMostPeopleAtNight(){return attentionRepository.findPainelsWithMostPeopleAtNight();}
-  public List<Object[]> findHighestAttentionByState(){return attentionRepository.findHighestAttentionByState();}
-  public List<Object[]> findInteractionCountByPainelAndMonth(EMonth month){return attentionRepository.findInteractionCountByPainelAndMonth(month);}
+  public List<AttentionLevelDTO> findHighestAttentionByPainelModel(){return attentionRepository.findHighestAttentionByPainelModel();}
+  public Integer findTotalLooksForPainelInWeek(Long painelId){return attentionRepository.findTotalLooksForPainelInWeek(painelId);}
+  public List<PainelAttentionDTO> findPainelsWithMostPeopleAtNight(){return attentionRepository.findPainelsWithMostPeopleAtNight();}
+  public List<AttentionLevelDTO> findHighestAttentionByState(){return attentionRepository.findHighestAttentionByState();}
+  public List<PainelAttentionDTO> findInteractionCountByPainelAndMonth(EMonth month){return attentionRepository.findInteractionCountByPainelAndMonth(month);}
   public List<Object[]> findAveragePeopleCountByCity(String city){return attentionRepository.findAveragePeopleCountByCity(city);}
-  public List<Object[]> findPainelsWithMostInteractionsAtHour(Byte hour){return attentionRepository.findPainelsWithMostInteractionsAtHour(hour);}
-  public List<Object[]> countLooksByCityAndPeriod(){return attentionRepository.countLooksByCityAndPeriod();}
-  public List<Object[]> findMostViewedPainelsByDate(LocalDateTime date){return attentionRepository.findMostViewedPainelsByDate(date);}
-  public List<Object[]> findHighestAttentionLevelByPainelInState(String state){return attentionRepository.findHighestAttentionLevelByPainelInState(state);}
-  public List<Object[]> findAverageLooksByPainelAtHour(Byte hour){return attentionRepository.findAverageLooksByPainelAtHour(hour);}
-  public List<Object[]> findPainelsWithMostInteractionsByDayOfWeek(EDayWeek dayWeek){return attentionRepository.findPainelsWithMostInteractionsByDayOfWeek(dayWeek);}
+  public List<PainelInteractionDTO> findPainelsWithMostInteractionsAtHour(Byte hour){return attentionRepository.findPainelsWithMostInteractionsAtHour(hour);}
+  public List<CityPeriodLookDTO> countLooksByCityAndPeriod(){return attentionRepository.countLooksByCityAndPeriod();}
+  public List<PainelAttentionDTO> findMostViewedPainelsByDate(LocalDateTime date){return attentionRepository.findMostViewedPainelsByDate(date);}
+  public List<PainelAttentionStateDTO> findHighestAttentionLevelByPainelInState(String state){return attentionRepository.findHighestAttentionLevelByPainelInState(state);}
+  public List<AverageAttentionDTO> findAverageLooksByPainelAtHour(Byte hour){return attentionRepository.findAverageLooksByPainelAtHour(hour);}
+  public List<PainelInteractionDTO> findPainelsWithMostInteractionsByDayOfWeek(EDayWeek dayWeek){return attentionRepository.findPainelsWithMostInteractionsByDayOfWeek(dayWeek);}
 }
