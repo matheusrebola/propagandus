@@ -4,8 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.attentionservice.core.dtos.AttentionCreateDto;
-import propagandus.attentionservice.core.dtos.AttentionDto;
+import propagandus.attentionservice.core.dtos.AttentionDTO;
 import propagandus.attentionservice.core.models.Attention;
 
 @Component
@@ -13,13 +12,8 @@ import propagandus.attentionservice.core.models.Attention;
 public class AttentionMapper {
   private final ModelMapper modelMapper;
 
-  public Attention map(AttentionCreateDto dto){
-    Attention attention = modelMapper.map(dto, Attention.class);
-    return attention;
-  }
-
-  public AttentionDto map(Attention attention){
-    AttentionDto dto = modelMapper.map(attention, AttentionDto.class);
+  public AttentionDTO map(Attention attention){
+    AttentionDTO dto = modelMapper.map(attention, AttentionDTO.class);
     return dto;
   }
 }
