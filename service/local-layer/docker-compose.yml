@@ -17,56 +17,24 @@ services:
     networks:
       - propagandus
 
-  mongodb-sender:
+  mongodb-local:
     image: mongo:latest
-    container_name: data-sender
+    container_name: data-local
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: sender
-      MONGO_INITDB_ROOT_PASSWORD: sender
-      MONGO_INITDB_DATABASE: sender-db
+      MONGO_INITDB_ROOT_USERNAME: local
+      MONGO_INITDB_ROOT_PASSWORD: local
+      MONGO_INITDB_DATABASE: local-db
     ports:
       - "61000:27017"
     volumes:
-      - mongo_sender_data:/data
-    networks:
-      - propagandus
-  
-  mongodb-persistence:
-    image: mongo:latest
-    container_name: data-persistence
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: persistence
-      MONGO_INITDB_ROOT_PASSWORD: persistence
-      MONGO_INITDB_DATABASE: persistence-db
-    ports:
-      - "61001:27017"
-    volumes:
-      - mongo_persistence_data:/data
-    networks:
-      - propagandus
-
-  mongodb-register:
-    image: mongo:latest
-    container_name: data-register
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: register
-      MONGO_INITDB_ROOT_PASSWORD: register
-      MONGO_INITDB_DATABASE: register-db
-    ports:
-      - "61002:27017"
-    volumes:
-      - mongo_register_data:/data
+      - mongo_local_data:/data
     networks:
       - propagandus
 
 volumes:
   mariadb_persistence_data:
-  mongo_sender_data:
-  mongo_persistence_data:
-  mongo_register_data:
+  mongo_local_data:
 
 networks:
   propagandus:
