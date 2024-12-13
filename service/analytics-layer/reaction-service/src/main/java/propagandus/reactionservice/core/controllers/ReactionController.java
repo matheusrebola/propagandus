@@ -2,6 +2,8 @@ package propagandus.reactionservice.core.controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,11 +18,24 @@ import propagandus.reactionservice.core.models.enumerators.EReactionType;
 @RequiredArgsConstructor
 public class ReactionController {
   
-  List<EReactionType> findByReactionType(EReactionType reactionType){return null;}
-  public List<Reaction> findByCityAndReactionType(String city, EReactionType reactionType){return null;}
-  public List<Reaction> findByZipCode(String zipCode){return null;}
-  public List<Reaction> findReactionsByProduct(String product){return null;}
-  public List<Reaction> findReactionsByAdvertisingVersion(String version){return null;}
-  public List<Reaction> findReactionsByDayOfWeek(EDayWeek dayWeek){return null;}
-  public List<Reaction> findReactionsByLocationAndPeriod(String city, EPeriodOfTheDay period){return null;}
+  @GetMapping("{reaction-type}")
+  List<EReactionType> findByReactionType(@PathVariable EReactionType reactionType){return null;}
+
+  @GetMapping("/city/{city}/reaction/{reaction-type}")
+  public List<Reaction> findByCityAndReactionType(@PathVariable String city, @PathVariable EReactionType reactionType){return null;}
+
+  @GetMapping("/location/{zip-code}")
+  public List<Reaction> findByZipCode(@PathVariable String zipCode){return null;}
+
+  @GetMapping("{product}")
+  public List<Reaction> findReactionsByProduct(@PathVariable String product){return null;}
+
+  @GetMapping("{version}")
+  public List<Reaction> findReactionsByAdvertisingVersion(@PathVariable String version){return null;}
+
+  @GetMapping("{day-week}")
+  public List<Reaction> findReactionsByDayOfWeek(@PathVariable EDayWeek dayWeek){return null;}
+
+  @GetMapping("/city/{city}/period/{period}")
+  public List<Reaction> findReactionsByLocationAndPeriod(@PathVariable String city, @PathVariable EPeriodOfTheDay period){return null;}
 }
