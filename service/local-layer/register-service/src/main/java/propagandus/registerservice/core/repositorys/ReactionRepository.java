@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import propagandus.registerservice.core.documents.Reaction;
 
 @Repository
-public interface ReactionRepository extends MongoRepository<Reaction,Long> {
+public interface ReactionRepository extends MongoRepository<Reaction,Integer> {
 
 }

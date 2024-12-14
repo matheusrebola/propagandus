@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import propagandus.registerservice.core.documents.PeriodRegister;
 
 @Repository
-public interface PeriodRegisterRepository extends MongoRepository <PeriodRegister,Long> {
+public interface PeriodRegisterRepository extends MongoRepository <PeriodRegister,Integer> {
 
 }

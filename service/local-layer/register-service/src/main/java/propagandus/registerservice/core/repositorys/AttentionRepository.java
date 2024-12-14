@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import propagandus.registerservice.core.documents.Attention;
 
 @Repository
-public interface AttentionRepository extends MongoRepository<Attention,Long> {
+public interface AttentionRepository extends MongoRepository<Attention,Integer> {
 
 }
