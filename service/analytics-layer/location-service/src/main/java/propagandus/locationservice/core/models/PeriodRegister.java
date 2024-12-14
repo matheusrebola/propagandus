@@ -6,8 +6,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -21,7 +19,7 @@ import propagandus.locationservice.core.models.enumerators.EPeriodOfTheDay;
 @Entity(name = "period_register")
 @Table(name = "date_time_table")
 public record PeriodRegister(
-  @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "period_register_id") Long id,
+  @Id @Column(name = "period_register_id") Long id,
   @NotNull Byte day,
   @Enumerated(EnumType.STRING) @Column(length = 3, name = "day_week") @NotNull EDayWeek dayWeek,
   @NotNull Byte hour,

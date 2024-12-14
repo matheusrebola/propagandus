@@ -4,8 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -17,7 +15,7 @@ import propagandus.reactionservice.core.models.enumerators.EAttentionLevel;
 @Entity(name = "attention")
 @Table(name = "attention_table")
 public record Attention(
-  @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "attention_id") Long id,
+  @Id @Column(name = "attention_id") Long id,
   @Enumerated(EnumType.STRING) @NotNull EAttentionLevel attention,
   @Column(name = "attention_level") @NotNull Byte attentionLevel,
   @Column(name = "look_count") @NotNull Short lookCount,
