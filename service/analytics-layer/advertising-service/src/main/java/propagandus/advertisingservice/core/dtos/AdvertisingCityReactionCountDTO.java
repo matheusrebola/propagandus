@@ -4,6 +4,6 @@ public record AdvertisingCityReactionCountDTO(
   Long advertisingId,
   String advertisingName,
   String city,
-  Long totalReactions) {
-
+  Long totalReactions
+){
 }

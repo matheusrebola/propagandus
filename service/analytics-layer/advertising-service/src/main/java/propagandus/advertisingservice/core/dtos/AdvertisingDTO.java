@@ -1,16 +1,14 @@
 package propagandus.advertisingservice.core.dtos;
 
-import jakarta.validation.constraints.NotNull;
-
 public record AdvertisingDTO(
-  @NotNull Long advertisingId,
-  @NotNull String name,
-  @NotNull String version,
-  @NotNull String company,
-  @NotNull String product,
-  @NotNull Long reactionId,
-  @NotNull Long periodRegisterId,
-  @NotNull Long painelId
+  Long advertisingId,
+  String name,
+  String version,
+  String company,
+  String product,
+  Long reactionId,
+  Long periodRegisterId,
+  Long painelId
 ) {
 
 }
