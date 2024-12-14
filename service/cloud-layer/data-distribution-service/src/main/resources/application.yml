@@ -1,7 +1,0 @@
-server:
-  port: ${SERVER_PORT:50002}
-
-logging:
-  level:
-    root: INFO
-    org.springframework: DEBUG
