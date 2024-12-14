@@ -23,7 +23,7 @@ CREATE TABLE attention_table (
 );
 
 CREATE TABLE location_table (
-    location_id BIGINT PRIMARY KEY,
+    location_id VARCHAR(36) PRIMARY KEY,
     zip_code VARCHAR(10) NOT NULL,
     public_place VARCHAR(45) NOT NULL,
     street_number VARCHAR(5) NOT NULL,
