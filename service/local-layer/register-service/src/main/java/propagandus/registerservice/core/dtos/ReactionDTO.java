@@ -4,7 +4,8 @@ import java.util.UUID;
 
 import propagandus.registerservice.core.enumerators.EReactionType;
 
-public record ReactionCreateDTO(
+public record ReactionDTO(
+  Integer id,
   UUID reactionId,
   UUID advertisingId,
   UUID locationId,

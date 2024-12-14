@@ -6,7 +6,8 @@ import propagandus.registerservice.core.enumerators.EDayWeek;
 import propagandus.registerservice.core.enumerators.EMonth;
 import propagandus.registerservice.core.enumerators.EPeriodOfTheDay;
 
-public record PeriodRegisterCreateDTO(
+public record PeriodRegisterDTO(
+  Integer id,
   Long periodRegisterId,
   Byte day,
   EDayWeek dayWeek,

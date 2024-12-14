@@ -4,7 +4,8 @@ import java.util.UUID;
 
 import propagandus.registerservice.core.enumerators.EAttentionLevel;
 
-public record AttentionCreateDTO(
+public record AttentionDTO(
+  Integer id,
   UUID painelId,
   EAttentionLevel attention,
   Byte attentionLevel,
