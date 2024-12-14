@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import propagandus.locationservice.core.dtos.LocationAdvertisementDTO;
+import propagandus.locationservice.core.dtos.LocationDTO;
+import propagandus.locationservice.core.dtos.LocationDetailsDTO;
+import propagandus.locationservice.core.dtos.LocationReactionCountDTO;
 import propagandus.locationservice.core.models.Location;
 import propagandus.locationservice.core.models.enumerators.ELocationType;
 
@@ -15,6 +19,30 @@ import propagandus.locationservice.core.models.enumerators.ELocationType;
 @RequestMapping("/location")
 @RequiredArgsConstructor
 public class LocationController {
+
+  @GetMapping("/most-reactions")
+  public List<LocationReactionCountDTO> findLocationsWithMostReactions(){return null;}
+
+  @GetMapping("/with-advertisings")
+  public List<LocationAdvertisementDTO> findLocationsWithAdvertisements(){return null;}
+
+  @GetMapping("/with-reactions")
+  public List<LocationDTO> findLocationsWithReactions(){return null;}
+  
+  @GetMapping("/advertsings")
+  public List<LocationReactionCountDTO> countAdvertisementsByState(){return null;}
+
+  @GetMapping("/advertisings-and-reactions")
+  public List<LocationDetailsDTO> findLocationsWithAdvertisementsAndReactions(){return null;}
+
+  @GetMapping("/reactions")
+  public List<LocationReactionCountDTO> countReactionsByState(){return null;}
+
+  @GetMapping("/positive-reactions")
+  public List<LocationReactionCountDTO> countPositiveReactionsByCity(){return null;}
+
+  @GetMapping("/without-reactions")
+  public List<LocationDTO> findLocationsWithoutReactions(){return null;}
 
   @GetMapping("{zip-code}")
   List<String> findByZipCode(@PathVariable String zipCode){return null;}

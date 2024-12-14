@@ -8,6 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import propagandus.painelservice.core.dtos.PainelCityStatusCountDTO;
+import propagandus.painelservice.core.dtos.PainelDTO;
+import propagandus.painelservice.core.dtos.PainelInteractionCountDTO;
+import propagandus.painelservice.core.dtos.PainelModelCountDTO;
+import propagandus.painelservice.core.dtos.PainelModelPeopleCountDTO;
+import propagandus.painelservice.core.dtos.PainelStateCountDTO;
+import propagandus.painelservice.core.dtos.StateAverageInteractionsDTO;
 import propagandus.painelservice.core.models.Painel;
 import propagandus.painelservice.core.models.enumerators.EStatus;
 
@@ -15,6 +22,27 @@ import propagandus.painelservice.core.models.enumerators.EStatus;
 @RequestMapping("/painel")
 @RequiredArgsConstructor
 public class PainelController {
+
+  @GetMapping("/by-model")
+  public List<PainelModelCountDTO> findActivePainelsByModel(){return null;}
+
+  @GetMapping("/no-attetion")
+  public List<PainelDTO> findPainelsWithNoAttention(){return null;}
+
+  @GetMapping("/by-state")
+  public List<PainelStateCountDTO> countPainelsByState(){return null;}
+
+  @GetMapping("/most-reactions")
+  public List<PainelInteractionCountDTO> findPainelsWithMostInteractions(){return null;}
+
+  @GetMapping("/by-city-and-status")
+  public List<PainelCityStatusCountDTO> countPainelsByCityAndStatus(){return null;}
+
+  @GetMapping("/most-people-registered")
+  public List<PainelModelPeopleCountDTO> findModelsWithMostPeopleRegistered(){return null;}
+
+  @GetMapping("/average-interactions-by-state")
+  public List<StateAverageInteractionsDTO> findAverageInteractionsByState(){return null;}
 
   @GetMapping("{identification}")
   String findByIdentification(@PathVariable String identification){return null;}

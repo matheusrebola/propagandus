@@ -20,10 +20,10 @@ public class AdvertisingController {
   @GetMapping("/reaction")
   public List<AdvertisingReactionCountDTO> countReactionsByAdvertising(){return null;}
 
-  @GetMapping("/product")
+  @GetMapping("/by-product")
   public List<ProductReactionCountDTO> countReactionsByProduct(){return null;}
 
-  @GetMapping("/city")
+  @GetMapping("/by-city")
   public List<ProductReactionCountDTO> countReactionsByAdvertisingAndCity(){return null;}
   
   @GetMapping("{name}")

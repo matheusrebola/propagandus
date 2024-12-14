@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import propagandus.reactionservice.core.dtos.CityInteractionCountDTO;
+import propagandus.reactionservice.core.dtos.ReactionCountByAdvertisingDTO;
+import propagandus.reactionservice.core.dtos.ReactionCountByPainelAndPeriodDTO;
+import propagandus.reactionservice.core.dtos.ReactionCountByTypeAndCityDTO;
 import propagandus.reactionservice.core.models.Reaction;
 import propagandus.reactionservice.core.models.enumerators.EDayWeek;
 import propagandus.reactionservice.core.models.enumerators.EPeriodOfTheDay;
@@ -17,6 +21,18 @@ import propagandus.reactionservice.core.models.enumerators.EReactionType;
 @RequestMapping("/reaction")
 @RequiredArgsConstructor
 public class ReactionController {
+
+  @GetMapping("/by-advertising")
+  public List<ReactionCountByAdvertisingDTO> countReactionsByAdvertising(){return null;}
+
+  @GetMapping("/by-type-and-city")
+  public List<ReactionCountByTypeAndCityDTO> countReactionsByTypeAndCity(){return null;}
+
+  @GetMapping("/cities-with-most-weekday-interactions")
+  public List<CityInteractionCountDTO> findCitiesWithMostWeekdayInteractions(){return null;}
+
+  @GetMapping("/by-painel-and-period")
+  public List<ReactionCountByPainelAndPeriodDTO> countReactionsByPainelAndPeriod(){return null;}
   
   @GetMapping("{reaction-type}")
   List<EReactionType> findByReactionType(@PathVariable EReactionType reactionType){return null;}

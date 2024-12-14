@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import propagandus.attentionservice.core.dtos.AttentionLevelDTO;
+import propagandus.attentionservice.core.dtos.AverageAttentionDTO;
+import propagandus.attentionservice.core.dtos.CityPeriodLookDTO;
+import propagandus.attentionservice.core.dtos.PainelAttentionDTO;
 import propagandus.attentionservice.core.models.Painel;
 import propagandus.attentionservice.core.models.enumerators.EAttentionLevel;
 import propagandus.attentionservice.core.models.enumerators.EDayWeek;
@@ -19,6 +23,24 @@ import propagandus.attentionservice.core.models.enumerators.EPeriodOfTheDay;
 @RequestMapping("/attention")
 @RequiredArgsConstructor
 public class AttentionController {
+
+  @GetMapping("/by-city")
+  public List<AverageAttentionDTO> findAverageAttentionByCity(){return null;}
+
+  @GetMapping("/most-look")
+  public List<Object[]> findPainelsWithMostLooks(){return null;}
+
+  @GetMapping("/painel-model")
+  public List<AttentionLevelDTO> findHighestAttentionByPainelModel(){return null;}
+
+  @GetMapping("/at-night")
+  public List<PainelAttentionDTO> findPainelsWithMostPeopleAtNight(){return null;}
+
+  @GetMapping("/by-state")
+  public List<AttentionLevelDTO> findHighestAttentionByState(){return null;}
+
+  @GetMapping("/by-period")
+  public List<CityPeriodLookDTO> countLooksByCityAndPeriod(){return null;}
 
   @GetMapping("{attention-level}")
   List<EAttentionLevel> findByAttention(@PathVariable EAttentionLevel attention){return null;}
