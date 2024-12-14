@@ -1,15 +1,13 @@
 package propagandus.datapersistenceservice.core.dtos;
 
+import java.util.UUID;
+
 import jakarta.validation.constraints.NotNull;
-import propagandus.datapersistenceservice.core.models.enumerators.EStatus;
 
 public record PainelDto(
-  @NotNull Long painelId,
-  @NotNull String identification,
-  @NotNull EStatus status,
-  @NotNull String model,
-  @NotNull Long locationId,
-  @NotNull Long advertisingId,
+  @NotNull UUID painelId,
+  @NotNull UUID locationId,
+  @NotNull UUID advertisingId,
   @NotNull Long attentionId,
   @NotNull Long reactionId,
   @NotNull Long packageTypeId

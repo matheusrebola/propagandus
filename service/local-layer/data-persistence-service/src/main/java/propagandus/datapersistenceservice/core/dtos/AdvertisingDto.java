@@ -1,16 +1,14 @@
 package propagandus.datapersistenceservice.core.dtos;
 
+import java.util.UUID;
+
 import jakarta.validation.constraints.NotNull;
 
 public record AdvertisingDto(
-  @NotNull Long advertisingId,
-  @NotNull String name,
-  @NotNull String version,
-  @NotNull String company,
-  @NotNull String product,
+  @NotNull UUID advertisingId,
   @NotNull Long reactionId,
   @NotNull Long periodRegisterId,
-  @NotNull Long painelId
+  @NotNull UUID painelId
 ) {
 
 }
