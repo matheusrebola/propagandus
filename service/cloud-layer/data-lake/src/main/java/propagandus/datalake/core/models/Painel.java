@@ -7,8 +7,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -21,7 +19,7 @@ import propagandus.datalake.core.models.enumerators.EStatus;
 @Entity(name = "painel")
 @Table(name = "painel_table")
 public record Painel(
-  @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "painel_id") Long id,
+  @Id @Column(name = "painel_id") Long id,
   @Column(length = 50) @NotNull String identification,
   @Enumerated(EnumType.STRING) @Column(length = 6, name = "painel_status") @NotNull EStatus status,
   @Column(length = 20) @NotNull String model,
