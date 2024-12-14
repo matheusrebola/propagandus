@@ -7,9 +7,6 @@ spring:
     url: jdbc:mariadb://localhost:43350/data-analytics
     username: propagandus
     password: propagandus
-  flyway:
-    enabled: true
-    locations: classpath:db/migration
   jpa:
     hibernate:
       ddl-auto: validate
