@@ -1,7 +1,0 @@
-server:
-  port: ${SERVER_PORT:50003}
-
-spring:
-  data:
-    mongodb:
-      uri: mongodb://organizer:organizer@mongodb-organizer:57021/organizer-db
