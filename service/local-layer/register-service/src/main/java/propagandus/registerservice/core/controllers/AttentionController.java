@@ -1,5 +1,7 @@
 package propagandus.registerservice.core.controllers;
 
+import java.time.LocalDateTime;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +24,8 @@ public class AttentionController {
 
   public ResponseEntity<AttentionDTO> create(@RequestBody AttentionCreateDTO requestDTO){
     Attention attention = attentionMapper.map(requestDTO);
+    attention.periodRegister();
+    LocalDateTime.now();
     Attention attentionSaved = attentionService.insert(attention);
     AttentionDTO responseDTO = attentionMapper.map(attentionSaved);
     return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);

@@ -1,5 +1,7 @@
 package propagandus.registerservice.core.controllers;
 
+import java.time.LocalDateTime;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +26,8 @@ public class ReactionController {
   @PostMapping
   public ResponseEntity<ReactionDTO> create(@RequestBody ReactionCreateDTO requestDTO){
     Reaction reaction = reactionMapper.map(requestDTO);
+    reaction.periodRegister();
+    LocalDateTime.now();
     Reaction reactionSaved = reactionService.insert(reaction);
     ReactionDTO responseDTO = reactionMapper.map(reactionSaved);
     return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
