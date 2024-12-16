@@ -1,5 +1,6 @@
 package propagandus.registerservice.core.documents;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
@@ -13,7 +14,7 @@ public record Attention(
   @Id Integer id,
   UUID painelId,
   UUID advertisingId,
-  Integer periodRegisterId,
+  LocalDateTime periodRegister,
   EAttentionLevel attention,
   Byte attentionLevel,
   Short lookCount,

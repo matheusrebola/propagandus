@@ -1,5 +1,6 @@
 package propagandus.registerservice.core.documents;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
@@ -12,7 +13,7 @@ public record Reaction(
   @Id Integer id,
   UUID advertisingId,
   UUID locationId,
-  Integer dateTimeId,
+  LocalDateTime periodRegister,
   UUID painelId,
   EReactionType reactionType
 ) {
