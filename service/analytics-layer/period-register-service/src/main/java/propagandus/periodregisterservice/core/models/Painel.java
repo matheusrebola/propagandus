@@ -1,6 +1,7 @@
 package propagandus.periodregisterservice.core.models;
 
 import java.util.List;
+import java.util.UUID;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -19,7 +20,7 @@ import propagandus.periodregisterservice.core.models.enumerators.EStatus;
 @Entity(name = "painel")
 @Table(name = "painel_table")
 public record Painel(
-  @Id @Column(name = "painel_id") Long id,
+  @Id @Column(name = "painel_id") UUID id,
   @Column(length = 50) @NotNull String identification,
   @Enumerated(EnumType.STRING) @Column(length = 6, name = "painel_status") @NotNull EStatus status,
   @Column(length = 20) @NotNull String model,
