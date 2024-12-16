@@ -1,6 +1,7 @@
 package propagandus.advertisingservice.core.repositorys;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,7 +19,7 @@ import propagandus.advertisingservice.core.models.enumerators.EMonth;
 import propagandus.advertisingservice.core.models.enumerators.EReactionType;
 
 @Repository
-public interface AdvertisingRepository extends JpaRepository<Advertising,Long>{
+public interface AdvertisingRepository extends JpaRepository<Advertising,UUID>{
   List<String> findByName(String name);
   List<String> findByVersion(String version);
   List<String> findByCompany(String company);

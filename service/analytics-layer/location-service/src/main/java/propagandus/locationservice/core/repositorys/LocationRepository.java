@@ -1,6 +1,7 @@
 package propagandus.locationservice.core.repositorys;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,7 +19,7 @@ import propagandus.locationservice.core.models.Location;
 import propagandus.locationservice.core.models.enumerators.ELocationType;
 
 @Repository
-public interface LocationRepository extends JpaRepository<Location, Long> {
+public interface LocationRepository extends JpaRepository<Location,UUID> {
   List<String> findByZipCode(String zipCode);
   List<String> findByPublicPlace(String publicPlace);
   List<ELocationType> findByLocationType(ELocationType locationType);

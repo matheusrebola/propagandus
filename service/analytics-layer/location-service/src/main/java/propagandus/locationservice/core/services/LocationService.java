@@ -1,6 +1,7 @@
 package propagandus.locationservice.core.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class LocationService {
   private final LocationRepository locationRepository;
 
   //repository
-  public boolean existsById(Long id){return locationRepository.existsById(id);}
+  public boolean existsById(UUID id){return locationRepository.existsById(id);}
   public List<String> findByZipCode(String zipCode){return locationRepository.findByZipCode(zipCode);}
   public List<String> findByPublicPlace(String publicPlace){return locationRepository.findByPublicPlace(publicPlace);}
   public List<ELocationType> findByLocationType(ELocationType locationType){return findByLocationType(locationType);}

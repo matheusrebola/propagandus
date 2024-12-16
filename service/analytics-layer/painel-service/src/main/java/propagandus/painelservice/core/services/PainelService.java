@@ -1,6 +1,7 @@
 package propagandus.painelservice.core.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class PainelService {
   private final PainelRepository painelRepository;
 
   //repository
-  public boolean existsById(Long id){return painelRepository.existsById(id);}
+  public boolean existsById(UUID id){return painelRepository.existsById(id);}
   String findByIdentification(String identification){return painelRepository.findByIdentification(identification);}
   List<EStatus> findByEStatus(EStatus status){return painelRepository.findByStatus(status);}
   List<String> findByModel(String model){return painelRepository.findByModel(model);}

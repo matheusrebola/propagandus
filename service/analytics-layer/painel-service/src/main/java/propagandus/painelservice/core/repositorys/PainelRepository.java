@@ -1,6 +1,7 @@
 package propagandus.painelservice.core.repositorys;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -21,7 +22,7 @@ import propagandus.painelservice.core.models.Painel;
 import propagandus.painelservice.core.models.enumerators.EStatus;
 
 @Repository
-public interface PainelRepository extends JpaRepository<Painel, Long> {
+public interface PainelRepository extends JpaRepository<Painel,UUID> {
   String findByIdentification(String identification);
   List<EStatus> findByStatus(EStatus status);
   List<String> findByModel(String model);
