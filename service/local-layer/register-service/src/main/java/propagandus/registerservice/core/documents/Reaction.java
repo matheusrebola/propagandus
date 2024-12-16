@@ -10,9 +10,10 @@ import propagandus.registerservice.core.enumerators.EReactionType;
 @Document
 public record Reaction(
   @Id Integer id,
-  UUID reactionId,
   UUID advertisingId,
   UUID locationId,
+  Integer dateTimeId,
+  UUID painelId,
   EReactionType reactionType
 ) {
 

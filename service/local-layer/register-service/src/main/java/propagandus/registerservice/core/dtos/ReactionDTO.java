@@ -6,9 +6,10 @@ import propagandus.registerservice.core.enumerators.EReactionType;
 
 public record ReactionDTO(
   Integer id,
-  UUID reactionId,
   UUID advertisingId,
   UUID locationId,
+  Integer dateTimeId,
+  UUID painelId,
   EReactionType reactionType
 ) {
 

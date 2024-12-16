@@ -5,9 +5,10 @@ import java.util.UUID;
 import propagandus.registerservice.core.enumerators.EReactionType;
 
 public record ReactionCreateDTO(
-  UUID reactionId,
   UUID advertisingId,
   UUID locationId,
+  Integer dateTimeId,
+  UUID painelId,
   EReactionType reactionType
 ) {
 
