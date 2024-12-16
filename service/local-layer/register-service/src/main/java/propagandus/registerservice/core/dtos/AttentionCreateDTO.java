@@ -7,7 +7,6 @@ import propagandus.registerservice.core.enumerators.ESex;
 
 public record AttentionCreateDTO(
   UUID painelId,
-  Integer periodRegisterId,
   EAttentionLevel attention,
   Byte attentionLevel,
   Short lookCount,
