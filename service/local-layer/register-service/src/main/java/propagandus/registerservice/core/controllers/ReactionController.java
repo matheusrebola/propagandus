@@ -1,9 +1,12 @@
 package propagandus.registerservice.core.controllers;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +34,11 @@ public class ReactionController {
     Reaction reactionSaved = reactionService.insert(reaction);
     ReactionDTO responseDTO = reactionMapper.map(reactionSaved);
     return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
+  }
+
+  @GetMapping
+  public ResponseEntity<List<ReactionDTO>> getAll(){
+    List<ReactionDTO> result = reactionService.findAll().stream().map(reactionMapper::map).collect(Collectors.toList());
+    return new ResponseEntity<>(result, HttpStatus.OK);
   }
 }
