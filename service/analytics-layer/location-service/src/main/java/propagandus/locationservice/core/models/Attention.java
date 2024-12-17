@@ -16,8 +16,8 @@ import propagandus.locationservice.core.models.enumerators.EAttentionLevel;
 @Table(name = "attention_table")
 public record Attention(
   @Id @Column(name = "attention_id") Long id,
-  @Enumerated(EnumType.STRING) @NotNull EAttentionLevel attention,
-  @Column(name = "attention_level") @NotNull Byte attentionLevel,
+  @Enumerated(EnumType.STRING) @Column(name = "attention_level") @NotNull EAttentionLevel attention,
+  @Column(name = "attention_level_value") @NotNull Byte attentionLevel,
   @Column(name = "look_count") @NotNull Short lookCount,
   @Column(name = "people_count") @NotNull Short peopleCount,
   @OneToOne @JoinColumn(name = "attention_time_id", referencedColumnName = "period_register_id", nullable = false) PeriodRegister attentionTime,
