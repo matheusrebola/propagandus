@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import propagandus.datapersistenceservice.core.models.Reaction;
 
 @Repository
-public interface ReactionRepository extends JpaRepository<Reaction, Long> {
+public interface ReactionRepository extends JpaRepository<Reaction,Integer> {
 }
