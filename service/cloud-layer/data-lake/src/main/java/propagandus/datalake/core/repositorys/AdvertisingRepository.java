@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import propagandus.datalake.core.models.Advertising;
 
 @Repository
-public interface AdvertisingRepository extends JpaRepository<Advertising, Long> {
+public interface AdvertisingRepository extends JpaRepository<Advertising,Long> {
 
 }

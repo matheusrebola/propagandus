@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import propagandus.datalake.core.models.Location;
 
 @Repository
-public interface LocationRepository extends JpaRepository<Location, Long> {
+public interface LocationRepository extends JpaRepository<Location,Long> {
 }

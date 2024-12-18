@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import propagandus.datalake.core.models.PackageType;
 
 @Repository
-public interface PackageTypeRepository extends JpaRepository<PackageType, Long> {
+public interface PackageTypeRepository extends JpaRepository<PackageType,Long> {
 }

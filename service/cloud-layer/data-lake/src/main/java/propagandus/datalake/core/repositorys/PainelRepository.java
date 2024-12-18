@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import propagandus.datalake.core.models.Painel;
 
 @Repository
-public interface PainelRepository extends JpaRepository<Painel, Long> {
+public interface PainelRepository extends JpaRepository<Painel,Long> {
 }
