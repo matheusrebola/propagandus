@@ -1,7 +1,6 @@
 package propagandus.advertisingservice.core.services;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -22,8 +21,8 @@ public class AdvertisingService {
   private final AdvertisingRepository advertisingRepository;
 
   //repository
-  public Advertising findById(UUID id){return advertisingRepository.findById(id).orElse(null);}
-  public boolean exists(UUID id){return advertisingRepository.existsById(id);}
+  public Advertising findById(Long id){return advertisingRepository.findById(id).orElse(null);}
+  public boolean exists(Long id){return advertisingRepository.existsById(id);}
   public List<String> findByName(String name){return advertisingRepository.findByName(name);}
   public List<String> findByCompany(String company){return advertisingRepository.findByCompany(company);}
   public List<String> findByProduct(String product){return advertisingRepository.findByProduct(product);}
