@@ -1,15 +1,13 @@
 package propagandus.datalake.core.dtos;
 
-import jakarta.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 public record AdvertisingCreateDto(
-  @NotNull String name,
-  @NotNull String version,
-  @NotNull String company,
-  @NotNull String product,
-  @NotNull Long reactionId,
-  @NotNull Long periodRegisterId,
-  @NotNull Long painelId
+  String name,
+  String version,
+  String company,
+  String product,
+  LocalDateTime creationTime
   ) {
 
 }

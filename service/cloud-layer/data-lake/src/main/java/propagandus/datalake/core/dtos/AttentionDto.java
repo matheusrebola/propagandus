@@ -1,16 +1,19 @@
 package propagandus.datalake.core.dtos;
 
-import jakarta.validation.constraints.NotNull;
 import propagandus.datalake.core.models.enumerators.EAttentionLevel;
+import propagandus.datalake.core.models.enumerators.ESEx;
 
 public record AttentionDto(
-  @NotNull Long attentionId,
-  @NotNull EAttentionLevel attention,
-  @NotNull Byte attentionLevel,
-  @NotNull Short lookCount,
-  @NotNull Short peopleCount,
-  @NotNull Long attentionTime,
-  @NotNull Long painelId
+  Long attentionId,
+  EAttentionLevel attentionLevel,
+  Byte attentionValue,
+  Short lookCount,
+  Short peopleCount,
+  ESEx sex,
+  Long attentionTime,
+  Long locationId,
+  Long advertisingId,
+  Long painelId
 ) {
 
 }

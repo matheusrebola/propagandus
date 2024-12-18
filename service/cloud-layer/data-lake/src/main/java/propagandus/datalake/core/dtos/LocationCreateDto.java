@@ -1,16 +1,19 @@
 package propagandus.datalake.core.dtos;
 
-import jakarta.validation.constraints.NotNull;
+import propagandus.datalake.core.models.enumerators.ECityZone;
+import propagandus.datalake.core.models.enumerators.ELocationType;
 
 public record LocationCreateDto(
-  @NotNull String zipCode,
-  @NotNull String publicPlace,
-  @NotNull String number,
-  @NotNull String city,
-  @NotNull String state,
-  @NotNull String counry,
-  @NotNull Long reactionId,
-  @NotNull Long painelId
+  String streetName,
+  String streetNumber,
+  ELocationType locationType,
+  String description,
+  String city,
+  String state,
+  ECityZone cityZone,
+  String country,
+  Long reactionId,
+  Long painelId
 ) {
 
 }
