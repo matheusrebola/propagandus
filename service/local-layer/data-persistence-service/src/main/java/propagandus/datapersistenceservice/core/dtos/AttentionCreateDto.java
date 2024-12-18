@@ -1,15 +1,20 @@
 package propagandus.datapersistenceservice.core.dtos;
 
-import jakarta.validation.constraints.NotNull;
+import java.time.LocalDateTime;
+
 import propagandus.datapersistenceservice.core.models.enumerators.EAttentionLevel;
+import propagandus.datapersistenceservice.core.models.enumerators.ESEx;
 
 public record AttentionCreateDto(
-  @NotNull EAttentionLevel attention,
-  @NotNull Byte attentionLevel,
-  @NotNull Short lookCount,
-  @NotNull Short peopleCount,
-  @NotNull Long attentionTime,
-  @NotNull Long painelId
+  EAttentionLevel attentionLevel,
+  Byte attentionValue,
+  Short lookCount,
+  Short peopleCount,
+  ESEx sex,
+  LocalDateTime attentionTime,
+  Integer locationId,
+  Integer advertisingId,
+  Integer painelId
 ) {
 
 }
