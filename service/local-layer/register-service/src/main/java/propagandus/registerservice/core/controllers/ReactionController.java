@@ -1,6 +1,5 @@
 package propagandus.registerservice.core.controllers;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,8 +28,6 @@ public class ReactionController {
   @PostMapping
   public ResponseEntity<ReactionDTO> create(@RequestBody ReactionCreateDTO requestDTO){
     Reaction reaction = reactionMapper.map(requestDTO);
-    reaction.periodRegister();
-    LocalDateTime.now();
     Reaction reactionSaved = reactionService.insert(reaction);
     ReactionDTO responseDTO = reactionMapper.map(reactionSaved);
     return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);

@@ -1,6 +1,5 @@
 package propagandus.registerservice.core.controllers;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,8 +28,6 @@ public class AttentionController {
   @PostMapping
   public ResponseEntity<AttentionDTO> create(@RequestBody AttentionCreateDTO requestDTO){
     Attention attention = attentionMapper.map(requestDTO);
-    attention.periodRegister();
-    LocalDateTime.now();
     Attention attentionSaved = attentionService.insert(attention);
     AttentionDTO responseDTO = attentionMapper.map(attentionSaved);
     return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
