@@ -15,7 +15,7 @@ import propagandus.datapersistenceservice.core.models.enumerators.ESEx;
 @Table(name = "attention_table")
 public record Attention(
   @Id @Column(name = "attention_id") Integer id,
-  @Enumerated(EnumType.STRING)@Column(name = "attention_level") EAttentionLevel attentionLevel,
+  @Enumerated(EnumType.STRING) @Column(name = "attention_level") EAttentionLevel attentionLevel,
   @Column(name = "attention_value") Byte attentionValue,
   @Column(name = "look_count") Short lookCount,
   @Column(name = "people_count") Short peopleCount,
