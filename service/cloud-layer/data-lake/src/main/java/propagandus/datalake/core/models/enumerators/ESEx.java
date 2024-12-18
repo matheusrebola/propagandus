@@ -1,5 +1,5 @@
 package propagandus.datalake.core.models.enumerators;
 
-public enum EStatus {
-  ON, OFF, BRKE, FXNG
+public enum ESEx {
+  MALE, FEMALE, NON_DEFINED
 }
