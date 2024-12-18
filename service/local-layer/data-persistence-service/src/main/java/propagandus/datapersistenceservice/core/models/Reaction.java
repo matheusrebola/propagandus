@@ -1,28 +1,23 @@
 package propagandus.datapersistenceservice.core.models;
 
-import java.util.UUID;
-
+import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import propagandus.datapersistenceservice.core.models.enumerators.EReactionType;
 
 @Entity(name = "reaction")
 @Table(name = "reaction_table")
 public record Reaction(
-  @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "reaction_id") Long id,
-  @Enumerated(EnumType.STRING) @Column(length = 10) @NotNull EReactionType reactionType,
-  @OneToOne @JoinColumn(name = "period_time_id", referencedColumnName = "period_register_id", nullable = false) PeriodRegister reactionTime,
-  @Column(name = "advertising_id", nullable = false) UUID advertising,
-  @Column(name = "location_id", nullable = false) UUID location,
-  @Column(name = "painel_id", nullable = false) UUID painel
-  ) {
+  @Id @Column(name = "reaction_id") Integer id,
+  @Enumerated(EnumType.STRING) @Column(length = 10, name = "reaction_type") EReactionType reactionType,
+  @Enumerated(EnumType.STRING) @Column(length = 10, name = "reaction_scale") Byte reactionScale,
+  @Column(name = "reaction_date_time") LocalDateTime reactionTime,
+  @Column(name = "advertising_id", nullable = false) Integer advertisingId,
+  @Column(name = "location_id", nullable = false) Integer locationId,
+  @Column(name = "painel_id", nullable = false) Integer painelId
+) {
 }
