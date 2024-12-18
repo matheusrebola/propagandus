@@ -12,14 +12,14 @@ import propagandus.registerservice.core.enumerators.ESex;
 @Document
 public record Attention(
   @Id Integer id,
-  UUID painelId,
-  UUID advertisingId,
-  LocalDateTime periodRegister,
-  EAttentionLevel attention,
-  Byte attentionLevel,
+  EAttentionLevel attentionLevel,
+  Byte attentionValue,
   Short lookCount,
   Short peopleCount,
-  ESex sex
+  ESex sex,
+  LocalDateTime attentionTime,
+  UUID advertisingId,
+  Integer painelId
 ) {
 
 }
