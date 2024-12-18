@@ -1,14 +1,16 @@
 package propagandus.registerservice.core.dtos;
 
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 import propagandus.registerservice.core.enumerators.EReactionType;
 
 public record ReactionCreateDTO(
-  UUID advertisingId,
-  UUID locationId,
-  UUID painelId,
-  EReactionType reactionType
+  EReactionType reactionType,
+  Byte reactionScale,
+  LocalDateTime dateTime,
+  Integer advertisingId,
+  Integer locationId,
+  Integer painelId
 ) {
 
 }

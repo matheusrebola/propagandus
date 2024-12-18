@@ -8,13 +8,14 @@ import propagandus.registerservice.core.enumerators.ESex;
 
 public record AttentionDTO(
   Integer id,
-  UUID painelId,
-  LocalDateTime periodRegister,
-  EAttentionLevel attention,
-  Byte attentionLevel,
+  EAttentionLevel attentionLevel,
+  Byte attentionValue,
   Short lookCount,
   Short peopleCount,
-  ESex sex
+  ESex sex,
+  LocalDateTime periodRegister,
+  UUID advertisingId,
+  Integer painelId
 ) {
 
 }
