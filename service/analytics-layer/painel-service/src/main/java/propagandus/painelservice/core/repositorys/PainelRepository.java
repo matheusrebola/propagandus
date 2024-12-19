@@ -1,39 +1,24 @@
 package propagandus.painelservice.core.repositorys;
 
 import java.util.List;
-import java.util.UUID;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import propagandus.painelservice.core.dtos.PainelCityStatusCountDTO;
-import propagandus.painelservice.core.dtos.PainelDTO;
-import propagandus.painelservice.core.dtos.PainelHourInteractionDTO;
-import propagandus.painelservice.core.dtos.PainelInteractionCountDTO;
-import propagandus.painelservice.core.dtos.PainelModelCountDTO;
-import propagandus.painelservice.core.dtos.PainelModelPeopleCountDTO;
-import propagandus.painelservice.core.dtos.PainelModelStateCountDTO;
-import propagandus.painelservice.core.dtos.PainelStateCountDTO;
-import propagandus.painelservice.core.dtos.PainelStatusInteractionCountDTO;
-import propagandus.painelservice.core.dtos.StateAverageInteractionsDTO;
 import propagandus.painelservice.core.models.Painel;
-import propagandus.painelservice.core.models.enumerators.EStatus;
+import propagandus.painelservice.core.views.PainelView;
 
 @Repository
-public interface PainelRepository extends JpaRepository<Painel,UUID> {
+public interface PainelRepository extends JpaRepository<Painel,Long>, PainelView {
   String findByIdentification(String identification);
-  List<EStatus> findByStatus(EStatus status);
   List<String> findByModel(String model);
-
+/*
   //Buscar todos os painéis ativos em uma cidade específica
   @Query("SELECT p FROM painel p WHERE p.location.city = :city AND p.status = 'ACTIVE'")
   List<PainelDTO> findActivePainelsByCity(@Param("city") String city);
 
   //Contar interações por status do painel em uma cidade específica
   @Query("SELECT p.status, COUNT(a) FROM painel p JOIN attention a ON p.id = a.painel.id WHERE p.location.city = :city GROUP BY p.status")
-  List<PainelStatusInteractionCountDTO> countInteractionsByPainelStatusInCity(@Param("city") String city);
+  List<Long> countInteractionsByPainelStatusInCity(@Param("city") String city);
 
   //Listar os painéis ativos por modelo
   @Query("SELECT p.model, COUNT(p) AS activeCount FROM painel p WHERE p.status = 'ACTIVE' GROUP BY p.model ORDER BY activeCount DESC")
@@ -42,10 +27,6 @@ public interface PainelRepository extends JpaRepository<Painel,UUID> {
   //Obter os painéis que nunca registraram atenção
   @Query("SELECT p FROM painel p LEFT JOIN attention a ON p.id = a.painel.id WHERE a.id IS NULL")
   List<PainelDTO> findPainelsWithNoAttention();
-
-  //Buscar painéis por status e cidade
-  @Query("SELECT p FROM painel p WHERE p.status = :status AND p.location.city = :city")
-  List<PainelDTO> findByStatusAndCity(@Param("status") EStatus status, @Param("city") String city);
 
   //Contar painéis por estado
   @Query("SELECT p.location.state, COUNT(p) AS painelCount FROM painel p GROUP BY p.location.state ORDER BY painelCount DESC")
@@ -78,7 +59,7 @@ public interface PainelRepository extends JpaRepository<Painel,UUID> {
   //Listar painéis mais interativos por hora
   @Query("SELECT p, SUM(a.lookCount) AS totalInteractions FROM painel p JOIN attention a ON p.id = a.painel.id JOIN period_register pr ON pr.id = a.id WHERE pr.hour = :hour GROUP BY p ORDER BY totalInteractions DESC")
   List<PainelHourInteractionDTO> findMostInteractivePainelsByHour(@Param("hour") Byte hour);
-
+*/
   /*@Query("""
     SELECT 
         l.city,

@@ -16,7 +16,6 @@ import propagandus.painelservice.core.dtos.PainelModelPeopleCountDTO;
 import propagandus.painelservice.core.dtos.PainelStateCountDTO;
 import propagandus.painelservice.core.dtos.StateAverageInteractionsDTO;
 import propagandus.painelservice.core.models.Painel;
-import propagandus.painelservice.core.models.enumerators.EStatus;
 
 @RestController
 @RequestMapping("/painel")
@@ -47,9 +46,6 @@ public class PainelController {
   @GetMapping("{identification}")
   String findByIdentification(@PathVariable String identification){return null;}
 
-  @GetMapping("{status}")
-  List<EStatus> findByEStatus(@PathVariable EStatus status){return null;}
-
   @GetMapping("{model}")
   List<String> findByModel(@PathVariable String model){return null;}
 
@@ -58,9 +54,6 @@ public class PainelController {
 
   @GetMapping("{city}")
   public List<Object[]> countInteractionsByPainelStatusInCity(@PathVariable String city){return null;}
-
-  @GetMapping("/status/{status}/city/{city}")
-  public List<Painel> findByStatusAndCity(@PathVariable EStatus status, @PathVariable String city){return null;}
 
   @GetMapping("/active/{model}")
   public List<Painel> findActivePainelsByModel(@PathVariable String model){return null;}

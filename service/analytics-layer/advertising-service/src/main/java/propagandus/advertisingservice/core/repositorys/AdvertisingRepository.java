@@ -9,7 +9,7 @@ import propagandus.advertisingservice.core.models.Advertising;
 import propagandus.advertisingservice.core.views.AdvertisingView;
 
 @Repository
-public interface AdvertisingRepository extends JpaRepository<Advertising,Long>, AdvertisingView {
+public interface AdvertisingRepository extends JpaRepository<Advertising,Long>,AdvertisingView {
   List<String> findByName(String name);
   List<String> findByVersion(String version);
   List<String> findByCompany(String company);

@@ -4,7 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.advertisingservice.core.dtos.AdvertisingDTO;
+import propagandus.advertisingservice.core.dtos.AdvertisingReactionCountDTO;
 import propagandus.advertisingservice.core.models.Advertising;
 
 @Component
@@ -12,8 +12,8 @@ import propagandus.advertisingservice.core.models.Advertising;
 public class AdvertisingMapper {
   private final ModelMapper modelMapper;
 
-  public AdvertisingDTO map(Advertising advertising){
-    AdvertisingDTO dto = modelMapper.map(advertising, AdvertisingDTO.class);
+  public AdvertisingReactionCountDTO map(Advertising advertising){
+    AdvertisingReactionCountDTO dto = modelMapper.map(advertising, AdvertisingReactionCountDTO.class);
     return dto;
   }
 }

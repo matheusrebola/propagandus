@@ -30,6 +30,7 @@ public class PeriodRegisterService {
   public boolean existsById(Long id){return periodRegisterRepository.existsById(id);}
 
   //view
+  /*
   public List<ReactionCountByPeriodDTO> countReactionsByPeriodOfTheDay(){return periodRegisterRepository.countReactionsByPeriodOfTheDay();}
   public List<ReactionCountByMonthDTO> countReactionsByMonth(){return periodRegisterRepository.countReactionsByMonth();}
   public List<PeriodRegisterDTO> findByTimeRange(LocalDateTime startTime, LocalDateTime endTime){return periodRegisterRepository.findByTimeRange(startTime, endTime);}
@@ -47,4 +48,5 @@ public class PeriodRegisterService {
   public List<DayWithMostRegistersDTO> findDayWithMostRegistersInMonth(EMonth month){return periodRegisterRepository.findDayWithMostRegistersInMonth(month);}
   public List<RegisterCountByDayDTO> countRegistersBySpecificDays(List<Byte> days){return periodRegisterRepository.countRegistersBySpecificDays(days);}
   public List<PeriodRegisterDTO> findMostRecentRegisters(Pageable pageable){return periodRegisterRepository.findMostRecentRegisters(pageable);}
+  */
 }

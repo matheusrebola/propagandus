@@ -1,7 +1,6 @@
 package propagandus.locationservice.core.services;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -22,12 +21,13 @@ public class LocationService {
   private final LocationRepository locationRepository;
 
   //repository
-  public boolean existsById(UUID id){return locationRepository.existsById(id);}
-  public List<String> findByZipCode(String zipCode){return locationRepository.findByZipCode(zipCode);}
-  public List<String> findByPublicPlace(String publicPlace){return locationRepository.findByPublicPlace(publicPlace);}
+  public boolean existsById(Long id){return locationRepository.existsById(id);}
+  //public List<String> findByZipCode(String zipCode){return locationRepository.findByZipCode(zipCode);}
+  //public List<String> findByPublicPlace(String publicPlace){return locationRepository.findByPublicPlace(publicPlace);}
   public List<ELocationType> findByLocationType(ELocationType locationType){return findByLocationType(locationType);}
 
   //views
+  /*
   public List<LocationReactionCountDTO> findLocationsWithMostReactions(){return locationRepository.findLocationsWithMostReactions();}
   public List<LocationAdvertisementDTO> findLocationsWithAdvertisements(){return locationRepository.findLocationsWithAdvertisements();}
   public List<LocationDTO> findLocationsByCityWithPositiveReactions(String city){return locationRepository.findLocationsByCityWithPositiveReactions(city);}
@@ -43,4 +43,5 @@ public class LocationService {
   public List<LocationAdvertisementDTO> findLocationsWithAdvertisementsAndReactionsByState(String state){return locationRepository.findLocationsWithAdvertisementsAndReactionsByState(state);}
   public List<LocationReactionCountDTO> countPositiveReactionsByCity(){return locationRepository.countPositiveReactionsByCity();}
   public List<LocationDTO> findLocationsWithoutReactions(){return locationRepository.findLocationsWithoutReactions();}
+  */
 }

@@ -28,17 +28,19 @@ public class AdvertisingService {
   public List<String> findByProduct(String product){return advertisingRepository.findByProduct(product);}
 
   //view
-  public List<AdvertisingDTO> findByReactionType(EReactionType reactionType){return advertisingRepository.findByReactionType(reactionType);}
-  public List<AdvertisingDTO> findPositiveReactionsByCompany(String company){return advertisingRepository.findPositiveReactionsByCompany(company);}
-  public List<AdvertisingDTO> findByCityWithReactions(String city){return findByCityWithReactions(city);}
-  public List<AdvertisingDetailsDTO> findAdvertisingDetailsWithReactions(String name){return advertisingRepository.findAdvertisingDetailsWithReactions(name);}
-  public List<AdvertisingDTO> findByStateWithReactions(String state){return advertisingRepository.findByStateWithReactions(state);}
-  public List<AdvertisingReactionCountDTO> countReactionsByAdvertising(){return advertisingRepository.countReactionsByAdvertising();}
-  public List<AdvertisingCityReactionCountDTO> findAdvertisingWithMostReactionsInCity(String city){return advertisingRepository.findAdvertisingWithMostReactionsInCity(city);}
-  public List<AdvertisingReactionTypeCountDTO> findAdvertisingWithMostReactionsByType(EReactionType reactionType){return advertisingRepository.findAdvertisingWithMostReactionsByType(reactionType);}
-  public List<ProductReactionCountDTO> countReactionsByProduct(){return advertisingRepository.countReactionsByProduct();}
-  public List<AdvertisingDTO> findAdvertisingByPainel(Long painelId){return advertisingRepository.findAdvertisingByPainel(painelId);}
-  public List<ProductReactionCountDTO> countReactionsByAdvertisingAndCity(){return advertisingRepository.countReactionsByAdvertisingAndCity();}
-  public List<AdvertisingDTO> findAdvertisingByProductWithReactionsAboveThreshold(String product, Long threshold){return advertisingRepository.findAdvertisingByProductWithReactionsAboveThreshold(product, threshold);}
-  public List<AdvertisingDTO> findAdvertisingInLocationsWithMorePainels(Byte painelCount){return advertisingRepository.findAdvertisingInLocationsWithMorePainels(painelCount);}
+  
+  //public List<AdvertisingDTO> findByReactionType(EReactionType reactionType){return advertisingRepository.findByReactionType(reactionType);}
+  //public List<AdvertisingDTO> findPositiveReactionsByCompany(String company){return advertisingRepository.findPositiveReactionsByCompany(company);}
+  //public List<AdvertisingDTO> findByCityWithReactions(String city){return findByCityWithReactions(city);}
+  //public List<AdvertisingDetailsDTO> findAdvertisingDetailsWithReactions(String name){return advertisingRepository.findAdvertisingDetailsWithReactions(name);}
+  //public List<AdvertisingDTO> findByStateWithReactions(String state){return advertisingRepository.findByStateWithReactions(state);}
+  //public List<AdvertisingReactionCountDTO> countReactionsByAdvertising(){return advertisingRepository.countReactionsByAdvertising();}
+  //public List<AdvertisingCityReactionCountDTO> findAdvertisingWithMostReactionsInCity(String city){return advertisingRepository.findAdvertisingWithMostReactionsInCity(city);}
+  //public List<AdvertisingReactionTypeCountDTO> findAdvertisingWithMostReactionsByType(EReactionType reactionType){return advertisingRepository.findAdvertisingWithMostReactionsByType(reactionType);}
+  //public List<ProductReactionCountDTO> countReactionsByProduct(){return advertisingRepository.countReactionsByProduct();}
+  //public List<AdvertisingDTO> findAdvertisingByPainel(Long painelId){return advertisingRepository.findAdvertisingByPainel(painelId);}
+  //public List<ProductReactionCountDTO> countReactionsByAdvertisingAndCity(){return advertisingRepository.countReactionsByAdvertisingAndCity();}
+  //public List<AdvertisingDTO> findAdvertisingByProductWithReactionsAboveThreshold(String product, Long threshold){return advertisingRepository.findAdvertisingByProductWithReactionsAboveThreshold(product, threshold);}
+  //public List<AdvertisingDTO> findAdvertisingInLocationsWithMorePainels(Byte painelCount){return advertisingRepository.findAdvertisingInLocationsWithMorePainels(painelCount);}
+  
 }

@@ -10,7 +10,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-    generate-ddl: false
+    generate-ddl: true
     show-sql: true
   data:
     mongodb:

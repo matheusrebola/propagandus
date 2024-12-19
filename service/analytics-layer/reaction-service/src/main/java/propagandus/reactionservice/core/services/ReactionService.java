@@ -19,6 +19,7 @@ import propagandus.reactionservice.core.repositorys.ReactionRepository;
 @Service
 @RequiredArgsConstructor
 public class ReactionService {
+  /*
   private final ReactionRepository reactionRepository;
 
   //repository
@@ -37,4 +38,5 @@ public class ReactionService {
   public List<ReactionDTO> findReactionsByDayOfWeek(EDayWeek dayWeek){return reactionRepository.findReactionsByDayOfWeek(dayWeek);}
   public List<CityInteractionCountDTO> findCitiesWithMostWeekdayInteractions(){return reactionRepository.findCitiesWithMostWeekdayInteractions();}
   public List<ReactionDTO> findReactionsByLocationAndPeriod(String city, EPeriodOfTheDay period){return reactionRepository.findReactionsByLocationAndPeriod(city, period);}
+  */
 }
