@@ -22,7 +22,7 @@ public record Attention(
   @Column(name = "attention_value", nullable = false) Byte attentionValue,
   @Column(name = "look_count", nullable = false) Short lookCount,
   @Column(name = "people_count", nullable = false) Short peopleCount,
-  @Column(name = "people_sex", nullable = false) ESEx sex,
+  @Enumerated(EnumType.STRING) @Column(name = "people_sex", nullable = false) ESEx sex,
   @OneToOne @JoinColumn(name = "attention_time_id", referencedColumnName = "period_register_id", nullable = false) PeriodRegister attentionTime,
   @ManyToOne @JoinColumn(name="location_id", nullable=false) Location location,
   @ManyToOne @JoinColumn(name="advertising_id", nullable=false) Advertising advertising,
