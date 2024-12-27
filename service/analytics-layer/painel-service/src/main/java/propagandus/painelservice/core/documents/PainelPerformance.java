@@ -5,12 +5,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.persistence.Id;
 
 @Document
-public record PainelsWithNoAttention(
+public record PainelPerformance(
   @Id Long id,
   Long painelId,
-  Long locationId,
   String identification,
-  String model
+  String model,
+  Byte packageType,
+  Integer totalReactions,
+  Byte avgReactionScale,
+  Integer totalAttention,
+  Byte avgAttentionValue
 ) {
 
 }
