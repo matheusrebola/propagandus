@@ -5,12 +5,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.persistence.Id;
 
 @Document
-public record AdvertisingWithMostReactionsInCity(
+public record ProductPreferences(
   @Id Long id,
-  Long advertisingId,
-  String advertisingName,
-  String city,
-  Long totalReactions
-) {
-
-}
+  Long productId,
+  String advertisingCompany,
+  Integer totalReactions,
+  Byte avgReactionScale,
+  Short totalAttention
+){}
