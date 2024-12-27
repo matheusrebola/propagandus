@@ -1,0 +1,7 @@
+server:
+  port: 40020
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://analytics:analytics@mongodb-analytics:47050/analytics-db
