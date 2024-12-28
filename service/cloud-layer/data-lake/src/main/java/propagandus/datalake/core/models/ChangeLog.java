@@ -15,7 +15,7 @@ import propagandus.datalake.core.models.enumerators.EActionType;
 @Entity(name = "change_log")
 @Table(name = "change_log")
 public record ChangeLog(
-  @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "advertising_id") Long id,
+  @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "change_log_id") Long id,
   @Column(name = "table_name", length = 20, nullable = false)String tableName,
   @Enumerated(EnumType.STRING) @Column(name = "action_type", length = 7, nullable = false) EActionType actionType,
   @Column(name = "primary_key_value", length = 20, nullable = false) String primaryKeyValue,

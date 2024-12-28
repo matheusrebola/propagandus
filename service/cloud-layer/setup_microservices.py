@@ -50,9 +50,6 @@ def main():
     # Lista dos microserviços Java
     java_services = [
         "data-lake",
-        "backup-service",
-        "data-distribution-service",
-        "data-organizer-service",
         "data-reciver-service"
     ]
 

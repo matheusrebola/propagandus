@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import propagandus.datalake.core.models.Attention;
 
 @Repository
-public interface AttentionRepository extends JpaRepository<Attention, Long> {
+public interface AttentionRepository extends JpaRepository<Attention,Long> {
 
 }

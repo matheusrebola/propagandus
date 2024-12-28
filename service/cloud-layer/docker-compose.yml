@@ -1,5 +1,5 @@
 services:
-  mariadb-analytics:
+  mariadb-lake:
     image: mariadb:latest
     container_name: data-lake
     restart: always
@@ -42,26 +42,10 @@ services:
     networks:
       - propagandus
 
-  mongodb-organizer:
-    image: mongo:latest
-    container_name: data-organizer-mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: organizer
-      MONGO_INITDB_ROOT_PASSWORD: organizer
-      MONGO_INITDB_DATABASE: organizer-db
-    ports:
-      - "57021:27017"
-    volumes:
-      - mongo_organizer_data:/data/db
-    networks:
-      - propagandus
-
 volumes:
   mariadb_lake_data:
   mariadb_backup_data:
   mongo_reciver_data:
-  mongo_organizer_data:
 
 networks:
   propagandus:
