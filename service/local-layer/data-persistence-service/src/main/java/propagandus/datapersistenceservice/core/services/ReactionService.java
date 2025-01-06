@@ -9,6 +9,6 @@ import propagandus.datapersistenceservice.core.repositorys.ReactionRepository;
 @Service
 @RequiredArgsConstructor
 public class ReactionService {
-  private final ReactionRepository reactionRepository;
+  private ReactionRepository reactionRepository;
   public Reaction save(Reaction reaction){return reactionRepository.save(reaction);}
 }

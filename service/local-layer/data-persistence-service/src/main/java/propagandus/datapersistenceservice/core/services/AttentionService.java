@@ -9,6 +9,6 @@ import propagandus.datapersistenceservice.core.repositorys.AttentionRepository;
 @Service
 @RequiredArgsConstructor
 public class AttentionService {
-  private final AttentionRepository attentionRepository;
+  private AttentionRepository attentionRepository;
   public Attention save(Attention attention){return attentionRepository.save(attention);}
 }
