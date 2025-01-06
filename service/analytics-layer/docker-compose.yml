@@ -1,7 +1,6 @@
 version: "3.9"
 
 services:
-  # MongoDB Services
   mongodb-analytics:
     image: mongo:latest
     container_name: mongodb-analytics
@@ -14,23 +13,6 @@ services:
       - "47050:27017"
     volumes:
       - mongo_analytics_data:/data/db
-    networks:
-      - propagandus
-
-  # MariaDB Services
-  mariadb-analytics:
-    image: mariadb:latest
-    container_name: mariadb-analytics
-    restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: data-analytics
-      MARIADB_DATABASE: data-analytics
-      MARIADB_USER: propagandus
-      MARIADB_PASSWORD: propagandus
-    ports:
-      - "43350:3306"
-    volumes:
-      - mariadb_analytics_data:/var/lib/mysql
     networks:
       - propagandus
 

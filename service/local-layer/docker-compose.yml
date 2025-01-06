@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mariadb-persistence:
     image: mariadb:latest
-    container_name: data-persistence-service
+    container_name: data-persistence
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: data-persistence-service
