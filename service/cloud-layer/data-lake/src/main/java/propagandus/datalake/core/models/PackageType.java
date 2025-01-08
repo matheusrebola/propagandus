@@ -15,7 +15,7 @@ import propagandus.datalake.core.models.enumerators.EPackageType;
 @Table(name = "package_type_table")
 public record PackageType(
   @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "package_type_id") Byte id,
-  @Enumerated(EnumType.STRING) @Column(length = 10, nullable = false) EPackageType packageType,
+  @Enumerated(EnumType.STRING) @Column(length = 10, nullable = false, name = "package_type") EPackageType packageType,
   @OneToOne(mappedBy = "packageType") Painel painel
   ) {
 }
