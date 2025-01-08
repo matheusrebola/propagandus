@@ -11,7 +11,7 @@ import propagandus.datalake.core.models.Attention;
 @Component
 @RequiredArgsConstructor
 public class AttentionMapper {
-  private final ModelMapper modelMapper;
+  private ModelMapper modelMapper;
 
   public Attention map(AttentionCreateDto dto){
     Attention attention = modelMapper.map(dto, Attention.class);
