@@ -1,19 +1,24 @@
 package propagandus.viewcreationservice.core.mappers;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import lombok.RequiredArgsConstructor;
 import propagandus.viewcreationservice.core.documents.ReactionAttentionCorrelation;
 import propagandus.viewcreationservice.core.dtos.ReactionAttentionCorrelationDTO;
 
 @Component
-@RequiredArgsConstructor
 public class ReactionAttentionCorrelationMapper {
-  private final ModelMapper modelMapper;
+	@Autowired
+	private final ModelMapper mapper;
 
-  public ReactionAttentionCorrelation map(ReactionAttentionCorrelationDTO dto){
-    ReactionAttentionCorrelation reaction = modelMapper.map(dto, ReactionAttentionCorrelation.class);
-    return reaction;
-  }
+	public ReactionAttentionCorrelation map(ReactionAttentionCorrelationDTO dto) {
+		ReactionAttentionCorrelation reaction = mapper.map(dto, ReactionAttentionCorrelation.class);
+		return reaction;
+	}
+	
+	public ReactionAttentionCorrelationDTO map(ReactionAttentionCorrelation reaction) {
+		ReactionAttentionCorrelationDTO dto = mapper.map(reaction, ReactionAttentionCorrelationDTO.class);
+		return dto;
+	}
 }

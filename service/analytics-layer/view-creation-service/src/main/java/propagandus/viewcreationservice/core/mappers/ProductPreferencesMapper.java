@@ -1,6 +1,7 @@
 package propagandus.viewcreationservice.core.mappers;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import propagandus.viewcreationservice.core.documents.ProductPreferences;
@@ -8,12 +9,16 @@ import propagandus.viewcreationservice.core.dtos.ProductPreferencesDTO;
 
 @Component
 public class ProductPreferencesMapper {
-  private final ModelMapper modelMapper;
-  
-  public ProductPreferencesMapper(ModelMapper modelMapper) {this.modelMapper = modelMapper;}
+	@Autowired
+	private final ModelMapper mapper;
 
-public ProductPreferences map(ProductPreferencesDTO dto){
-    ProductPreferences preferences = modelMapper.map(dto, ProductPreferences.class);
-    return preferences;
-  }
+	public ProductPreferences map(ProductPreferencesDTO dto) {
+		ProductPreferences preferences = mapper.map(dto, ProductPreferences.class);
+		return preferences;
+	}
+	
+	public ProductPreferencesDTO map(ProductPreferences product) {
+		ProductPreferencesDTO dto = mapper.map(product, ProductPreferencesDTO.class);
+		return dto;
+	}
 }
