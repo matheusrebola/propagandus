@@ -1,7 +1,8 @@
 package propagandus.viewcreationservice.core.dtos;
 
-import propagandus.viewcreationservice.core.models.enumerators.EDayWeek;
-import propagandus.viewcreationservice.core.models.enumerators.EMonth;
+import java.time.DayOfWeek;
+import java.time.Month;
+
 import propagandus.viewcreationservice.core.models.enumerators.EPeriodOfTheDay;
 import propagandus.viewcreationservice.core.models.enumerators.EReactionType;
 
@@ -10,8 +11,8 @@ public record CampaignEffectivenessDTO(
   String advertisingName,
   EReactionType reactionType,
   Byte reactionScale,
-  EDayWeek dayWeek,
+  DayOfWeek dayWeek,
   EPeriodOfTheDay periodOfTheDay,
-  EMonth month,
+  Month month,
   String year
 ){}
