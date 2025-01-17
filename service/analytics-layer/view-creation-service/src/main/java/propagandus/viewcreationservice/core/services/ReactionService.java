@@ -1,15 +1,15 @@
-package propagandus.reactionservice.core.services;
+package propagandus.viewcreationservice.core.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.reactionservice.core.documents.ReactionAttentionCorrelation;
-import propagandus.reactionservice.core.dtos.ReactionAttentionCorrelationDTO;
-import propagandus.reactionservice.core.mappers.ReactionAttentionCorrelationMapper;
-import propagandus.reactionservice.core.repositorys.ReactionAttentionCorrelationRepository;
-import propagandus.reactionservice.core.repositorys.ReactionRepository;
+import propagandus.viewcreationservice.core.documents.ReactionAttentionCorrelation;
+import propagandus.viewcreationservice.core.dtos.ReactionAttentionCorrelationDTO;
+import propagandus.viewcreationservice.core.mappers.ReactionAttentionCorrelationMapper;
+import propagandus.viewcreationservice.core.repositorys.ReactionRepository;
+import propagandus.viewcreationservice.core.repositorys.mongo.ReactionAttentionCorrelationRepository;
 
 @Service
 @RequiredArgsConstructor

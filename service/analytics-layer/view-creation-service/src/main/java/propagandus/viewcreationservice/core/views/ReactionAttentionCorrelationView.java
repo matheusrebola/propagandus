@@ -1,10 +1,10 @@
-package propagandus.reactionservice.core.views;
+package propagandus.viewcreationservice.core.views;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 
-import propagandus.reactionservice.core.dtos.ReactionAttentionCorrelationDTO;
+import propagandus.viewcreationservice.core.dtos.ReactionAttentionCorrelationDTO;
 
 public interface ReactionAttentionCorrelationView {
   @Query(value = """

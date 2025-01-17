@@ -1,12 +1,12 @@
-package propagandus.advertisingservice.core.documents;
+package propagandus.viewcreationservice.core.documents;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import jakarta.persistence.Id;
-import propagandus.advertisingservice.core.models.enumerators.EDayWeek;
-import propagandus.advertisingservice.core.models.enumerators.EMonth;
-import propagandus.advertisingservice.core.models.enumerators.EPeriodOfTheDay;
-import propagandus.advertisingservice.core.models.enumerators.EReactionType;
+import propagandus.viewcreationservice.core.models.enumerators.EDayWeek;
+import propagandus.viewcreationservice.core.models.enumerators.EMonth;
+import propagandus.viewcreationservice.core.models.enumerators.EPeriodOfTheDay;
+import propagandus.viewcreationservice.core.models.enumerators.EReactionType;
 
 @Document
 public record CampaignEffectiveness(

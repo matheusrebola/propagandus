@@ -1,4 +1,4 @@
-package propagandus.advertisingservice.core.models;
+package propagandus.viewcreationservice.core.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import propagandus.advertisingservice.core.models.enumerators.EReactionType;
+import propagandus.viewcreationservice.core.models.enumerators.EReactionType;
 
 @Entity(name = "reaction")
 @Table(name = "reaction_table")

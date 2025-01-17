@@ -1,11 +1,11 @@
-package propagandus.painelservice.core.mappers;
+package propagandus.viewcreationservice.core.mappers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.painelservice.core.documents.PainelPerformance;
-import propagandus.painelservice.core.dtos.PainelPerformanceDTO;
+import propagandus.viewcreationservice.core.documents.PainelPerformance;
+import propagandus.viewcreationservice.core.dtos.PainelPerformanceDTO;
 
 @Component
 @RequiredArgsConstructor

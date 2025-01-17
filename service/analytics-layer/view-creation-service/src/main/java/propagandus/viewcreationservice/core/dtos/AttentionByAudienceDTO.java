@@ -1,10 +1,10 @@
-package propagandus.attentionservice.core.dtos;
+package propagandus.viewcreationservice.core.dtos;
 
-import propagandus.attentionservice.core.models.enumerators.EAttentionLevel;
-import propagandus.attentionservice.core.models.enumerators.EDayWeek;
-import propagandus.attentionservice.core.models.enumerators.EMonth;
-import propagandus.attentionservice.core.models.enumerators.EPeriodOfTheDay;
-import propagandus.attentionservice.core.models.enumerators.ESEx;
+import propagandus.viewcreationservice.core.models.enumerators.EAttentionLevel;
+import propagandus.viewcreationservice.core.models.enumerators.EDayWeek;
+import propagandus.viewcreationservice.core.models.enumerators.EMonth;
+import propagandus.viewcreationservice.core.models.enumerators.EPeriodOfTheDay;
+import propagandus.viewcreationservice.core.models.enumerators.ESEx;
 
 public record AttentionByAudienceDTO(
   EAttentionLevel attentionLevel,

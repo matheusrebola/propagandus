@@ -1,13 +1,12 @@
-package propagandus.advertisingservice.core.repositorys;
+package propagandus.viewcreationservice.core.repositorys;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import propagandus.advertisingservice.core.models.Advertising;
-import propagandus.advertisingservice.core.views.CampaignEffectivenessView;
-import propagandus.advertisingservice.core.views.ProductPreferencesView;
+import propagandus.viewcreationservice.core.models.Advertising;
+import propagandus.viewcreationservice.core.views.generics.AdvertisingView;
 
 @Repository
-public interface AdvertisingRepository extends JpaRepository<Advertising,Long>
-  ,CampaignEffectivenessView
-  ,ProductPreferencesView {}
+public interface AdvertisingRepository extends JpaRepository <Advertising,Long>, AdvertisingView {
+	
+}

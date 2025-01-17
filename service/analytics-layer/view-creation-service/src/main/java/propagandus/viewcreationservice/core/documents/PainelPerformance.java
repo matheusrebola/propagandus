@@ -1,8 +1,7 @@
-package propagandus.painelservice.core.documents;
+package propagandus.viewcreationservice.core.documents;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import jakarta.persistence.Id;
 
 @Document
 public record PainelPerformance(

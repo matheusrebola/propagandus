@@ -1,10 +1,10 @@
-package propagandus.locationservice.core.views;
+package propagandus.viewcreationservice.core.views;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 
-import propagandus.locationservice.core.dtos.LocationPerformanceDTO;
+import propagandus.viewcreationservice.core.dtos.LocationPerformanceDTO;
 
 public interface LocationPerformanceView {
   @Query(value = """

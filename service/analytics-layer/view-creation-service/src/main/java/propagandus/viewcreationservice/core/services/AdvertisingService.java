@@ -1,18 +1,18 @@
-package propagandus.advertisingservice.core.services;
+package propagandus.viewcreationservice.core.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import propagandus.advertisingservice.core.documents.CampaignEffectiveness;
-import propagandus.advertisingservice.core.documents.ProductPreferences;
-import propagandus.advertisingservice.core.dtos.CampaignEffectivenessDTO;
-import propagandus.advertisingservice.core.dtos.ProductPreferencesDTO;
-import propagandus.advertisingservice.core.mappers.CampaignEffectivenessMapper;
-import propagandus.advertisingservice.core.mappers.ProductPreferencesMapper;
-import propagandus.advertisingservice.core.repositorys.AdvertisingRepository;
-import propagandus.advertisingservice.core.repositorys.CampaignEffectivenessRepository;
-import propagandus.advertisingservice.core.repositorys.ProductPreferencesRepository;
+import propagandus.viewcreationservice.core.documents.CampaignEffectiveness;
+import propagandus.viewcreationservice.core.documents.ProductPreferences;
+import propagandus.viewcreationservice.core.dtos.CampaignEffectivenessDTO;
+import propagandus.viewcreationservice.core.dtos.ProductPreferencesDTO;
+import propagandus.viewcreationservice.core.mappers.CampaignEffectivenessMapper;
+import propagandus.viewcreationservice.core.mappers.ProductPreferencesMapper;
+import propagandus.viewcreationservice.core.repositorys.AdvertisingRepository;
+import propagandus.viewcreationservice.core.repositorys.mongo.CampaignEffectivenessRepository;
+import propagandus.viewcreationservice.core.repositorys.mongo.ProductPreferencesRepository;
 
 @Service
 public class AdvertisingService {

@@ -1,10 +1,10 @@
-package propagandus.advertisingservice.core.views;
+package propagandus.viewcreationservice.core.views;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 
-import propagandus.advertisingservice.core.dtos.CampaignEffectivenessDTO;
+import propagandus.viewcreationservice.core.dtos.CampaignEffectivenessDTO;
 
 public interface CampaignEffectivenessView {
   @Query(value = """

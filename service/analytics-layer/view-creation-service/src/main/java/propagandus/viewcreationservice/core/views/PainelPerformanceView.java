@@ -1,10 +1,10 @@
-package propagandus.painelservice.core.views;
+package propagandus.viewcreationservice.core.views;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 
-import propagandus.painelservice.core.dtos.PainelPerformanceDTO;
+import propagandus.viewcreationservice.core.dtos.PainelPerformanceDTO;
 
 public interface PainelPerformanceView {
    @Query(value = """

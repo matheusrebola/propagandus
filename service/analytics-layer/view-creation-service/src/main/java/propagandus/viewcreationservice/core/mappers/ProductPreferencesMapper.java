@@ -1,10 +1,10 @@
-package propagandus.advertisingservice.core.mappers;
+package propagandus.viewcreationservice.core.mappers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import propagandus.advertisingservice.core.documents.ProductPreferences;
-import propagandus.advertisingservice.core.dtos.ProductPreferencesDTO;
+import propagandus.viewcreationservice.core.documents.ProductPreferences;
+import propagandus.viewcreationservice.core.dtos.ProductPreferencesDTO;
 
 @Component
 public class ProductPreferencesMapper {

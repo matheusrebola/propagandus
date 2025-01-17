@@ -1,10 +1,10 @@
-package propagandus.advertisingservice.core.mappers;
+package propagandus.viewcreationservice.core.mappers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import propagandus.advertisingservice.core.documents.CampaignEffectiveness;
-import propagandus.advertisingservice.core.dtos.CampaignEffectivenessDTO;
+import propagandus.viewcreationservice.core.documents.CampaignEffectiveness;
+import propagandus.viewcreationservice.core.dtos.CampaignEffectivenessDTO;
 
 @Component
 public class CampaignEffectivenessMapper {

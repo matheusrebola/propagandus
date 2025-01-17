@@ -1,6 +1,7 @@
-package propagandus.advertisingservice.core.models;
+package propagandus.viewcreationservice.core.models;
 
 import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

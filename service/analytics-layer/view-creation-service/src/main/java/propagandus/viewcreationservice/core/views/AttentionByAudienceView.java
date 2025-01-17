@@ -1,10 +1,10 @@
-package propagandus.attentionservice.core.views;
+package propagandus.viewcreationservice.core.views;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 
-import propagandus.attentionservice.core.dtos.AttentionByAudienceDTO;
+import propagandus.viewcreationservice.core.dtos.AttentionByAudienceDTO;
 
 public interface AttentionByAudienceView {
   @Query(value = """

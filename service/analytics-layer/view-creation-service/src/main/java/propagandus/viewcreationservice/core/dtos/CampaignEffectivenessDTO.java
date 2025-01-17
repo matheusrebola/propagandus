@@ -1,9 +1,9 @@
-package propagandus.advertisingservice.core.dtos;
+package propagandus.viewcreationservice.core.dtos;
 
-import propagandus.advertisingservice.core.models.enumerators.EDayWeek;
-import propagandus.advertisingservice.core.models.enumerators.EMonth;
-import propagandus.advertisingservice.core.models.enumerators.EPeriodOfTheDay;
-import propagandus.advertisingservice.core.models.enumerators.EReactionType;
+import propagandus.viewcreationservice.core.models.enumerators.EDayWeek;
+import propagandus.viewcreationservice.core.models.enumerators.EMonth;
+import propagandus.viewcreationservice.core.models.enumerators.EPeriodOfTheDay;
+import propagandus.viewcreationservice.core.models.enumerators.EReactionType;
 
 public record CampaignEffectivenessDTO(
   Long advertisingId,

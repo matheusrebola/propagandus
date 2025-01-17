@@ -1,7 +1,7 @@
-package propagandus.reactionservice.core.dtos;
+package propagandus.viewcreationservice.core.dtos;
 
-import propagandus.reactionservice.core.models.enumerators.EAttentionLevel;
-import propagandus.reactionservice.core.models.enumerators.EReactionType;
+import propagandus.viewcreationservice.core.models.enumerators.EAttentionLevel;
+import propagandus.viewcreationservice.core.models.enumerators.EReactionType;
 
 public record ReactionAttentionCorrelationDTO(
   EReactionType reactionType,

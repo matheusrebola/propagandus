@@ -1,11 +1,11 @@
-package propagandus.locationservice.core.mappers;
+package propagandus.viewcreationservice.core.mappers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.locationservice.core.documents.LocationPerformance;
-import propagandus.locationservice.core.dtos.LocationPerformanceDTO;
+import propagandus.viewcreationservice.core.documents.LocationPerformance;
+import propagandus.viewcreationservice.core.dtos.LocationPerformanceDTO;
 
 @Component
 @RequiredArgsConstructor

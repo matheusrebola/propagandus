@@ -1,4 +1,4 @@
-package propagandus.painelservice.core.dtos;
+package propagandus.viewcreationservice.core.dtos;
 
 public record PainelPerformanceDTO(
   Long painelId,

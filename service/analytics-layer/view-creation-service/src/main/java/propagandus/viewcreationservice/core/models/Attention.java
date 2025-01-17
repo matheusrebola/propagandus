@@ -1,4 +1,4 @@
-package propagandus.advertisingservice.core.models;
+package propagandus.viewcreationservice.core.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,8 +11,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import propagandus.advertisingservice.core.models.enumerators.EAttentionLevel;
-import propagandus.advertisingservice.core.models.enumerators.ESEx;
+import propagandus.viewcreationservice.core.models.enumerators.EAttentionLevel;
+import propagandus.viewcreationservice.core.models.enumerators.ESEx;
 
 @Entity(name = "attention")
 @Table(name = "attention_table")

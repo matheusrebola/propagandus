@@ -1,8 +1,8 @@
-package propagandus.locationservice.core.dtos;
+package propagandus.viewcreationservice.core.dtos;
 
-import propagandus.locationservice.core.models.enumerators.ECityZone;
-import propagandus.locationservice.core.models.enumerators.ECityZoneType;
-import propagandus.locationservice.core.models.enumerators.ELocationType;
+import propagandus.viewcreationservice.core.models.enumerators.ECityZone;
+import propagandus.viewcreationservice.core.models.enumerators.ECityZoneType;
+import propagandus.viewcreationservice.core.models.enumerators.ELocationType;
 
 public record LocationPerformanceDTO(
   Long locationId,

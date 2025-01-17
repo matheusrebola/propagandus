@@ -1,14 +1,15 @@
-package propagandus.painelservice.core.services;
+package propagandus.viewcreationservice.core.services;
 
 import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.painelservice.core.documents.PainelPerformance;
-import propagandus.painelservice.core.dtos.PainelPerformanceDTO;
-import propagandus.painelservice.core.mappers.PainelPerformanceMapper;
-import propagandus.painelservice.core.repositorys.PainelPerformanceRepository;
-import propagandus.painelservice.core.repositorys.PainelRepository;
+import propagandus.viewcreationservice.core.documents.PainelPerformance;
+import propagandus.viewcreationservice.core.dtos.PainelPerformanceDTO;
+import propagandus.viewcreationservice.core.mappers.PainelPerformanceMapper;
+import propagandus.viewcreationservice.core.repositorys.PainelRepository;
+import propagandus.viewcreationservice.core.repositorys.mongo.PainelPerformanceRepository;
 
 @Service
 @RequiredArgsConstructor

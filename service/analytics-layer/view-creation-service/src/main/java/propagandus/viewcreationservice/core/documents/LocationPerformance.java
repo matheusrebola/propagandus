@@ -1,10 +1,10 @@
-package propagandus.locationservice.core.documents;
+package propagandus.viewcreationservice.core.documents;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import propagandus.locationservice.core.models.enumerators.ECityZone;
-import propagandus.locationservice.core.models.enumerators.ECityZoneType;
-import propagandus.locationservice.core.models.enumerators.ELocationType;
+import propagandus.viewcreationservice.core.models.enumerators.ECityZone;
+import propagandus.viewcreationservice.core.models.enumerators.ECityZoneType;
+import propagandus.viewcreationservice.core.models.enumerators.ELocationType;
 
 @Document
 public record LocationPerformance(

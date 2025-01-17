@@ -1,4 +1,4 @@
-package propagandus.advertisingservice.core.models;
+package propagandus.viewcreationservice.core.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,9 +9,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import propagandus.advertisingservice.core.models.enumerators.EDayWeek;
-import propagandus.advertisingservice.core.models.enumerators.EMonth;
-import propagandus.advertisingservice.core.models.enumerators.EPeriodOfTheDay;
+import propagandus.viewcreationservice.core.models.enumerators.EDayWeek;
+import propagandus.viewcreationservice.core.models.enumerators.EMonth;
+import propagandus.viewcreationservice.core.models.enumerators.EPeriodOfTheDay;
 
 @Entity(name = "period_register")
 @Table(name = "date_time_table")

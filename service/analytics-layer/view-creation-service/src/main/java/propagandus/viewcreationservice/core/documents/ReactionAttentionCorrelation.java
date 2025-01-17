@@ -1,10 +1,10 @@
-package propagandus.reactionservice.core.documents;
+package propagandus.viewcreationservice.core.documents;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import jakarta.persistence.Id;
-import propagandus.reactionservice.core.models.enumerators.EAttentionLevel;
-import propagandus.reactionservice.core.models.enumerators.EReactionType;
+import propagandus.viewcreationservice.core.models.enumerators.EAttentionLevel;
+import propagandus.viewcreationservice.core.models.enumerators.EReactionType;
 
 @Document
 public record ReactionAttentionCorrelation(

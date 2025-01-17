@@ -1,4 +1,4 @@
-package propagandus.advertisingservice.core.models;
+package propagandus.viewcreationservice.core.models;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import propagandus.advertisingservice.core.models.enumerators.ECityZone;
-import propagandus.advertisingservice.core.models.enumerators.ECityZoneType;
-import propagandus.advertisingservice.core.models.enumerators.ELocationType;
+import propagandus.viewcreationservice.core.models.enumerators.ECityZone;
+import propagandus.viewcreationservice.core.models.enumerators.ECityZoneType;
+import propagandus.viewcreationservice.core.models.enumerators.ELocationType;
 
 @Entity(name = "location")
 @Table(name = "location_table")

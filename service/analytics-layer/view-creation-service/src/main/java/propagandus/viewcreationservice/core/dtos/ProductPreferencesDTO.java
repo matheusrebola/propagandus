@@ -1,4 +1,4 @@
-package propagandus.advertisingservice.core.dtos;
+package propagandus.viewcreationservice.core.dtos;
 
 public record ProductPreferencesDTO(
   Long productId,

@@ -1,4 +1,4 @@
-package propagandus.advertisingservice.core.models;
+package propagandus.viewcreationservice.core.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import propagandus.advertisingservice.core.models.enumerators.EPackageType;
+import propagandus.viewcreationservice.core.models.enumerators.EPackageType;
 
 @Entity(name = "package_type")
 @Table(name = "package_type_table")

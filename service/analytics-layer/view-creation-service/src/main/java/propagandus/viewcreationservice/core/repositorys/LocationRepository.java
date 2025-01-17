@@ -1,12 +1,12 @@
-package propagandus.locationservice.core.repositorys;
+package propagandus.viewcreationservice.core.repositorys;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import propagandus.locationservice.core.models.Location;
-import propagandus.locationservice.core.views.LocationPerformanceView;
+import propagandus.viewcreationservice.core.models.Location;
+import propagandus.viewcreationservice.core.views.generics.LocationView;
 
 @Repository
-public interface LocationRepository extends JpaRepository<Location,Long>,LocationPerformanceView {
+public interface LocationRepository extends JpaRepository<Location,Long>, LocationView {
  
 }

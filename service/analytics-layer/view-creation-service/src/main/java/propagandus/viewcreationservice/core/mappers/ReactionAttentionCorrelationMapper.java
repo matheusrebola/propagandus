@@ -1,11 +1,11 @@
-package propagandus.reactionservice.core.mappers;
+package propagandus.viewcreationservice.core.mappers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.reactionservice.core.documents.ReactionAttentionCorrelation;
-import propagandus.reactionservice.core.dtos.ReactionAttentionCorrelationDTO;
+import propagandus.viewcreationservice.core.documents.ReactionAttentionCorrelation;
+import propagandus.viewcreationservice.core.dtos.ReactionAttentionCorrelationDTO;
 
 @Component
 @RequiredArgsConstructor

@@ -1,15 +1,15 @@
-package propagandus.attentionservice.core.services;
+package propagandus.viewcreationservice.core.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.attentionservice.core.documents.AttentionByAudience;
-import propagandus.attentionservice.core.dtos.AttentionByAudienceDTO;
-import propagandus.attentionservice.core.mappers.AttentionByAudienceMapper;
-import propagandus.attentionservice.core.repositorys.AttentionByAudienceRepository;
-import propagandus.attentionservice.core.repositorys.AttentionRepository;
+import propagandus.viewcreationservice.core.documents.AttentionByAudience;
+import propagandus.viewcreationservice.core.dtos.AttentionByAudienceDTO;
+import propagandus.viewcreationservice.core.mappers.AttentionByAudienceMapper;
+import propagandus.viewcreationservice.core.repositorys.AttentionRepository;
+import propagandus.viewcreationservice.core.repositorys.mongo.AttentionByAudienceRepository;
 
 @Service
 @RequiredArgsConstructor

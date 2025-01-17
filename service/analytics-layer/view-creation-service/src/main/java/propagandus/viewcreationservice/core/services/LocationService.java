@@ -1,15 +1,15 @@
-package propagandus.locationservice.core.services;
+package propagandus.viewcreationservice.core.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import propagandus.locationservice.core.documents.LocationPerformance;
-import propagandus.locationservice.core.dtos.LocationPerformanceDTO;
-import propagandus.locationservice.core.mappers.LocationPerformanceMapper;
-import propagandus.locationservice.core.repositorys.LocationPerformanceRepository;
-import propagandus.locationservice.core.repositorys.LocationRepository;
+import propagandus.viewcreationservice.core.documents.LocationPerformance;
+import propagandus.viewcreationservice.core.dtos.LocationPerformanceDTO;
+import propagandus.viewcreationservice.core.mappers.LocationPerformanceMapper;
+import propagandus.viewcreationservice.core.repositorys.LocationRepository;
+import propagandus.viewcreationservice.core.repositorys.mongo.LocationPerformanceRepository;
 
 @Service
 @RequiredArgsConstructor
