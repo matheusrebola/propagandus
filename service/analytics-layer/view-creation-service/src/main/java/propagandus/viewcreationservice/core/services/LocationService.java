@@ -13,17 +13,31 @@ import propagandus.viewcreationservice.core.repositorys.mongo.LocationPerformanc
 
 @Service
 @RequiredArgsConstructor
-public class LocationService {
-  private final LocationRepository locationRepository;
-  private final LocationPerformanceMapper locationPerformanceMapper;
-  private final LocationPerformanceRepository locationPerformanceRepository;
-  
-  List<LocationPerformance> locationPerformance(){
-    List<LocationPerformanceDTO> dtoList = locationRepository.locationPerformance();
-    List<LocationPerformance> locations = dtoList.stream()
-      .map(locationPerformanceMapper::map)
-      .toList();
-    List<LocationPerformance> savedLocation = locationPerformanceRepository.saveAll(locations);
-    return savedLocation;
-  }
+public class LocationService extends AViewCreationService {
+	  private final LocationRepository locationRepository;
+	  private final LocationPerformanceMapper locationPerformanceMapper;
+	  private final LocationPerformanceRepository locationPerformanceRepository;
+	  	  
+	  @Override
+	  protected void executeProcess() {
+		  locationPerformance();
+		  reactionsByLocation();
+		  reactionsByLocation();
+	  }
+	  
+	  public void locationPerformance(){
+	    List<LocationPerformanceDTO> dtoList = locationRepository.locationPerformance();
+	    List<LocationPerformance> locations = dtoList.stream()
+	      .map(locationPerformanceMapper::map)
+	      .toList();
+	    locationPerformanceRepository.saveAll(locations);
+	  }
+	  
+	  public void reactionsByLocation() {
+		  
+	  }
+	  
+	  public void locationPainelSummary() {
+		  
+	  }
 }

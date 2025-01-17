@@ -13,17 +13,22 @@ import propagandus.viewcreationservice.core.repositorys.mongo.ReactionAttentionC
 
 @Service
 @RequiredArgsConstructor
-public class ReactionService {
-  private final ReactionRepository reactionRepository;
-  private final ReactionAttentionCorrelationMapper reactionAttentionCorrelationMapper;
-  private final ReactionAttentionCorrelationRepository reactionAttentionCorrelationRepository;
-  
-  List<ReactionAttentionCorrelation> locationPerformance(){
-    List<ReactionAttentionCorrelationDTO> dtoList = reactionRepository.reactionAttentionCorrelation();
-    List<ReactionAttentionCorrelation> reactions = dtoList.stream()
-      .map(reactionAttentionCorrelationMapper::map)
-      .toList();
-    List<ReactionAttentionCorrelation> savedReaction = reactionAttentionCorrelationRepository.saveAll(reactions);
-    return savedReaction;
-  }
+public class ReactionService extends AViewCreationService {
+	  private final ReactionRepository reactionRepository;
+	  private final ReactionAttentionCorrelationMapper reactionAttentionCorrelationMapper;
+	  private final ReactionAttentionCorrelationRepository reactionAttentionCorrelationRepository;
+	  
+	  @Override
+	  protected void executeProcess() {
+		  reactionAttentionCorrelation();
+	  }
+	  
+	  public void reactionAttentionCorrelation(){
+	    List<ReactionAttentionCorrelationDTO> dtoList = reactionRepository.reactionAttentionCorrelation();
+	    List<ReactionAttentionCorrelation> reactions = dtoList.stream()
+	      .map(reactionAttentionCorrelationMapper::map)
+	      .toList();
+	    reactionAttentionCorrelationRepository.saveAll(reactions);
+	  }
+
 }
