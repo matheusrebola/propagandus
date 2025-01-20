@@ -1,15 +1,15 @@
 package propagandus.viewcreationservice.core.mappers;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import lombok.RequiredArgsConstructor;
 import propagandus.viewcreationservice.core.documents.AdvertisingSummary;
 import propagandus.viewcreationservice.core.dtos.AdvertisingSummaryDTO;
 
 @Component
+@RequiredArgsConstructor
 public class AdvertisingSummaryMapper {
-	@Autowired
 	private final ModelMapper mapper;
 	
 	public AdvertisingSummary map(AdvertisingSummaryDTO dto) {
@@ -17,8 +17,4 @@ public class AdvertisingSummaryMapper {
 		return advertising;
 	}
 	
-	public AdvertisingSummaryDTO map(AdvertisingSummary advertising) {
-		AdvertisingSummaryDTO dto = mapper.map(advertising, AdvertisingSummaryDTO.class);
-		return dto;
-	}
 }
