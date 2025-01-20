@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.mongodb.MongoWriteException;
+
 import lombok.RequiredArgsConstructor;
 import propagandus.viewcreationservice.core.documents.ReactionAttentionCorrelation;
 import propagandus.viewcreationservice.core.dtos.ReactionAttentionCorrelationDTO;
@@ -33,8 +35,9 @@ public class ReactionService extends AViewCreationService {
 
 	@Override
 	public void clearDatabase() {
-		// TODO Auto-generated method stub
-		
+		try {
+			reactionAttentionCorrelationRepository.deleteAll();
+		} catch (MongoWriteException e) {throw e;}		
 	}
 
 }

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.mongodb.MongoWriteException;
+
 import lombok.RequiredArgsConstructor;
 import propagandus.viewcreationservice.core.documents.PainelPerformance;
 import propagandus.viewcreationservice.core.dtos.PainelPerformanceDTO;
@@ -34,8 +36,9 @@ public class PainelService extends AViewCreationService {
 
 	@Override
 	public void clearDatabase() {
-		// TODO Auto-generated method stub
-		
+		try {
+			painelPerformanceRepository.deleteAll();
+		} catch (MongoWriteException e) {throw e;}		
 	}
 
 }

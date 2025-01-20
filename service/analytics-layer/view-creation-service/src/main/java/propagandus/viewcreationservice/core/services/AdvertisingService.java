@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.mongodb.MongoWriteException;
+
 import lombok.RequiredArgsConstructor;
 import propagandus.viewcreationservice.core.documents.AdvertisingSummary;
 import propagandus.viewcreationservice.core.documents.CampaignEffectiveness;
@@ -66,7 +68,11 @@ public class AdvertisingService extends AViewCreationService {
 
 	@Override
 	public void clearDatabase() {
-		// TODO Auto-generated method stub
+		try {
+			campaignEffectivenessRepository.deleteAll();
+			productPreferencesRepository.deleteAll();
+			advertisingSummaryRepository.deleteAll();
+		} catch (MongoWriteException e) {throw e;}
 		
 	}
 
