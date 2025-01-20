@@ -32,4 +32,10 @@ public class PainelService extends AViewCreationService {
 	    painelPerformanceRepository.saveAll(painels);
 	  }
 
+	@Override
+	public void clearDatabase() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

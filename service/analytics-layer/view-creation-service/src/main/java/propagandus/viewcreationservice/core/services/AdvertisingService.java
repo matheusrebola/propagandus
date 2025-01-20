@@ -64,5 +64,10 @@ public class AdvertisingService extends AViewCreationService {
 		advertisingSummaryRepository.saveAll(advertisings);
 	}
 
+	@Override
+	public void clearDatabase() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

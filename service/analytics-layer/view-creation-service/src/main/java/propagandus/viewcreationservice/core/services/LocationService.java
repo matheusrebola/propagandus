@@ -40,4 +40,10 @@ public class LocationService extends AViewCreationService {
 	  public void locationPainelSummary() {
 		  
 	  }
+
+	@Override
+	public void clearDatabase() {
+		// TODO Auto-generated method stub
+		
+	}
 }

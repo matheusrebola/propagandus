@@ -31,4 +31,10 @@ public class ReactionService extends AViewCreationService {
 	    reactionAttentionCorrelationRepository.saveAll(reactions);
 	  }
 
+	@Override
+	public void clearDatabase() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

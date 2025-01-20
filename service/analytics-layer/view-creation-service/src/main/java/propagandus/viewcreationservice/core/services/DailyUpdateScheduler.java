@@ -5,16 +5,18 @@ import java.util.List;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import lombok.RequiredArgsConstructor;
 
 @Component
-@RequiredArgsConstructor
 public class DailyUpdateScheduler {
-    private final List<ViewCreationService> viewCreationServices;
+    private List<ViewCreationService> viewCreationServices;
 
-    //Método que será executado diariamente às 4h da manhã.
     @Scheduled(cron = "0 0 4 * * ?")
     public void updateViews() {
         viewCreationServices.forEach(ViewCreationService::process);
+    }
+    
+    @Scheduled(cron = "0 0 1 * * ?")
+    public void deleteViews() {
+        viewCreationServices.forEach(ViewCreationService::clearDatabase);
     }
 }
