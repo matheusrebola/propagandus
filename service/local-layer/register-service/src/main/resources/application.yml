@@ -1,7 +1,0 @@
-server:
-  port: 60002
-
-spring:
-  data:
-    mongodb:
-      uri: mongodb://register:register@mongodb-register:61002/register-db
