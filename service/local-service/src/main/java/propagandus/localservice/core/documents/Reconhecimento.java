@@ -4,13 +4,18 @@ import java.time.LocalDateTime;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import propagandus.localservice.core.documents.enums.EAtencao;
 import propagandus.localservice.core.documents.enums.EIdade;
 import propagandus.localservice.core.documents.enums.ESexo;
 
 @Data
 @Builder
+@Document(collection = "reconhecimentos")
 public class Reconhecimento {
+  @Id
+  private String id;
   private LocalDateTime data;
   private Local local;
   private ESexo sexo;
