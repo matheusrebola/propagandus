@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: propagandus-persistence
+  # Configurações do banco de dados
+  datasource:
+    url: jdbc:postgresql://localhost:5432/propagandus
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver  # (necessário em alguns casos)
+  jpa:
+    hibernate:
+      ddl-auto: update # ou create, validate, etc. (ver abaixo)
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  server:
+    port: 50080
