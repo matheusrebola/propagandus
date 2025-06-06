@@ -1,5 +1,6 @@
 package propagandus.localservice.core.dtos;
 
+import lombok.Builder;
 import lombok.Data;
 import propagandus.localservice.core.documents.Local;
 import propagandus.localservice.core.documents.enums.EAtencao;

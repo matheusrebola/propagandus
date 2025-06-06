@@ -9,16 +9,16 @@ spring:
     driver-class-name: org.postgresql.Driver  # (necessário em alguns casos)
   jpa:
     hibernate:
-      ddl-auto: update # ou create, validate, etc. (ver abaixo)
+      ddl-auto: create # ou create, validate, etc. (ver abaixo)
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   server:
-    port: 50080
+    port: 50000
 
   rabbitmq:
     host: localhost
-    port: 55181
+    port: 5672
     username: guest
     password: guest
     virtual-host: /

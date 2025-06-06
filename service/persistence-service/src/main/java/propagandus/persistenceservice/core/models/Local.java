@@ -19,7 +19,7 @@ public class Local {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @Column(length = 10) @Enumerated(EnumType.STRING)
-  private EZona endereco;
+  private EZona zona;
   @Column(length = 10) @Enumerated(EnumType.STRING)
   private ELocal local;
 

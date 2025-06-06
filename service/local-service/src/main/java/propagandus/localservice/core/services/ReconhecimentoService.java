@@ -4,6 +4,7 @@ package propagandus.localservice.core.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import propagandus.localservice.core.documents.Reconhecimento;
+import propagandus.localservice.core.dtos.ReconhecimentoDTO;
 import propagandus.localservice.core.producers.SagaProducer;
 import propagandus.localservice.core.repositories.ReconhecimentoRepository;
 
@@ -15,7 +16,7 @@ public class ReconhecimentoService {
     private final ReconhecimentoRepository repository;
     private final SagaProducer producer;
 
-    public void registrarNaFila(Reconhecimento reconhecimento) {
+    public void registrarNaFila(ReconhecimentoDTO reconhecimento) {
         producer.enviarReconhecimento(reconhecimento);
     }
 
@@ -33,5 +34,9 @@ public class ReconhecimentoService {
 
     public void deletarPeloId(List<Reconhecimento> listRecon) {
         listRecon.stream().forEach(recon -> deletarPeloId(recon.getId()));
+    }
+
+    public List<Reconhecimento> encontrarTodos() {
+        return repository.findAll();
     }
 }

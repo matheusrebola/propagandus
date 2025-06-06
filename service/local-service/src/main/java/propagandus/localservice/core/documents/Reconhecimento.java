@@ -2,6 +2,7 @@ package propagandus.localservice.core.documents;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -16,7 +17,7 @@ import propagandus.localservice.core.documents.enums.ESexo;
 public class Reconhecimento {
   @Id
   private String id;
-  private LocalDateTime data;
+  private String data;
   private Local local;
   private ESexo sexo;
   private EIdade idade;

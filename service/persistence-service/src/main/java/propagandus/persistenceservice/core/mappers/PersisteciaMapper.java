@@ -12,7 +12,7 @@ public class PersisteciaMapper {
 
     public Local map(LocalCreateDTO dto){
         return Local.builder()
-                .endereco(dto.getEndereco())
+                .zona(dto.getZona())
                 .local(dto.getLocal())
                 .build();
     }

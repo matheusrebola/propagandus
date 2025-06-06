@@ -1,30 +1,38 @@
 package propagandus.localservice.infra.rabbitmq;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 @Configuration
 public class RabbitConfig {
-    public static final String QUEUE = "reconhecimento.queue";
+
     public static final String EXCHANGE = "reconhecimento.exchange";
-    public static final String ROUTING_KEY = "reconhecimento.key";
+    public static final String ROUTING_KEY = "reconhecimento.route";
+    public static final String QUEUE = "reconhecimento.queue";
 
     @Bean
-    public Queue queue() {
-        return new Queue(QUEUE, true);
+    public Jackson2JsonMessageConverter messageConverter() {
+        return new Jackson2JsonMessageConverter();
     }
 
     @Bean
-    public DirectExchange exchange() {
-        return new DirectExchange(EXCHANGE);
+    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory,
+                                         Jackson2JsonMessageConverter messageConverter) {
+        RabbitTemplate template = new RabbitTemplate(connectionFactory);
+        template.setMessageConverter(messageConverter);
+        return template;
     }
 
     @Bean
-    public Binding binding(Queue queue, DirectExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(ROUTING_KEY);
+    public Declarables bindings() {
+        return new Declarables(
+                new Queue(QUEUE, true),
+                new DirectExchange(EXCHANGE),
+                BindingBuilder.bind(new Queue(QUEUE)).to(new DirectExchange(EXCHANGE)).with(ROUTING_KEY)
+        );
     }
 }

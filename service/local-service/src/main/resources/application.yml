@@ -5,11 +5,11 @@ spring:
   # Configurações do banco de dados
   data:
     mongodb:
-      uri: mongodb://propagandus_user:propagandus_pass@localhost:15081/propagandus_db?authSource=admin
+      uri: mongodb://admin:admin@localhost:15081/propagandusdb
 
   rabbitmq:
     host: localhost
-    port: 55181
+    port: 5672
     username: guest
     password: guest
     virtual-host: /
@@ -30,4 +30,4 @@ logging:
     org.springframework.amqp.rabbit.connection: INFO
 
 server:
-  port: 50081
+  port: 50001
