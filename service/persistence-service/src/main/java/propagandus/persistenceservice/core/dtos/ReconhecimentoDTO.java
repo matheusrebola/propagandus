@@ -8,9 +8,9 @@ import propagandus.persistenceservice.core.models.enums.ESexo;
 
 @Data
 @Builder
-public class ReconhecimentoCreateDTO {
+public class ReconhecimentoDTO {
     private String data;
-    private LocalCreateDTO local;
+    private Long local;
     private ESexo sexo;
     private EIdade idade;
     private EAtencao atencao;

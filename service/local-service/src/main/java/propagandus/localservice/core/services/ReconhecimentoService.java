@@ -15,8 +15,8 @@ public class ReconhecimentoService {
     private final ReconhecimentoRepository repository;
     private final SagaProducer producer;
 
-    public void registrarNaFila(Reconhecimento r) {
-        producer.enviarEvento(r.toString(),"topico");
+    public void registrarNaFila(Reconhecimento reconhecimento) {
+        producer.enviarReconhecimento(reconhecimento);
     }
 
     public Reconhecimento salvar(Reconhecimento reconhecimento) {
@@ -29,10 +29,6 @@ public class ReconhecimentoService {
 
     public List<Reconhecimento> verificarBanco() {
         return repository.findAll();
-    }
-
-    public Reconhecimento registrarNaFila(List<Reconhecimento> listRecon) {
-        return listRecon.stream().forEach(reconhecimento -> registrarNaFila(reconhecimento));
     }
 
     public void deletarPeloId(List<Reconhecimento> listRecon) {

@@ -11,10 +11,6 @@ import propagandus.localservice.core.dtos.ReconhecimentoCreateDTO;
 import propagandus.localservice.core.dtos.RespostaDTO;
 import propagandus.localservice.core.mappers.ReconhecimentoMapper;
 import propagandus.localservice.core.services.ReconhecimentoService;
-import propagandus.localservice.infra.excessoes.InfraForaException;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,15 +24,11 @@ public class ReconhecimentoController {
         Reconhecimento reconhecimento = mapper.map(dto);
         try {
             service.registrarNaFila(reconhecimento);
-            return new ResponseEntity<>(mapper.map(), HttpStatus.CREATED);
+            return new ResponseEntity<>(ReconhecimentoMapper.map(), HttpStatus.CREATED);
         } catch (Exception e) {
             service.salvar(reconhecimento);
-            throw new InfraForaException(e);
-        } finally {
-            List<Reconhecimento> listRecon = service.verificarBanco();
-            service.deletarPeloId(listRecon);
-            Reconhecimento registrar = service.registrarNaFila(listRecon);
-            return new ResponseEntity<>(mapper.map(), HttpStatus.CREATED);
+            throw new RuntimeException(e);
         }
     }
+
 }

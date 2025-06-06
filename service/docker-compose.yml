@@ -9,5 +9,34 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+
+  mongo:
+    image: mongo:7.0
+    container_name: propagandus-mongo
+    restart: always
+    ports:
+      - "15081:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: propagandus_user
+      MONGO_INITDB_ROOT_PASSWORD: propagandus_pass
+      MONGO_INITDB_DATABASE: propagandus_db
+    volumes:
+      - mongo_data:/data/db
+
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    container_name: propagandus-rabbitmq
+    restart: always
+    ports:
+      - "25081:5672"   # Porta de comunicação para as aplicações
+      - "25082:15672"  # Porta para acessar o painel de gerenciamento
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
 volumes:
   pgdata:
+  mongo_data:
+  rabbitmq_data:

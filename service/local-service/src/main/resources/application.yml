@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: propagandus-local
+
+  # Configurações do banco de dados
+  data:
+    mongodb:
+      uri: mongodb://propagandus_user:propagandus_pass@localhost:15081/propagandus_db?authSource=admin
+
+  rabbitmq:
+    host: localhost
+    port: 55181
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        concurrency: 1
+        max-concurrency: 5
+        acknowledge-mode: auto
+    template:
+      mandatory: true
+
+  jackson:
+    default-property-inclusion: non_null
+
+logging:
+  level:
+    org.springframework.amqp: INFO
+    org.springframework.amqp.rabbit.connection: INFO
+
+server:
+  port: 50081

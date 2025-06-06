@@ -13,11 +13,11 @@ public class ReconhecimentoMapper {
 
     public Reconhecimento map(ReconhecimentoCreateDTO dto) {
         return Reconhecimento.builder()
-                .atencao(dto.atencao())
+                .atencao(dto.getAtencao())
                 .data(LocalDateTime.now())
-                .idade(dto.idade())
-                .local(dto.local())
-                .sexo(dto.sexo())
+                .idade(dto.getIdade())
+                .local(dto.getLocal())
+                .sexo(dto.getSexo())
                 .build();
     }
 

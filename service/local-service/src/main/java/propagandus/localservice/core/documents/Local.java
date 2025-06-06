@@ -11,5 +11,5 @@ public class Local {
   private EZona zona;
   private ELocal local;
   private String nome;
-  private List<String> propaganda;
+  private String propaganda;
 }

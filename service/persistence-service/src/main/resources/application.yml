@@ -15,3 +15,25 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   server:
     port: 50080
+
+  rabbitmq:
+    host: localhost
+    port: 55181
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        concurrency: 1
+        max-concurrency: 5
+        acknowledge-mode: auto
+    template:
+      mandatory: true
+
+  jackson:
+    default-property-inclusion: non_null
+
+logging:
+  level:
+    org.springframework.amqp: INFO
+    org.springframework.amqp.rabbit.connection: INFO
