@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import propagandus.localservice.core.documents.Reconhecimento;
 import propagandus.localservice.core.dtos.ReconhecimentoCreateDTO;
-import propagandus.localservice.core.dtos.ReconhecimentoDTO;
 import propagandus.localservice.core.producers.SagaProducer;
 import propagandus.localservice.core.repositories.ReconhecimentoRepository;
 
@@ -21,8 +20,8 @@ public class ReconhecimentoService {
         producer.enviarReconhecimento(reconhecimento);
     }
 
-    public Reconhecimento salvar(Reconhecimento reconhecimento) {
-        return repository.save(reconhecimento);
+    public void salvar(Reconhecimento reconhecimento) {
+        repository.save(reconhecimento);
     }
 
     public void deletarPeloId(String id){

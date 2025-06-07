@@ -1,6 +1,7 @@
 package propagandus.localservice.core.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.AmqpException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import propagandus.localservice.core.dtos.RespostaDTO;
 import propagandus.localservice.core.mappers.ReconhecimentoMapper;
 import propagandus.localservice.core.services.ReconhecimentoService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -21,14 +23,17 @@ public class ReconhecimentoController {
     private final ReconhecimentoMapper mapper;
 
     @PostMapping
-    public ResponseEntity<RespostaDTO> criar(@RequestBody ReconhecimentoCreateDTO dto){
+    public ResponseEntity<RespostaDTO> criar(@RequestBody ReconhecimentoCreateDTO dto) {
         try {
-            service.registrarNaFila(dto);
+            dto.setData(String.valueOf(LocalDateTime.now()));
+            service.registrarNaFila(dto);  // Tenta publicar no RabbitMQ
             return new ResponseEntity<>(ReconhecimentoMapper.map(), HttpStatus.CREATED);
-        } catch (RuntimeException e) {
+        } catch (AmqpException e) {
             Reconhecimento reconhecimento = mapper.map(dto);
             service.salvar(reconhecimento);
-            throw new RuntimeException(e);
+            return new ResponseEntity<>(ReconhecimentoMapper.map(), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

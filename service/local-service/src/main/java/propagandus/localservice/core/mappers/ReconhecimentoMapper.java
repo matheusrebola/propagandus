@@ -16,7 +16,7 @@ public class ReconhecimentoMapper {
 
     public Reconhecimento map(ReconhecimentoCreateDTO dto){
         return Reconhecimento.builder()
-                .data(String.valueOf(LocalDateTime.now()))
+                .data(dto.getData())
                 .local(dto.getLocal())
                 .sexo(dto.getSexo())
                 .idade(dto.getIdade())
