@@ -1,12 +1,14 @@
 package propagandus.localservice.core.documents;
 
-import java.util.List;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import propagandus.localservice.core.documents.enums.ELocal;
 import propagandus.localservice.core.documents.enums.EZona;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Local {
   private EZona zona;
   private ELocal local;

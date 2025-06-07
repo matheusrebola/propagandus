@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
-import propagandus.localservice.core.dtos.ReconhecimentoDTO;
+import propagandus.localservice.core.dtos.ReconhecimentoCreateDTO;
 import propagandus.localservice.infra.rabbitmq.RabbitConfig;
 
 @Component
@@ -13,11 +13,11 @@ import propagandus.localservice.infra.rabbitmq.RabbitConfig;
 public class SagaProducer {
     private final RabbitTemplate rabbitTemplate;
 
-    public void enviarReconhecimento(ReconhecimentoDTO reconhecimento) {
+    public void enviarReconhecimento(ReconhecimentoCreateDTO dto) {
         rabbitTemplate.convertAndSend(
                 RabbitConfig.EXCHANGE,
                 RabbitConfig.ROUTING_KEY,
-                reconhecimento
+                dto
         );
     }
 }

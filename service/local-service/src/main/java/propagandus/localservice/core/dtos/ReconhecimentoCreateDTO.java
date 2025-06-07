@@ -8,6 +8,7 @@ import propagandus.localservice.core.documents.enums.EIdade;
 import propagandus.localservice.core.documents.enums.ESexo;
 
 @Data
+@Builder
 public class ReconhecimentoCreateDTO {
     private Local local;
     private ESexo sexo;

@@ -14,13 +14,13 @@ import java.util.stream.Collectors;
 @Component
 public class ReconhecimentoMapper {
 
-    public Reconhecimento map(ReconhecimentoCreateDTO dto) {
+    public Reconhecimento map(ReconhecimentoCreateDTO dto){
         return Reconhecimento.builder()
-                .atencao(dto.getAtencao())
-                .data(LocalDateTime.now().toString())
-                .idade(dto.getIdade())
+                .data(String.valueOf(LocalDateTime.now()))
                 .local(dto.getLocal())
                 .sexo(dto.getSexo())
+                .idade(dto.getIdade())
+                .atencao(dto.getAtencao())
                 .build();
     }
 
@@ -32,26 +32,18 @@ public class ReconhecimentoMapper {
     }
 
     public List<ReconhecimentoDTO> map(List<Reconhecimento> reconhecimentos) {
-        return reconhecimentos.stream().map(recon -> map(recon)).collect(Collectors.toList());
+        return reconhecimentos.stream().map(this::map).collect(Collectors.toList());
     }
 
     public ReconhecimentoDTO map(Reconhecimento reconhecimento){
         return ReconhecimentoDTO.builder()
                 .id(reconhecimento.getId())
                 .data(reconhecimento.getData())
-                .local(reconhecimento.getLocal().toString())
-                .sexo(reconhecimento.getSexo().toString())
-                .idade(reconhecimento.getIdade().toString())
-                .atencao(reconhecimento.getAtencao().toString())
+                .local(reconhecimento.getLocal())
+                .sexo(reconhecimento.getSexo())
+                .idade(reconhecimento.getIdade())
+                .atencao(reconhecimento.getAtencao())
                 .build();
     }
 
-    public ReconhecimentoDTO toString(ReconhecimentoCreateDTO dto){
-        return ReconhecimentoDTO.builder()
-                .local(dto.getLocal().toString())
-                .sexo(dto.getSexo().toString())
-                .idade(dto.getIdade().toString())
-                .atencao(dto.getAtencao().toString())
-                .build();
-    }
 }

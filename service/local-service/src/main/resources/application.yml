@@ -5,7 +5,7 @@ spring:
   # Configurações do banco de dados
   data:
     mongodb:
-      uri: mongodb://admin:admin@localhost:15081/propagandusdb
+      uri: mongodb://propagandus_user:propagandus_pass@localhost:15081/propagandus_db?authSource=admin
 
   rabbitmq:
     host: localhost

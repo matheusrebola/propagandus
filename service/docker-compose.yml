@@ -17,15 +17,15 @@ services:
       rabbitmq-server
       --load_definitions=/etc/rabbitmq/definitions.json
 
-  mongodb:
-    image: mongo:6.0
-    container_name: mongodb
+  mongo:
+    image: mongo:7.0
+    container_name: propagandus-mongo
     ports:
-      - "27017:27017"
+      - "15081:27017"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
-      MONGO_INITDB_DATABASE: propaganudsdb
+      MONGO_INITDB_ROOT_USERNAME: propagandus_user
+      MONGO_INITDB_ROOT_PASSWORD: propagandus_pass
+      MONGO_INITDB_DATABASE: propagandus_db
     volumes:
       - mongo_data:/data/db
   postgres:
