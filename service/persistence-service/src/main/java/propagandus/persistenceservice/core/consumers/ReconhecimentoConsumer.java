@@ -14,7 +14,7 @@ import propagandus.persistenceservice.infra.rabbitmq.RabbitConfig;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class ReconhecimentoConsumer {
+public final class ReconhecimentoConsumer {
 
     private final PersisteciaMapper mapper;
     private final PersistenciaService service;
