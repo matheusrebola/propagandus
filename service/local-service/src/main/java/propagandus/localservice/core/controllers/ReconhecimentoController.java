@@ -18,12 +18,12 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/reconhecimento")
-public class ReconhecimentoController {
+public final class ReconhecimentoController {
     private final ReconhecimentoService service;
     private final ReconhecimentoMapper mapper;
 
     @PostMapping
-    public ResponseEntity<RespostaDTO> criar(@RequestBody ReconhecimentoCreateDTO dto) {
+    private ResponseEntity<RespostaDTO> criar(@RequestBody ReconhecimentoCreateDTO dto) {
         try {
             dto.setData(String.valueOf(LocalDateTime.now()));
             service.registrarNaFila(dto);  // Tenta publicar no RabbitMQ
@@ -38,7 +38,7 @@ public class ReconhecimentoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ReconhecimentoDTO>> encontrarTodos(){
+    private ResponseEntity<List<ReconhecimentoDTO>> encontrarTodos(){
         try {
             List<Reconhecimento> reconhecimentos = service.encontrarTodos();
             if (reconhecimentos.isEmpty()){
