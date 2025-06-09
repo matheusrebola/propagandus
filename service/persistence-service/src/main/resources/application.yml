@@ -1,39 +1,44 @@
 spring:
   application:
     name: propagandus-persistence
-  # Configurações do banco de dados
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/propagandus
-    username: postgres
-    password: postgres
-    driver-class-name: org.postgresql.Driver  # (necessário em alguns casos)
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/propagandus}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: create # ou create, validate, etc. (ver abaixo)
+      ddl-auto: ${JPA_HIBERNATE_DDL:update}
+    show-sql: ${JPA_SHOW_SQL:true}
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  server:
-    port: 50000
 
   rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-    virtual-host: /
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+    virtual-host: ${RABBITMQ_VHOST:/}
     listener:
       simple:
-        concurrency: 1
-        max-concurrency: 5
-        acknowledge-mode: auto
+        concurrency: ${RABBITMQ_CONCURRENCY:1}
+        max-concurrency: ${RABBITMQ_MAX_CONCURRENCY:5}
+        acknowledge-mode: ${RABBITMQ_ACK_MODE:auto}
     template:
       mandatory: true
 
   jackson:
     default-property-inclusion: non_null
 
+server:
+  port: ${APP_PORT:50000}
+
 logging:
   level:
     org.springframework.amqp: INFO
     org.springframework.amqp.rabbit.connection: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE

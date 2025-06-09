@@ -2,22 +2,21 @@ spring:
   application:
     name: propagandus-local
 
-  # Configurações do banco de dados
   data:
     mongodb:
-      uri: mongodb://propagandus_user:propagandus_pass@localhost:15081/propagandus_db?authSource=admin
+      uri: ${MONGODB_URI:mongodb://propagandus_user:propagandus_pass@localhost:15081/propagandus_db?authSource=admin}
 
   rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-    virtual-host: /
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+    virtual-host: ${RABBITMQ_VHOST:/}
     listener:
       simple:
-        concurrency: 1
-        max-concurrency: 5
-        acknowledge-mode: auto
+        concurrency: ${RABBITMQ_CONCURRENCY:1}
+        max-concurrency: ${RABBITMQ_MAX_CONCURRENCY:5}
+        acknowledge-mode: ${RABBITMQ_ACK_MODE:auto}
     template:
       mandatory: true
 
@@ -30,4 +29,4 @@ logging:
     org.springframework.amqp.rabbit.connection: INFO
 
 server:
-  port: 50001
+  port: ${APP_PORT:50001}
