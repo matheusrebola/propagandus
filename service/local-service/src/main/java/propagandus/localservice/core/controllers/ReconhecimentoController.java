@@ -24,12 +24,12 @@ public final class ReconhecimentoController {
 
     @PostMapping
     private ResponseEntity<RespostaDTO> criar(@RequestBody ReconhecimentoCreateDTO dto) {
+        Reconhecimento reconhecimento = mapper.map(dto);
         try {
-            dto.setData(String.valueOf(LocalDateTime.now()));
-            service.registrarNaFila(dto);  // Tenta publicar no RabbitMQ
+            service.registrarNaFila(reconhecimento);  // Tenta publicar no RabbitMQ
             return new ResponseEntity<>(ReconhecimentoMapper.map(), HttpStatus.CREATED);
         } catch (AmqpException e) {
-            Reconhecimento reconhecimento = mapper.map(dto);
+
             service.salvar(reconhecimento);
             return new ResponseEntity<>(ReconhecimentoMapper.map(), HttpStatus.ACCEPTED);
         } catch (Exception e) {

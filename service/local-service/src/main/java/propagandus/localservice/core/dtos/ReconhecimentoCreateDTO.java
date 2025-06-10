@@ -9,8 +9,6 @@ import propagandus.localservice.core.documents.enums.ESexo;
 @Data
 @Builder
 public class ReconhecimentoCreateDTO {
-    private String data;
-    private String local;
     private ESexo sexo;
     private EIdade idade;
     private EAtencao atencao;

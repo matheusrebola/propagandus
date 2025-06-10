@@ -1,5 +1,6 @@
 package propagandus.localservice.core.mappers;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import propagandus.localservice.core.documents.Reconhecimento;
 import propagandus.localservice.core.dtos.ReconhecimentoCreateDTO;
@@ -14,10 +15,13 @@ import java.util.stream.Collectors;
 @Component
 public class ReconhecimentoMapper {
 
+    @Value("${spring.application.constantes.localId}")
+    private String localId;
+
     public Reconhecimento map(ReconhecimentoCreateDTO dto){
         return Reconhecimento.builder()
-                .data(dto.getData())
-                .local(dto.getLocal())
+                .data(String.valueOf(LocalDateTime.now()))
+                .local(localId)
                 .sexo(dto.getSexo())
                 .idade(dto.getIdade())
                 .atencao(dto.getAtencao())

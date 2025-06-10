@@ -4,7 +4,6 @@ package propagandus.localservice.core.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import propagandus.localservice.core.documents.Reconhecimento;
-import propagandus.localservice.core.dtos.ReconhecimentoCreateDTO;
 import propagandus.localservice.core.producers.SagaProducer;
 import propagandus.localservice.core.repositories.ReconhecimentoRepository;
 
@@ -16,7 +15,7 @@ public class ReconhecimentoService {
     private final ReconhecimentoRepository repository;
     private final SagaProducer producer;
 
-    public void registrarNaFila(ReconhecimentoCreateDTO reconhecimento) {
+    public void registrarNaFila(Reconhecimento reconhecimento) {
         producer.enviarReconhecimento(reconhecimento);
     }
 
