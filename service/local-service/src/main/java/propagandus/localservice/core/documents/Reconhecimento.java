@@ -20,7 +20,7 @@ public class Reconhecimento {
   @Id
   private String id;
   private String data;
-  private Local local;
+  private String local;
   private ESexo sexo;
   private EIdade idade;
   private EAtencao atencao;

@@ -32,8 +32,4 @@ public class ReconhecimentoService {
         return repository.findAll();
     }
 
-    public void deletarPeloId(List<Reconhecimento> listRecon) {
-        listRecon.stream().forEach(recon -> deletarPeloId(recon.getId()));
-    }
-
 }
