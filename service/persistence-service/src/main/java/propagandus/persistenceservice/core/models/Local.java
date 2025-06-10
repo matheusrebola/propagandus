@@ -16,12 +16,14 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 public class Local {
-  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  @Id @GeneratedValue(strategy = GenerationType.UUID)
+  private String id;
   @Column(length = 10) @Enumerated(EnumType.STRING)
   private EZona zona;
   @Column(length = 10) @Enumerated(EnumType.STRING)
   private ELocal local;
+  @Column
+  private String detalhes;
 
   @Override
   public final boolean equals(Object o) {

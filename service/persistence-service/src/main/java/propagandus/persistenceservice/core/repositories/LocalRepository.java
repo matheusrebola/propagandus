@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import propagandus.persistenceservice.core.models.Local;
 
 @Repository
-public interface LocalRepository extends JpaRepository<Local,Long> {
+public interface LocalRepository extends JpaRepository<Local,String> {
 }

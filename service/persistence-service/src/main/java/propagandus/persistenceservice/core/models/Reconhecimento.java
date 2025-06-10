@@ -22,7 +22,7 @@ public class Reconhecimento {
   @Column @Temporal(TemporalType.DATE)
   private String data;
   @Column(name = "local_id")
-  private Long local;
+  private String local;
   @Column(length = 1) @Enumerated(EnumType.STRING)
   private ESexo sexo;
   @Column(length = 10) @Enumerated(EnumType.STRING)

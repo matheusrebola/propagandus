@@ -5,7 +5,8 @@ import propagandus.persistenceservice.core.models.enums.ELocal;
 import propagandus.persistenceservice.core.models.enums.EZona;
 
 @Data
-public class LocalCreateDTO {
+public class LocalDTO {
     private EZona zona;
     private ELocal local;
+    private String detalhes;
 }
