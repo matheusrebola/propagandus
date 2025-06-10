@@ -7,6 +7,7 @@ import propagandus.persistenceservice.core.models.enums.ELocal;
 import propagandus.persistenceservice.core.models.enums.EZona;
 
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -24,6 +25,8 @@ public class Local {
   private ELocal local;
   @Column
   private String detalhes;
+  @OneToMany(mappedBy="local")
+  private Set<Reconhecimento> reconhecimentos;
 
   @Override
   public final boolean equals(Object o) {

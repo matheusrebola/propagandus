@@ -6,6 +6,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 import propagandus.persistenceservice.core.dtos.ReconhecimentoDTO;
 import propagandus.persistenceservice.core.mappers.PersisteciaMapper;
+import propagandus.persistenceservice.core.models.Local;
 import propagandus.persistenceservice.core.services.PersistenciaService;
 import propagandus.persistenceservice.infra.rabbitmq.RabbitConfig;
 
@@ -20,8 +21,12 @@ public final class ReconhecimentoConsumer {
     @RabbitListener(queues = RabbitConfig.QUEUE)
     public void receberReconhecimento(ReconhecimentoDTO dto) {
         try {
+            Local local = service.encontrarLocal(dto.getLocal());
+            if (local == null){
+                log.error("ID não existente");
+            }
             log.info("Mensagem recebida do RabbitMQ: {}", dto);
-            service.salvar(mapper.map(dto));
+            service.salvar(mapper.map(dto, local));
             log.info("Reconhecimento processado com sucesso.");
         } catch (Exception e) {
             log.error("Erro ao processar mensagem do RabbitMQ", e);

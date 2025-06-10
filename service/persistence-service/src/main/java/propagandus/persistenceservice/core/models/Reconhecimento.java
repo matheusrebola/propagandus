@@ -21,8 +21,9 @@ public class Reconhecimento {
   private Long id;
   @Column @Temporal(TemporalType.DATE)
   private String data;
-  @Column(name = "local_id")
-  private String local;
+  @ManyToOne
+  @JoinColumn(name="local_id", nullable=false)
+  private Local local;
   @Column(length = 1) @Enumerated(EnumType.STRING)
   private ESexo sexo;
   @Column(length = 10) @Enumerated(EnumType.STRING)

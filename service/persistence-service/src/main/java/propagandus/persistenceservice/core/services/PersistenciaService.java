@@ -20,4 +20,8 @@ public class PersistenciaService {
     public Local salvar(Local local){
         return localRepository.save(local);
     }
+
+    public Local encontrarLocal(String id) {
+        return localRepository.findById(id).orElse(null);
+    }
 }
