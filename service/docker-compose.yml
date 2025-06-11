@@ -28,8 +28,10 @@ services:
       MONGO_INITDB_DATABASE: propagandus_db
     volumes:
       - mongo_data:/data/db
+
   postgres:
     image: postgres:14-alpine
+    container_name: propagandus-postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -39,7 +41,17 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  redis:
+    image: redis:7-alpine
+    container_name: propagandus-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --save 60 1 --loglevel warning
+
 volumes:
   pgdata:
   mongo_data:
   rabbitmq_data:
+  redis_data:
