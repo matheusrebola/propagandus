@@ -9,7 +9,7 @@ import propagandus.persistenceservice.core.models.enums.EZona;
 import java.util.Objects;
 import java.util.Set;
 
-@Entity
+@Entity(name = "local_tb")
 @Getter
 @Setter
 @ToString

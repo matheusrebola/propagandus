@@ -9,7 +9,7 @@ import propagandus.persistenceservice.core.models.enums.ESexo;
 
 import java.util.Objects;
 
-@Entity
+@Entity(name = "reconhecimento_tb")
 @Getter
 @Setter
 @ToString
