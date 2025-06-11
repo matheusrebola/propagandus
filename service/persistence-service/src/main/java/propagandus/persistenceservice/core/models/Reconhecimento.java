@@ -7,20 +7,20 @@ import propagandus.persistenceservice.core.models.enums.EAtencao;
 import propagandus.persistenceservice.core.models.enums.EIdade;
 import propagandus.persistenceservice.core.models.enums.ESexo;
 
+import java.util.Date;
 import java.util.Objects;
 
 @Entity(name = "reconhecimento_tb")
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
 public class Reconhecimento {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @Column @Temporal(TemporalType.DATE)
-  private String data;
+  private Date data;
   @ManyToOne
   @JoinColumn(name="local_id", nullable=false)
   private Local local;

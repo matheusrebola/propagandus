@@ -22,8 +22,9 @@ public final class ReconhecimentoConsumer {
     public void receberReconhecimento(ReconhecimentoDTO dto) {
         try {
             Local local = service.encontrarLocal(dto.getLocal());
-            if (local == null){
-                log.error("ID não existente");
+            if (local == null) {
+                log.error("ID de Local não encontrado: {}", dto.getLocal());
+                return; // Encerra o processamento da mensagem
             }
             log.info("Mensagem recebida do RabbitMQ: {}", dto);
             service.salvar(mapper.map(dto, local));

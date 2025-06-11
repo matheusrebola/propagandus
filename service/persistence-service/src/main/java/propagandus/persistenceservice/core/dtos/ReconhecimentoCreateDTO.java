@@ -6,10 +6,12 @@ import propagandus.persistenceservice.core.models.enums.EAtencao;
 import propagandus.persistenceservice.core.models.enums.EIdade;
 import propagandus.persistenceservice.core.models.enums.ESexo;
 
+import java.util.Date;
+
 @Data
 @Builder
 public class ReconhecimentoCreateDTO {
-    private String data;
+    private Date data;
     private String local;
     private ESexo sexo;
     private EIdade idade;
