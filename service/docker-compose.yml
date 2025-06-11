@@ -5,7 +5,7 @@ services:
     image: rabbitmq:3.13-management
     container_name: rabbitmq
     ports:
-      - "25082:15672"   # UI
+      - "25082:15672"   # UI do RabbitMQ
       - "5672:5672"     # Comunicação AMQP
     environment:
       RABBITMQ_DEFAULT_USER: guest
@@ -49,6 +49,14 @@ services:
     volumes:
       - redis_data:/data
     command: redis-server --save 60 1 --loglevel warning
+
+  redisinsight:
+    image: redis/redisinsight:latest
+    container_name: redisinsight
+    ports:
+      - "8001:8001"     # Acesso via navegador
+    depends_on:
+      - redis
 
 volumes:
   pgdata:
