@@ -2,7 +2,7 @@ spring:
   application:
     name: propagandus-local
     constantes:
-      localId: ${LOCAL_ID:6b04aefb-d2c6-487e-ba74-bd0f427e2ce8}
+      localId: ${LOCAL_ID:068061cb-4592-416f-a051-8c99028ecb93}
 
   data:
     mongodb:
