@@ -1,6 +1,6 @@
 package propagandus.persistenceservice.core.services;
 
-import lombok.AllArgsConstructor;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -14,9 +14,15 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class LocalCacheService {
+
     private final RedisTemplate<String, LocalCache> redisTemplate;
-    private final ValueOperations<String, LocalCache> valueOps;
     private final LocalMapper mapper;
+    private ValueOperations<String, LocalCache> valueOps;
+
+    @PostConstruct
+    private void init() {
+        this.valueOps = redisTemplate.opsForValue();
+    }
 
     public void cacheLocal(Local local) {
         valueOps.set(local.getId(), mapper.map(local));
@@ -30,3 +36,4 @@ public class LocalCacheService {
         redisTemplate.delete(id);
     }
 }
+

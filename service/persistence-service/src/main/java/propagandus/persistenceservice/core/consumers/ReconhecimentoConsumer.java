@@ -10,6 +10,8 @@ import propagandus.persistenceservice.core.models.Local;
 import propagandus.persistenceservice.core.services.PersistenciaService;
 import propagandus.persistenceservice.infra.rabbitmq.RabbitConfig;
 
+import java.util.Optional;
+
 @Component
 @RequiredArgsConstructor
 @Slf4j
@@ -21,7 +23,7 @@ public final class ReconhecimentoConsumer {
     @RabbitListener(queues = RabbitConfig.QUEUE)
     public void receberReconhecimento(ReconhecimentoDTO dto) {
         try {
-            Local local = service.encontrarLocal(dto.getLocal());
+            Optional<Local> local = service.encontrarLocal(dto.getLocal());
             if (local == null) {
                 log.error("ID de Local não encontrado: {}", dto.getLocal());
                 return; // Encerra o processamento da mensagem

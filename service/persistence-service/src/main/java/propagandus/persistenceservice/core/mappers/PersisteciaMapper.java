@@ -5,13 +5,15 @@ import propagandus.persistenceservice.core.dtos.ReconhecimentoDTO;
 import propagandus.persistenceservice.core.models.Local;
 import propagandus.persistenceservice.core.models.Reconhecimento;
 
+import java.util.Optional;
+
 @Component
 public class PersisteciaMapper {
 
-    public Reconhecimento map(ReconhecimentoDTO dto, Local local){
+    public Reconhecimento map(ReconhecimentoDTO dto, Optional<Local> local){
         return Reconhecimento.builder()
                 .data(dto.getData())
-                .local(local)
+                .local(local.orElse(null))
                 .sexo(dto.getSexo())
                 .idade(dto.getIdade())
                 .atencao(dto.getAtencao())
