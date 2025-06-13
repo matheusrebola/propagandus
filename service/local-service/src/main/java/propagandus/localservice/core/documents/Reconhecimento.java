@@ -1,12 +1,7 @@
 package propagandus.localservice.core.documents;
 
-import java.time.LocalDateTime;
-
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import propagandus.localservice.core.documents.enums.EAtencao;
@@ -21,6 +16,7 @@ public class Reconhecimento {
   private String id;
   private String data;
   private String local;
+  private String token;
   private ESexo sexo;
   private EIdade idade;
   private EAtencao atencao;

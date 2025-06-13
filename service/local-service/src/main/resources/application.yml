@@ -1,8 +1,10 @@
 spring:
   application:
     name: propagandus-local
-    constantes:
-      localId: ${LOCAL_ID:068061cb-4592-416f-a051-8c99028ecb93}
+    constants:
+      localId: ${LOCAL_ID:66eb7688-c499-4821-a4b7-7ca92d7975b7}
+      secret-key: ${JWT_SECRET_KEY:Y3Vyc28tYXV0ZW50aWNhY2FvLXN0YXRlZnVsLXN0YXRlbGVzcy1taWNyb3NzZXJ2aWNvcw==}
+      token: ${TOKEN:dbfb45cf-5aa3-48f7-8ad9-47f592c9e6b}
 
   data:
     mongodb:

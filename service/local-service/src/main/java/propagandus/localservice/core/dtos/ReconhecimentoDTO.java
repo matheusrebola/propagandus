@@ -12,6 +12,7 @@ public class ReconhecimentoDTO {
     private String id;
     private String data;
     private String local;
+    private String token;
     private ESexo sexo;
     private EIdade idade;
     private EAtencao atencao;

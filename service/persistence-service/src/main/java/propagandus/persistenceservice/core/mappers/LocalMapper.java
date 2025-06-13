@@ -51,7 +51,7 @@ public class LocalMapper {
     
     public AccessToken map(AccessTokenDTO dto){
         return AccessToken.builder()
-                .tokenJwt(dto.tokenJwt())
+                .token(dto.tokenJwt())
                 .localId(dto.localId())
                 .build();
     }

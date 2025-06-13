@@ -15,13 +15,16 @@ import java.util.stream.Collectors;
 @Component
 public class ReconhecimentoMapper {
 
-    @Value("${spring.application.constantes.localId}")
+    @Value("${spring.application.constants.localId}")
     private String localId;
+    @Value("${spring.application.constants.token}")
+    private String token;
 
     public Reconhecimento map(ReconhecimentoCreateDTO dto){
         return Reconhecimento.builder()
                 .data(String.valueOf(LocalDateTime.now()))
                 .local(localId)
+                .token(token)
                 .sexo(dto.getSexo())
                 .idade(dto.getIdade())
                 .atencao(dto.getAtencao())

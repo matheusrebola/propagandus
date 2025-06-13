@@ -1,5 +1,6 @@
 package propagandus.persistenceservice.core.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import propagandus.persistenceservice.core.models.enums.EAtencao;
@@ -10,6 +11,7 @@ import java.util.Date;
 
 @Data
 @Builder
+@AllArgsConstructor
 public class ReconhecimentoDTO {
     private Date data;
     private String local;

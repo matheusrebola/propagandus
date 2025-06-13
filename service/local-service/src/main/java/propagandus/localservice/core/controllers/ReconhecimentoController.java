@@ -12,7 +12,6 @@ import propagandus.localservice.core.dtos.RespostaDTO;
 import propagandus.localservice.core.mappers.ReconhecimentoMapper;
 import propagandus.localservice.core.services.ReconhecimentoService;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -29,9 +28,8 @@ public final class ReconhecimentoController {
             service.registrarNaFila(reconhecimento);  // Tenta publicar no RabbitMQ
             return new ResponseEntity<>(ReconhecimentoMapper.map(), HttpStatus.CREATED);
         } catch (AmqpException e) {
-
             service.salvar(reconhecimento);
-            return new ResponseEntity<>(ReconhecimentoMapper.map(), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(ReconhecimentoMapper.map(), HttpStatus.PROCESSING);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

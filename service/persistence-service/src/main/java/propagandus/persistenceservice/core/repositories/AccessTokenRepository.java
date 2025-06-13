@@ -6,4 +6,5 @@ import propagandus.persistenceservice.core.models.AccessToken;
 
 @Repository
 public interface AccessTokenRepository extends JpaRepository<AccessToken, Long> {
+    AccessToken findByToken(String accessToken);
 }

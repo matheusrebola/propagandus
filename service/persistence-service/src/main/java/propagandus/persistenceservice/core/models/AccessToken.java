@@ -16,5 +16,5 @@ public class AccessToken {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String localId;
-    private String tokenJwt;
+    private String token;
 }
