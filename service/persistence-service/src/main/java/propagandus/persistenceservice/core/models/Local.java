@@ -25,6 +25,10 @@ public class Local {
   private ELocal local;
   @Column
   private String detalhes;
+  @Column(length = 10)
+  private String latitude;
+  @Column(length = 10)
+  private String longitude;
   @OneToMany(mappedBy="local")
   private Set<Reconhecimento> reconhecimentos;
 

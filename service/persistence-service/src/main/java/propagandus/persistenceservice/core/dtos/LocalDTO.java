@@ -8,5 +8,7 @@ import propagandus.persistenceservice.core.models.enums.EZona;
 public class LocalDTO {
     private EZona zona;
     private ELocal local;
+    private String latitude;
+    private String longitude;
     private String detalhes;
 }
