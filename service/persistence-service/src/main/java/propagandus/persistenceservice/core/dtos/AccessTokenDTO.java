@@ -3,5 +3,5 @@ package propagandus.persistenceservice.core.dtos;
 import lombok.Builder;
 
 @Builder
-public record AcessToken(String localId, String tokenJwt) {
+public record AccessTokenDTO(String localId, String tokenJwt) {
 }

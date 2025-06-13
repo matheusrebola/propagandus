@@ -16,6 +16,7 @@ import java.util.Objects;
 @ToString
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class Reconhecimento {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;

@@ -5,7 +5,6 @@ import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import propagandus.persistenceservice.core.models.Usuarios;
 import propagandus.persistenceservice.infra.exception.AuthenticationException;
 import propagandus.persistenceservice.infra.exception.ValidationException;
 
@@ -28,18 +27,6 @@ public class JwtService {
 
     @Value("${spring.application.token.secret-key}")
     private String secretKey;
-
-    public String createToken(Usuarios user) {
-        var data = new HashMap<String, String>();
-        data.put("id", user.getId().toString());
-        data.put("username", user.getUsername());
-        return Jwts
-                .builder()
-                .claims(data)
-                .expiration(generateExpiresAt())
-                .signWith(generateSign())
-                .compact();
-    }
 
     public String createToken() {
         var data = new HashMap<String, String>();

@@ -13,6 +13,7 @@ import java.util.Date;
 public class ReconhecimentoDTO {
     private Date data;
     private String local;
+    private String token;
     private ESexo sexo;
     private EIdade idade;
     private EAtencao atencao;
