@@ -12,6 +12,8 @@ public class LocalMapper {
         return Local.builder()
                 .zona(dto.getZona())
                 .local(dto.getLocal())
+                .latitude(dto.getLatitude())
+                .longitude(dto.getLongitude())
                 .detalhes(dto.getDetalhes())
                 .build();
     }
@@ -21,6 +23,8 @@ public class LocalMapper {
                 .id(local.getId())
                 .zona(local.getZona())
                 .local(local.getLocal())
+                .latitude(local.getLatitude())
+                .longitude(local.getLongitude())
                 .detalhes(local.getDetalhes())
                 .build();
     }
@@ -30,6 +34,8 @@ public class LocalMapper {
                 .id(local.getId())
                 .zona(local.getZona())
                 .local(local.getLocal())
+                .latitude(local.getLatitude())
+                .longitude(local.getLongitude())
                 .detalhes(local.getDetalhes())
                 .build();
     }

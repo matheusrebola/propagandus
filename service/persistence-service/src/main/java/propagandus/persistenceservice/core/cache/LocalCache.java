@@ -16,5 +16,7 @@ public class LocalCache implements Serializable {
     private String id;
     private EZona zona;
     private ELocal local;
+    private String latitude;
+    private String longitude;
     private String detalhes;
 }

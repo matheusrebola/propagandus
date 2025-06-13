@@ -12,7 +12,6 @@ import java.util.Set;
 @Entity(name = "local_tb")
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
@@ -25,9 +24,9 @@ public class Local {
   private ELocal local;
   @Column
   private String detalhes;
-  @Column(length = 10)
+  @Column(length = 20)
   private String latitude;
-  @Column(length = 10)
+  @Column(length = 20)
   private String longitude;
   @OneToMany(mappedBy="local")
   private Set<Reconhecimento> reconhecimentos;
