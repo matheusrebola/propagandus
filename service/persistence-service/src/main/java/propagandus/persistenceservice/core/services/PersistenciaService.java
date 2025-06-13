@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import propagandus.persistenceservice.core.cache.LocalCache;
+import propagandus.persistenceservice.core.dtos.AcessToken;
+import propagandus.persistenceservice.core.dtos.TokenDTO;
 import propagandus.persistenceservice.core.mappers.LocalMapper;
 import propagandus.persistenceservice.core.models.Local;
 import propagandus.persistenceservice.core.models.Reconhecimento;
@@ -19,15 +21,17 @@ public class PersistenciaService {
     private final LocalRepository localRepository;
     private final LocalCacheService localCacheService;
     private final LocalMapper mapper;
+    private final AuthService authService;
 
     public Reconhecimento salvar(Reconhecimento reconhecimento){
         return reconhecimentoRepository.save(reconhecimento);
     }
 
-    public Local salvar(Local local){
+    public AcessToken salvar(Local local){
         Local saved = localRepository.save(local);
         localCacheService.cacheLocal(saved);
-        return saved;
+        TokenDTO token = authService.createToken();
+        return mapper.map(token.getAccessToken(), saved.getId());
     }
 
     public Optional<Local> findById(String id) {

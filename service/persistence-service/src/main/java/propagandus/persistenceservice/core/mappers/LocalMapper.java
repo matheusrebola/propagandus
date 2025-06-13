@@ -2,6 +2,7 @@ package propagandus.persistenceservice.core.mappers;
 
 import org.springframework.stereotype.Component;
 import propagandus.persistenceservice.core.cache.LocalCache;
+import propagandus.persistenceservice.core.dtos.AcessToken;
 import propagandus.persistenceservice.core.dtos.LocalDTO;
 import propagandus.persistenceservice.core.models.Local;
 
@@ -37,6 +38,13 @@ public class LocalMapper {
                 .latitude(local.getLatitude())
                 .longitude(local.getLongitude())
                 .detalhes(local.getDetalhes())
+                .build();
+    }
+
+    public AcessToken map(String token, String id) {
+        return AcessToken.builder()
+                .localId(id)
+                .tokenJwt(token)
                 .build();
     }
 }

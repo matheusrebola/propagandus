@@ -1,6 +1,8 @@
 spring:
   application:
     name: propagandus-persistence
+    token:
+      secret-key: ${JWT_SECRET_KEY:Y3Vyc28tYXV0ZW50aWNhY2FvLXN0YXRlZnVsLXN0YXRlbGVzcy1taWNyb3NzZXJ2aWNvcw==}
   redis:
     host: ${REDIS_HOST:localhost}
     port: ${REDIS_PORT:6379}
