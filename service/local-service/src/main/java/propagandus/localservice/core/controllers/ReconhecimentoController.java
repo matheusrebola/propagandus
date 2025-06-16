@@ -29,7 +29,7 @@ public final class ReconhecimentoController {
             return new ResponseEntity<>(ReconhecimentoMapper.map(), HttpStatus.CREATED);
         } catch (AmqpException e) {
             service.salvar(reconhecimento);
-            return new ResponseEntity<>(ReconhecimentoMapper.map(), HttpStatus.PROCESSING);
+            return new ResponseEntity<>(ReconhecimentoMapper.map(), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
