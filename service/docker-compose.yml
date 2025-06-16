@@ -1,33 +1,17 @@
-version: '3.9'
-
 services:
-  rabbitmq:
-    image: rabbitmq:3.13-management
-    container_name: rabbitmq
+  propagandus-app:
+    build: .
+    container_name: propagandus-app
     ports:
-      - "25082:15672"   # UI do RabbitMQ
-      - "5672:5672"     # Comunicação AMQP
-    environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
+      - "50001:50001"
     volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
-      - ./rabbitmq/definitions.json:/etc/rabbitmq/definitions.json
-    command: >
-      rabbitmq-server
-      --load_definitions=/etc/rabbitmq/definitions.json
-
-  mongo:
-    image: mongo:7.0
-    container_name: propagandus-mongo
-    ports:
-      - "15081:27017"
+      - ./data:/app/data  # persistência do arquivo SQLite
     environment:
-      MONGO_INITDB_ROOT_USERNAME: propagandus_user
-      MONGO_INITDB_ROOT_PASSWORD: propagandus_pass
-      MONGO_INITDB_DATABASE: propagandus_db
-    volumes:
-      - mongo_data:/data/db
+      - SPRING_DATASOURCE_URL=jdbc:sqlite:/app/data/propagandus.db
+    depends_on:
+      - postgres
+      - redis
+      - rabbitmq
 
   postgres:
     image: postgres:14-alpine
@@ -50,8 +34,23 @@ services:
       - redis_data:/data
     command: redis-server --save 60 1 --loglevel warning
 
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq
+    ports:
+      - "25082:15672"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+      - ./rabbitmq/definitions.json:/etc/rabbitmq/definitions.json
+    command: >
+      rabbitmq-server
+      --load_definitions=/etc/rabbitmq/definitions.json
+
 volumes:
   pgdata:
-  mongo_data:
-  rabbitmq_data:
   redis_data:
+  rabbitmq_data:
