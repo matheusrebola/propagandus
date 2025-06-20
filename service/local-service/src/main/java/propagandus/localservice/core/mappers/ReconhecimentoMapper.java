@@ -47,6 +47,7 @@ public class ReconhecimentoMapper {
                 .id(reconhecimento.getId())
                 .data(reconhecimento.getData())
                 .local(reconhecimento.getLocal())
+                .token(reconhecimento.getToken())
                 .sexo(reconhecimento.getSexo())
                 .idade(reconhecimento.getIdade())
                 .atencao(reconhecimento.getAtencao())
