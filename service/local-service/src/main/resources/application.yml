@@ -1,15 +1,9 @@
 spring:
-<<<<<<< HEAD
-  datasource:
-    url: jdbc:sqlite:./data/propagandus.db
-    driver-class-name: org.sqlite.JDBC
-=======
   application:
     name: propagandus-local
     constants:
       localId: ${LOCAL_ID:bea753f8-8a31-4409-a25c-9d5f629eee70}
       token: ${TOKEN:6d4f8120-ae3d-4ad3-8e3d-0bd6c761df90}
->>>>>>> develop
 
   jpa:
     hibernate:
