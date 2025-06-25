@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: propagandus-local
+    constants:
+      localId: ${LOCAL_ID:bea753f8-8a31-4409-a25c-9d5f629eee70}
+      token: ${TOKEN:6d4f8120-ae3d-4ad3-8e3d-0bd6c761df90}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    show-sql: true
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+    virtual-host: ${RABBITMQ_VHOST:/}
+
+server:
+  port: ${APP_PORT:50001}
